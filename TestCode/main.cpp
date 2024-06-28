@@ -3,6 +3,7 @@
 #include "ARIA.h"
 #include "HIGHT.h"
 #include "TWINE.h"
+#include "SPECK.h"
 
 void printHex(uint8_t* data, int len) {
     for (int i = 0; i < len; ++i) {
@@ -95,7 +96,38 @@ void test_twine() {
 }
 
 void test_speck() {
+    // byte to word, little endian
+    // Key:         00 01 02 03 04 05 06 07 08 09 0a 0b 0c 0d 0e 0f
+    // Plaintext:   20 6d 61 64 65 20 69 74 20 65 71 75 69 76 61 6c
+    // Ciphertext:  18 0d 57 5c df fe 60 78 65 32 78 79 51 98 5d a6
+    uint8_t key[]           = {0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F};
+    uint8_t plainText[]     = {0x20, 0x6D, 0x61, 0x64, 0x65, 0x20, 0x69, 0x74, 0x20, 0x65, 0x71, 0x75, 0x69, 0x76, 0x61, 0x6C};
+    uint8_t cipherText[]    = {0x18, 0x0d, 0x57, 0x5c, 0xdf, 0xfe, 0x60, 0x78, 0x65, 0x32, 0x78, 0x79, 0x51, 0x98, 0x5d, 0xa6};
+    uint8_t temp[16] = {};
 
+    SPECK speck(key);
+
+    std::cout << "Key           : ";
+    printHex(key, 16);
+
+    std::cout << "PlainText     : ";
+    printHex(plainText, 16);
+
+    std::cout << "\n\nEncryption...\n";
+    speck.encrypt(plainText, temp);
+
+    std::cout << "CipherText    : ";
+    printHex(temp, 16);
+    std::cout << "Expected      : ";
+    printHex(cipherText, 16);
+
+    std::cout << "\n\nDecryption...\n";
+    speck.decrypt(cipherText, temp);
+
+    std::cout << "PlainText     : ";
+    printHex(temp, 16);
+    std::cout << "Expected      : ";
+    printHex(plainText, 16);
 }
 
 int main() {
