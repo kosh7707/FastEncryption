@@ -7,22 +7,19 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace FastEncryption.EncryptionAlgorithm
 {
-    internal class SPECK : IEncryptionAlgorithm
+    internal class SPECK : EncryptionAlgorithm
     {
-        public SPECK(byte[] key) 
+        public SPECK(byte[] key) : base(key)
         {
-            if (key.Length != 16)
-                throw new ArgumentException("Key must be exactly 16 bytes long.");
-
-            this.key    = new ulong[2];
+            uint64_key  = new ulong[2];
             rk          = new ulong[32];
-            this.key[0] = BitConverter.ToUInt64(key, 0);
-            this.key[1] = BitConverter.ToUInt64(key, 8);
+            uint64_key[0] = BitConverter.ToUInt64(key, 0);
+            uint64_key[1] = BitConverter.ToUInt64(key, 8);
 
             keySchedule();
         }
 
-        public byte[] Encrypt(byte[] plainText)
+        public override byte[] Encrypt(byte[] plainText)
         {
             if (plainText.Length != 16)
                 throw new ArgumentException("plainText must be exactly 16 bytes long.");
@@ -50,7 +47,7 @@ namespace FastEncryption.EncryptionAlgorithm
             return cipherText;
         }
 
-        public byte[] Decrypt(byte[] cipherText)
+        public override byte[] Decrypt(byte[] cipherText)
         {
             if (cipherText.Length != 16)
                 throw new ArgumentException("cipherText must be exactly 16 bytes long.");
@@ -78,9 +75,16 @@ namespace FastEncryption.EncryptionAlgorithm
             return plainText;
         }
 
+        public override string AlgorithmName => "SPECK";
+
+        public override int GetBlockSize()
+        {
+            return 16;
+        }
+
         private void keySchedule()
         {
-            ulong B = key[1], A = key[0];
+            ulong B = uint64_key[1], A = uint64_key[0];
 
             for (int i = 0; i < 31; i++)
             {
@@ -104,7 +108,7 @@ namespace FastEncryption.EncryptionAlgorithm
             return ((x) >> (r)) | ((x) << (64 - (r)));
         }
 
-        private readonly ulong[] key;
+        private readonly ulong[] uint64_key;
         private readonly ulong[] rk;
     }
 }

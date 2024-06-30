@@ -7,39 +7,42 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace FastEncryption.EncryptionAlgorithm
 {
-    internal class ARIA : IEncryptionAlgorithm
+    internal class ARIA : EncryptionAlgorithm
     {
-        public ARIA(byte[] key) {
-            if (key.Length != 16)
-                throw new ArgumentException("Key must be exactly 16 bytes long.");
+        public ARIA(byte[] key) : base(key) {
 
-            this.key = new byte[16];
-            Array.Copy(key, this.key, 16);
+            enc_rk = new byte[16 * 13];
+            EncKeySetup(enc_rk);
+
+            dec_rk = new byte[16 * 13];
+            DecKeySetup(dec_rk);
 
         }
 
-        public byte[] Encrypt(byte[] plainText)
+        public override byte[] Encrypt(byte[] plainText)
         {
             if (plainText == null || plainText.Length != 16)
                 throw new ArgumentException("Input must be a 16-byte array.");
 
-            byte[] rk = new byte[16 * 13];
             byte[] cipherText = new byte[16];
-            EncKeySetup(rk);
-            Crypt(plainText, rk, cipherText);
+            Crypt(plainText, enc_rk, cipherText);
             return cipherText;
         }
 
-        public byte[] Decrypt(byte[] cipherText)
+        public override byte[] Decrypt(byte[] cipherText)
         {
             if (cipherText == null || cipherText.Length != 16)
                 throw new ArgumentException("Input must be a 16-byte array.");
 
-            byte[] rk = new byte[16 * 13];
             byte[] plainText = new byte[16];
-            DecKeySetup(rk);
-            Crypt(cipherText, rk, plainText);
+            Crypt(cipherText, dec_rk, plainText);
             return plainText;
+        }
+
+        public override string AlgorithmName => "ARIA";
+        public override int GetBlockSize()
+        {
+            return 16;
         }
 
         private void DiffusionLayer(byte[] i, byte[] o, int inputOffset, int outputOffset)
@@ -195,7 +198,8 @@ namespace FastEncryption.EncryptionAlgorithm
             }
         }
 
-        private readonly byte[] key;
+        private readonly byte[] enc_rk;
+        private readonly byte[] dec_rk;
         private static readonly byte[][] sbox = new byte[4][]
         {
             new byte[256]

@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FastEncryption.EncryptionAlgorithm
+namespace FastEncryption.OperationMode
 {
-    internal interface IEncryptionAlgorithm
+    internal interface IOperationMode
     {
         byte[] Encrypt(byte[] plainText);
         byte[] Decrypt(byte[] cipherText);
+        string ModeName { get; }
         string AlgorithmName { get; }
-        int GetBlockSize();
     }
 }

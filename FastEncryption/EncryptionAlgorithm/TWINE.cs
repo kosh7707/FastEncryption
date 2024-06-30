@@ -6,22 +6,111 @@ using System.Threading.Tasks;
 
 namespace FastEncryption.EncryptionAlgorithm
 {
-    internal class TWINE : IEncryptionAlgorithm
+    internal class TWINE : EncryptionAlgorithm
     {
-        public TWINE(byte[] key)
+        public TWINE(byte[] key) : base(key)
         {
-            if (key.Length != 16)
-                throw new ArgumentException("Key must be exactly 16 bytes long.");
-
-            this.key = new byte[16];
-            Array.Copy(key, this.key, 16);
-
             rk = new byte[36][];
             for (int i = 0; i < 36; i++)
             {
                 rk[i] = new byte[8];
             }
             expandKeys();
+        }
+
+        public override byte[] Encrypt(byte[] plainText)
+        {
+            if (plainText.Length != 8)
+                throw new ArgumentException("plainText must be exactly 8 bytes long.");
+
+            byte[] x = new byte[16];
+
+            for (int i = 0; i < 8; i++)
+            {
+                x[2 * i] = (byte)(plainText[i] >> 4);
+                x[2 * i + 1] = (byte)(plainText[i] & 0x0f);
+            }
+
+            for (int i = 0; i < 35; i++)
+            {
+                for (int j = 0; j < 8; j++)
+                {
+                    x[2 * j + 1] ^= sbox[x[2 * j] ^ rk[i][j]];
+                }
+
+                byte[] xnext = new byte[16];
+                for (int k = 0; k < 16; k++)
+                {
+                    xnext[shuffle[k]] = x[k];
+                }
+
+                Array.Copy(xnext, x, 16);
+            }
+
+            for (int j = 0; j < 8; j++)
+            {
+                x[2 * j + 1] ^= sbox[x[2 * j] ^ rk[35][j]];
+            }
+
+            byte[] cipherText = new byte[8];
+
+            for (int i = 0; i < 8; i++)
+            {
+                cipherText[i] = (byte)(x[2 * i] << 4 | x[2 * i + 1]);
+            }
+
+            return cipherText;
+        }
+
+        public override byte[] Decrypt(byte[] cipherText)
+        {
+            if (cipherText.Length != 8)
+                throw new ArgumentException("cipherText must be exactly 8 bytes long.");
+
+            byte[] x = new byte[16];
+
+            for (int i = 0; i < 8; i++)
+            {
+                x[2 * i] = (byte)(cipherText[i] >> 4);
+                x[2 * i + 1] = (byte)(cipherText[i] & 0x0f);
+            }
+
+            for (int i = 35; i >= 1; i--)
+            {
+                for (int j = 0; j < 8; j++)
+                {
+                    x[2 * j + 1] ^= sbox[x[2 * j] ^ rk[i][j]];
+                }
+
+                byte[] xnext = new byte[16];
+                for (int k = 0; k < 16; k++)
+                {
+                    xnext[shuffle_inv[k]] = x[k];
+                }
+
+                Array.Copy(xnext, x, 16);
+            }
+
+            for (int j = 0; j < 8; j++)
+            {
+                x[2 * j + 1] ^= sbox[x[2 * j] ^ rk[0][j]];
+            }
+
+            byte[] plainText = new byte[8];
+
+            for (int i = 0; i < 8; i++)
+            {
+                plainText[i] = (byte)(x[2 * i] << 4 | x[2 * i + 1]);
+            }
+
+            return plainText;
+        }
+
+        public override string AlgorithmName => "TWINE";
+
+        public override int GetBlockSize()
+        {
+            return 8;
         }
 
         private void expandKeys()
@@ -78,96 +167,6 @@ namespace FastEncryption.EncryptionAlgorithm
             rk[35][6] = wk[28];
             rk[35][7] = wk[31];
         }
-
-        public byte[] Encrypt(byte[] plainText)
-        {
-            if (plainText.Length != 8)
-                throw new ArgumentException("plainText must be exactly 8 bytes long.");
-
-            byte[] x = new byte[16];
-
-            for (int i = 0; i < 8; i++)
-            {
-                x[2 * i]     = (byte)(plainText[i] >> 4);
-                x[2 * i + 1] = (byte)(plainText[i] & 0x0f);
-            }
-
-            for (int i = 0; i < 35; i++)
-            {
-                for (int j = 0; j < 8; j++)
-                {
-                    x[2 * j + 1] ^= sbox[x[2 * j] ^ rk[i][j]];
-                }
-
-                byte[] xnext = new byte[16];
-                for (int k = 0; k < 16; k++)
-                {
-                    xnext[shuffle[k]] = x[k];
-                }
-
-                Array.Copy(xnext, x, 16);
-            }
-
-            for (int j = 0; j < 8; j++)
-            {
-                x[2 * j + 1] ^= sbox[x[2 * j] ^ rk[35][j]];
-            }
-
-            byte[] cipherText = new byte[8];
-
-            for (int i = 0; i < 8; i++)
-            {
-                cipherText[i] = (byte)(x[2 * i] << 4 | x[2 * i + 1]);
-            }
-
-            return cipherText;
-        }
-
-        public byte[] Decrypt(byte[] cipherText)
-        {
-            if (cipherText.Length != 8)
-                throw new ArgumentException("cipherText must be exactly 8 bytes long.");
-
-            byte[] x = new byte[16];
-
-            for (int i = 0; i < 8; i++)
-            {
-                x[2 * i] = (byte)(cipherText[i] >> 4);
-                x[2 * i + 1] = (byte)(cipherText[i] & 0x0f);
-            }
-
-            for (int i = 35; i >= 1; i--)
-            {
-                for (int j = 0; j < 8; j++)
-                {
-                    x[2 * j + 1] ^= sbox[x[2 * j] ^ rk[i][j]];
-                }
-
-                byte[] xnext = new byte[16];
-                for (int k = 0; k < 16; k++)
-                {
-                    xnext[shuffle_inv[k]] = x[k];
-                }
-
-                Array.Copy(xnext, x, 16);
-            }
-
-            for (int j = 0; j < 8; j++)
-            {
-                x[2 * j + 1] ^= sbox[x[2 * j] ^ rk[0][j]];
-            }
-
-            byte[] plainText = new byte[8];
-
-            for (int i = 0; i < 8; i++)
-            {
-                plainText[i] = (byte)(x[2 * i] << 4 | x[2 * i + 1]);
-            }
-
-            return plainText;
-        }
-
-        private readonly byte[] key;
 
         private readonly byte[][] rk; 
 

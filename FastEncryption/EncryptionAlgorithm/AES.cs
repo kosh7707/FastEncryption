@@ -6,22 +6,16 @@ using System.Threading.Tasks;
 
 namespace FastEncryption.EncryptionAlgorithm
 {
-    internal class AES : IEncryptionAlgorithm
+    internal class AES : EncryptionAlgorithm
     {
-        public AES(byte[] key)
+        public AES(byte[] key) : base(key)
         {
-            if (key.Length != 16)
-                throw new ArgumentException("Key must be exactly 16 bytes long.");
-
-            this.key = new byte[16];
-            Array.Copy(key, this.key, 16);
-
-            this.state = new byte[16];
-            this.roundKey = new byte[176];
+            state       = new byte[16];
+            roundKey    = new byte[176];
             KeyExpansion();
         }
 
-        public byte[] Encrypt(byte[] plainText)
+        public override byte[] Encrypt(byte[] plainText)
         {
             if (plainText == null || plainText.Length != 16)
                 throw new ArgumentException("Input must be a 16-byte array.");
@@ -35,7 +29,7 @@ namespace FastEncryption.EncryptionAlgorithm
             return ret;
         }
 
-        public byte[] Decrypt(byte[] cipherText)
+        public override byte[] Decrypt(byte[] cipherText)
         {
             if (cipherText == null || cipherText.Length != 16)
                 throw new ArgumentException("Input must be a 16-byte array.");
@@ -47,6 +41,13 @@ namespace FastEncryption.EncryptionAlgorithm
             var ret = new byte[16];
             Array.Copy(state, ret, 16);
             return ret;
+        }
+
+        public override string AlgorithmName => "AES";
+
+        public override int GetBlockSize()
+        {
+            return 16;
         }
 
         private void KeyExpansion()
@@ -250,7 +251,6 @@ namespace FastEncryption.EncryptionAlgorithm
             AddRoundKey(0);
         }
 
-        private readonly byte[] key;
         private readonly byte[] roundKey;
         private readonly byte[] state;
 

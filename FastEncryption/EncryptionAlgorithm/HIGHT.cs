@@ -6,20 +6,14 @@ using System.Threading.Tasks;
 
 namespace FastEncryption.EncryptionAlgorithm
 {
-    internal class HIGHT : IEncryptionAlgorithm
+    internal class HIGHT : EncryptionAlgorithm
     {
-        public HIGHT(byte[] key) 
+        public HIGHT(byte[] key) : base(key)
         {
-            if (key.Length != 16)
-                throw new ArgumentException("Key must be exactly 16 bytes long.");
-
-            UserKey = new byte[16];
-            Array.Copy(key, UserKey, 16);
-
             HIGHT_KeySched();
         }
 
-        public byte[] Encrypt(byte[] plainText)
+        public override byte[] Encrypt(byte[] plainText)
         {
             if (plainText.Length != 8)
                 throw new ArgumentException("plainText must be exactly 8 bytes long.");
@@ -92,7 +86,7 @@ namespace FastEncryption.EncryptionAlgorithm
             return cipherText;
         }
 
-        public byte[] Decrypt(byte[] cipherText)
+        public override byte[] Decrypt(byte[] cipherText)
         {
             if (cipherText.Length != 8)
                 throw new ArgumentException("cipherText must be exactly 8 bytes long.");
@@ -163,6 +157,13 @@ namespace FastEncryption.EncryptionAlgorithm
             plainText[6] = (byte)(XX[6] ^ RoundKey[3]);
 
             return plainText;
+        }
+
+        public override string AlgorithmName => "HIGHT";
+
+        public override int GetBlockSize()
+        {
+            return 8;
         }
 
         private void HIGHT_KeySched()
