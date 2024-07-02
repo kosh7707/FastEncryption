@@ -12,8 +12,8 @@ namespace FastEncryption
             TestECB.Run();
             TestCBC.Run();
             TestCFB.Run();
-            TestCTR.Run();
             TestOFB.Run();
+            TestCTR.Run();
 
             Console.WriteLine("press any key to continue...");
             Console.ReadKey();

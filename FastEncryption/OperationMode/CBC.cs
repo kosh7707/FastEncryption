@@ -13,9 +13,28 @@ namespace FastEncryption.OperationMode
         {
             int blockSize = encryptionAlgorithm.GetBlockSize();
             byte[] paddedPlainText = Padding(plainText);
-            byte[] cipherText = new byte[paddedPlainText.Length];
+            byte[] cipherText = new byte[paddedPlainText.Length + blockSize];
 
-            // TODO
+            // IV is random bytes. It will append on the head of cipherText.
+            byte[] iv = new byte[blockSize];
+            new Random().NextBytes(iv);
+            Array.Copy(iv, 0, cipherText, 0, blockSize);
+
+            byte[] prevBlock = iv;
+            for (int i = 0; i < paddedPlainText.Length; i += blockSize)
+            {
+                byte[] block = new byte[blockSize];
+                Array.Copy(paddedPlainText, i, block, 0, blockSize);
+
+                for (int j = 0; j < blockSize; j++)
+                {
+                    block[j] ^= prevBlock[j];
+                }
+                byte[] encryptedBlock = encryptionAlgorithm.Encrypt(block);
+                Array.Copy(encryptedBlock, 0, cipherText, i + blockSize, blockSize);
+
+                prevBlock = encryptedBlock;
+            }
 
             return cipherText;
         }
@@ -23,9 +42,27 @@ namespace FastEncryption.OperationMode
         public override byte[] Decrypt(byte[] cipherText)
         {
             int blockSize = encryptionAlgorithm.GetBlockSize();
-            byte[] paddedPlainText = new byte[cipherText.Length];
+            byte[] paddedPlainText = new byte[cipherText.Length - blockSize];
 
-            // TODO
+            // IV is at the head of cipherText.
+            byte[] iv = new byte[blockSize];
+            Array.Copy(cipherText, 0, iv, 0, blockSize);
+
+            byte[] prevBlock = iv;
+            for (int i = blockSize; i < cipherText.Length; i += blockSize)
+            {
+                byte[] block = new byte[blockSize];
+                Array.Copy(cipherText, i, block, 0, blockSize);
+
+                byte[] decryptedBlock = encryptionAlgorithm.Decrypt(block);
+                for(int j = 0; j < blockSize; j++)
+                {
+                    decryptedBlock[j] ^= prevBlock[j];
+                }
+                Array.Copy(decryptedBlock, 0, paddedPlainText, i - blockSize, blockSize);
+
+                prevBlock = block;
+            }
 
             return UnPadding(paddedPlainText);
         }
