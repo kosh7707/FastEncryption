@@ -8,12 +8,11 @@ namespace FastEncryption
     {
         static void Main()
         {
-            TestSingleBlock.Run();
-            TestECB.Run();
-            TestCBC.Run();
-            TestCFB.Run();
-            TestOFB.Run();
-            TestCTR.Run();
+            AESTest.Run();
+            ARIATest.Run();
+            HIGHTTest.Run();
+            SPECKTest.Run();
+            TWINETest.Run();
 
             Console.WriteLine("press any key to continue...");
             Console.ReadKey();

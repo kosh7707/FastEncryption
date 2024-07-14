@@ -170,26 +170,25 @@ namespace FastEncryption.EncryptionAlgorithm
         {
             for (int i = 0; i < 4; i++)
             {
-                RoundKey[i]     = UserKey[i + 12];
-                RoundKey[i + 4] = UserKey[i];
+                RoundKey[i]     = key[i + 12];
+                RoundKey[i + 4] = key[i];
             }
 
             for (int i = 0; i < 8; i++)
             {
                 for (int j = 0; j < 8; j++)
                 {
-                    RoundKey[8 + 16 * i + j     ] = (byte)(UserKey[(j - i) & 7      ] + Delta[16 * i + j    ]);
+                    RoundKey[8 + 16 * i + j     ] = (byte)(key[(j - i) & 7      ] + Delta[16 * i + j    ]);
                 }
                 for (int j = 0; j < 8; j++)
                 {
-                    RoundKey[8 + 16 * i + j + 8 ] = (byte)(UserKey[((j - i) & 7) + 8] + Delta[16 * i + j + 8]);
+                    RoundKey[8 + 16 * i + j + 8 ] = (byte)(key[((j - i) & 7) + 8] + Delta[16 * i + j + 8]);
                 }
             }
 
         }
 
-        private readonly byte[] UserKey     = new byte[16];
-        private readonly byte[] RoundKey    = new byte[136];
+        private readonly static byte[] RoundKey = new byte[136];
         private readonly static byte[] Delta    = new byte[128]
         {
             0x5A,0x6D,0x36,0x1B,0x0D,0x06,0x03,0x41,

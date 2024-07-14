@@ -67,6 +67,33 @@ namespace FastEncryption.OperationMode
             return UnPadding(paddedPlainText);
         }
 
+        public byte[] Encrypt(byte[] plainText, byte[] iv)
+        {
+            int blockSize = encryptionAlgorithm.GetBlockSize();
+            byte[] paddedPlainText = Padding(plainText);
+            byte[] cipherText = new byte[paddedPlainText.Length + blockSize];
+
+            Array.Copy(iv, 0, cipherText, 0, blockSize);
+
+            byte[] prevBlock = iv;
+            for (int i = 0; i < paddedPlainText.Length; i += blockSize)
+            {
+                byte[] block = new byte[blockSize];
+                Array.Copy(paddedPlainText, i, block, 0, blockSize);
+
+                for (int j = 0; j < blockSize; j++)
+                {
+                    block[j] ^= prevBlock[j];
+                }
+                byte[] encryptedBlock = encryptionAlgorithm.Encrypt(block);
+                Array.Copy(encryptedBlock, 0, cipherText, i + blockSize, blockSize);
+
+                prevBlock = encryptedBlock;
+            }
+
+            return cipherText;
+        }
+
         public override string ModeName => "CBC";
         public override string AlgorithmName => encryptionAlgorithm.AlgorithmName;
     }

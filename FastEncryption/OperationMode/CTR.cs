@@ -12,14 +12,14 @@ namespace FastEncryption.OperationMode
         public override byte[] Encrypt(byte[] plainText)
         {
             int blockSize = encryptionAlgorithm.GetBlockSize();
-            byte[] cipherText = new byte[plainText.Length + blockSize / 2];
+            byte[] cipherText = new byte[plainText.Length + blockSize];
 
-            byte[] nonce = new byte[blockSize / 2];
+            byte[] nonce = new byte[blockSize];
             new Random().NextBytes(nonce);
-            Array.Copy(nonce, 0, cipherText, 0, blockSize / 2);
+            Array.Copy(nonce, 0, cipherText, 0, blockSize);
 
             byte[] counter = new byte[blockSize];
-            Array.Copy(nonce, counter, blockSize / 2);
+            Array.Copy(nonce, counter, blockSize);
 
             for (int i = 0; i < plainText.Length; i += blockSize)
             {
@@ -27,11 +27,11 @@ namespace FastEncryption.OperationMode
                 IncrementCounter(counter, blockSize);
 
                 int bytesToProcess = Math.Min(blockSize, plainText.Length - i);
-                Array.Copy(plainText, i, cipherText, i + blockSize / 2, bytesToProcess); 
+                Array.Copy(plainText, i, cipherText, i + blockSize, bytesToProcess); 
 
                 for (int j = 0; j < bytesToProcess; j++)
                 {
-                    cipherText[i + blockSize / 2 + j] ^= encryptedCounter[j];
+                    cipherText[i + blockSize + j] ^= encryptedCounter[j];
                 }
             }
 
@@ -41,12 +41,12 @@ namespace FastEncryption.OperationMode
         public override byte[] Decrypt(byte[] cipherText)
         {
             int blockSize = encryptionAlgorithm.GetBlockSize();
-            byte[] plainText = new byte[cipherText.Length - blockSize / 2];
+            byte[] plainText = new byte[cipherText.Length - blockSize];
 
             byte[] counter = new byte[blockSize];
-            Array.Copy(cipherText, 0, counter, 0, blockSize / 2);
+            Array.Copy(cipherText, 0, counter, 0, blockSize);
 
-            for (int i = blockSize / 2; i < cipherText.Length; i += blockSize)
+            for (int i = blockSize; i < cipherText.Length; i += blockSize)
             {
                 byte[] encryptedCounter = encryptionAlgorithm.Encrypt(counter);
                 IncrementCounter(counter, blockSize);
@@ -55,16 +55,43 @@ namespace FastEncryption.OperationMode
 
                 for (int j = 0; j < bytesToProcess; j++)
                 {
-                    plainText[i - blockSize / 2 + j] = (byte)(encryptedCounter[j] ^ cipherText[i + j]);    
+                    plainText[i - blockSize + j] = (byte)(encryptedCounter[j] ^ cipherText[i + j]);    
                 }
             }
 
             return plainText;
         }
 
+        public byte[] Encrypt(byte[] plainText, byte[] nonce)
+        {
+            int blockSize = encryptionAlgorithm.GetBlockSize();
+            byte[] cipherText = new byte[plainText.Length + blockSize];
+
+            Array.Copy(nonce, 0, cipherText, 0, blockSize);
+
+            byte[] counter = new byte[blockSize];
+            Array.Copy(nonce, counter, blockSize);
+
+            for (int i = 0; i < plainText.Length; i += blockSize)
+            {
+                byte[] encryptedCounter = encryptionAlgorithm.Encrypt(counter);
+                IncrementCounter(counter, blockSize);
+
+                int bytesToProcess = Math.Min(blockSize, plainText.Length - i);
+                Array.Copy(plainText, i, cipherText, i + blockSize, bytesToProcess);
+
+                for (int j = 0; j < bytesToProcess; j++)
+                {
+                    cipherText[i + blockSize + j] ^= encryptedCounter[j];
+                }
+            }
+
+            return cipherText;
+        }
+
         private void IncrementCounter(byte[] counter, int blockSize)
         {
-            for (int i = blockSize - 1; i >= blockSize / 2; i--)
+            for (int i = blockSize - 1; i >= 0; i--)
             {
                 counter[i]++;
                 if (counter[i] != 0)

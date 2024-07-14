@@ -65,6 +65,32 @@ namespace FastEncryption.OperationMode
             return plainText;
         }
 
+        public byte[] Encrypt(byte[] plainText, byte[] iv)
+        {
+            int blockSize = encryptionAlgorithm.GetBlockSize();
+            byte[] cipherText = new byte[plainText.Length + blockSize];
+
+            Array.Copy(iv, 0, cipherText, 0, blockSize);
+
+            byte[] feedback = iv;
+            for (int i = 0; i < plainText.Length; i += blockSize)
+            {
+                byte[] encryptedFeedback = encryptionAlgorithm.Encrypt(feedback);
+
+                int bytesToProcess = Math.Min(blockSize, plainText.Length - i);
+                Array.Copy(plainText, i, cipherText, i + blockSize, bytesToProcess);
+
+                for (int j = 0; j < bytesToProcess; j++)
+                {
+                    cipherText[i + blockSize + j] ^= encryptedFeedback[j];
+                }
+
+                Array.Copy(cipherText, i + blockSize, feedback, 0, bytesToProcess);
+            }
+
+            return cipherText;
+        }
+
         public override string ModeName => "CFB";
         public override string AlgorithmName => encryptionAlgorithm.AlgorithmName;
     }

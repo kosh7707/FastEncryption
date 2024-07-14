@@ -77,7 +77,7 @@ namespace FastEncryption.EncryptionAlgorithm
                     temp[2] = sbox[temp[2]];
                     temp[3] = sbox[temp[3]];
                     // rcon xor
-                    temp[0] = (byte)(temp[0] ^ rcon[i / 4]);
+                    temp[0] = (byte)(temp[0] ^ rcon[i / 4 - 1]);
                 }
 
                 roundKey[i * 4 + 0] = (byte)(roundKey[(i - 4) * 4 + 0] ^ temp[0]);
@@ -118,27 +118,25 @@ namespace FastEncryption.EncryptionAlgorithm
         {
             byte temp;
 
-            // first row
-            temp = state[1 * 4 + 0];
-            state[1 * 4 + 0] = state[1 * 4 + 1];
-            state[1 * 4 + 1] = state[1 * 4 + 2];
-            state[1 * 4 + 2] = state[1 * 4 + 3];
-            state[1 * 4 + 3] = temp;
+            temp = state[1];
+            state[1] = state[5];
+            state[5] = state[9];
+            state[9] = state[13];
+            state[13] = temp;
 
-            // second row
-            temp = state[2 * 4 + 0];
-            state[2 * 4 + 0] = state[2 * 4 + 2];
-            state[2 * 4 + 2] = temp;
-            temp = state[2 * 4 + 1];
-            state[2 * 4 + 1] = state[2 * 4 + 3];
-            state[2 * 4 + 3] = temp;
+            temp = state[2];
+            state[2] = state[10];
+            state[10] = temp;
 
-            // third row
-            temp = state[3 * 4 + 3];
-            state[3 * 4 + 3] = state[3 * 4 + 2];
-            state[3 * 4 + 2] = state[3 * 4 + 1];
-            state[3 * 4 + 1] = state[3 * 4 + 0];
-            state[3 * 4 + 0] = temp;
+            temp = state[6];
+            state[6] = state[14];
+            state[14] = temp;
+
+            temp = state[15];
+            state[15] = state[11];
+            state[11] = state[7];
+            state[7] = state[3];
+            state[3] = temp;
         }
 
         private void MixColumns()
@@ -146,12 +144,12 @@ namespace FastEncryption.EncryptionAlgorithm
             byte Tmp, Tm, t;
             for (int i = 0; i < 4; i++)
             {
-                t = state[0 * 4 + i];
-                Tmp = (byte)(state[0 * 4 + i] ^ state[1 * 4 + i] ^ state[2 * 4 + i] ^ state[3 * 4 + i]);
-                Tm = (byte)(state[0 * 4 + i] ^ state[1 * 4 + i]); Tm = xtime(Tm); state[0 * 4 + i] ^= (byte)(Tm ^ Tmp);
-                Tm = (byte)(state[1 * 4 + i] ^ state[2 * 4 + i]); Tm = xtime(Tm); state[1 * 4 + i] ^= (byte)(Tm ^ Tmp);
-                Tm = (byte)(state[2 * 4 + i] ^ state[3 * 4 + i]); Tm = xtime(Tm); state[2 * 4 + i] ^= (byte)(Tm ^ Tmp);
-                Tm = (byte)(state[3 * 4 + i] ^ t); Tm = xtime(Tm); state[3 * 4 + i] ^= (byte)(Tm ^ Tmp);
+                t = state[i * 4 + 0];
+                Tmp = (byte)(state[i * 4 + 0] ^ state[i * 4 + 1] ^ state[i * 4 + 2] ^ state[i * 4 + 3]);
+                Tm  = (byte)(state[i * 4 + 0] ^ state[i * 4 + 1]); Tm = xtime(Tm); state[i * 4] ^= (byte)(Tm ^ Tmp);
+                Tm  = (byte)(state[i * 4 + 1] ^ state[i * 4 + 2]); Tm = xtime(Tm); state[i * 4 + 1] ^= (byte)(Tm ^ Tmp);
+                Tm  = (byte)(state[i * 4 + 2] ^ state[i * 4 + 3]); Tm = xtime(Tm); state[i * 4 + 2] ^= (byte)(Tm ^ Tmp);
+                Tm  = (byte)(state[i * 4 + 3] ^ t); Tm = xtime(Tm); state[i * 4 + 3] ^= (byte)(Tm ^ Tmp);
             }
         }
 
@@ -196,27 +194,24 @@ namespace FastEncryption.EncryptionAlgorithm
         {
             byte temp;
 
-            // first row
-            temp = state[1 * 4 + 3];
-            state[1 * 4 + 3] = state[1 * 4 + 2];
-            state[1 * 4 + 2] = state[1 * 4 + 1];
-            state[1 * 4 + 1] = state[1 * 4 + 0];
-            state[1 * 4 + 0] = temp;
+            temp = state[13];
+            state[13] = state[9];
+            state[9] = state[5];
+            state[5] = state[1];
+            state[1] = temp;
 
-            // second row
-            temp = state[2 * 4 + 0];
-            state[2 * 4 + 0] = state[2 * 4 + 2];
-            state[2 * 4 + 2] = temp;
-            temp = state[2 * 4 + 1];
-            state[2 * 4 + 1] = state[2 * 4 + 3];
-            state[2 * 4 + 3] = temp;
+            temp = state[2];
+            state[2] = state[10];
+            state[10] = temp;
+            temp = state[6];
+            state[6] = state[14];
+            state[14] = temp;
 
-            // third row
-            temp = state[3 * 4 + 0];
-            state[3 * 4 + 0] = state[3 * 4 + 1];
-            state[3 * 4 + 1] = state[3 * 4 + 2];
-            state[3 * 4 + 2] = state[3 * 4 + 3];
-            state[3 * 4 + 3] = temp;
+            temp = state[3];
+            state[3] = state[7];
+            state[7] = state[11];
+            state[11] = state[15];
+            state[15] = temp;
         }
 
         private void InvMixColumns()
@@ -224,13 +219,13 @@ namespace FastEncryption.EncryptionAlgorithm
             byte t1, t2, t3, t4;
             for (int i = 0; i < 4; i++)
             {
-                t1 = state[0 * 4 + i]; t2 = state[1 * 4 + i];
-                t3 = state[2 * 4 + i]; t4 = state[3 * 4 + i];
+                t1 = state[i * 4 + 0]; t2 = state[i * 4 + 1];
+                t3 = state[i * 4 + 2]; t4 = state[i * 4 + 3];
 
-                state[0 * 4 + i] = (byte)(multiply(t1, 0x0e) ^ multiply(t2, 0x0b) ^ multiply(t3, 0x0d) ^ multiply(t4, 0x09));
-                state[1 * 4 + i] = (byte)(multiply(t1, 0x09) ^ multiply(t2, 0x0e) ^ multiply(t3, 0x0b) ^ multiply(t4, 0x0d));
-                state[2 * 4 + i] = (byte)(multiply(t1, 0x0d) ^ multiply(t2, 0x09) ^ multiply(t3, 0x0e) ^ multiply(t4, 0x0b));
-                state[3 * 4 + i] = (byte)(multiply(t1, 0x0b) ^ multiply(t2, 0x0d) ^ multiply(t3, 0x09) ^ multiply(t4, 0x0e));
+                state[i * 4 + 0] = (byte)(multiply(t1, 0x0e) ^ multiply(t2, 0x0b) ^ multiply(t3, 0x0d) ^ multiply(t4, 0x09));
+                state[i * 4 + 1] = (byte)(multiply(t1, 0x09) ^ multiply(t2, 0x0e) ^ multiply(t3, 0x0b) ^ multiply(t4, 0x0d));
+                state[i * 4 + 2] = (byte)(multiply(t1, 0x0d) ^ multiply(t2, 0x09) ^ multiply(t3, 0x0e) ^ multiply(t4, 0x0b));
+                state[i * 4 + 3] = (byte)(multiply(t1, 0x0b) ^ multiply(t2, 0x0d) ^ multiply(t3, 0x09) ^ multiply(t4, 0x0e));
             }
         }
 
@@ -292,11 +287,9 @@ namespace FastEncryption.EncryptionAlgorithm
             0xa0, 0xe0, 0x3b, 0x4d, 0xae, 0x2a, 0xf5, 0xb0, 0xc8, 0xeb, 0xbb, 0x3c, 0x83, 0x53, 0x99, 0x61,
             0x17, 0x2b, 0x04, 0x7e, 0xba, 0x77, 0xd6, 0x26, 0xe1, 0x69, 0x14, 0x63, 0x55, 0x21, 0x0c, 0x7d
         };
-        private static readonly byte[] rcon = new byte[11]
+        private static readonly byte[] rcon = new byte[10]
         {
-            0x8d, 0x01, 0x02, 0x04,
-            0x08, 0x10, 0x20, 0x40,
-            0x80, 0x1b, 0x36
+            0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80, 0x1b, 0x36
         };
     }
 }
