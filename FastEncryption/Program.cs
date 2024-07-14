@@ -13,9 +13,6 @@ namespace FastEncryption
             HIGHTTest.Run();
             SPECKTest.Run();
             TWINETest.Run();
-
-            Console.WriteLine("press any key to continue...");
-            Console.ReadKey();
         }
     }
 }
