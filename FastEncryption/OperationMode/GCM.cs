@@ -51,12 +51,12 @@ namespace FastEncryption.OperationMode
             byte[] plainText = CTRDecrypt(cipherText, iv);
             byte[] validationCheckAuthTag = CalculateTag(iv, aad, cipherText);
 
-            return (authTag.SequenceEqual(validationCheckAuthTag), plainText);
+            return (TagValidationCheck(authTag, validationCheckAuthTag), plainText);
         }
 
         private byte[] CalculateTag(byte[] iv, byte[] aad, byte[] cipherText)
         {
-            byte[] Tag = calculateY0(iv);
+            byte[] Tag = encryptionAlgorithm.Encrypt(calculateY0(iv));
 
             byte[] X = new byte[TagSize];
             X = GHASH(X, aad);
@@ -74,10 +74,28 @@ namespace FastEncryption.OperationMode
         public byte[] calculateY0(byte[] iv)
         {
             byte[] counter = new byte[blockSize];
-            Array.Copy(iv, counter, IVLength);
-            IncrementCounter(counter, blockSize);
 
-            return encryptionAlgorithm.Encrypt(counter);
+            if (iv.Length == 12)
+            {
+                Array.Copy(iv, counter, IVLength);
+                IncrementCounter(counter, blockSize);
+            }
+            else
+            {
+                byte[] X = new byte[blockSize];
+                X = GHASH(X, iv);
+
+                byte[] lengthBlock = new byte[blockSize];
+                ulong ivLengthBits = (ulong)iv.Length * 8;
+                for (int i = 0; i < 8; i++)
+                {
+                    lengthBlock[15 - i] = (byte)(ivLengthBits >> (i * 8));
+                }
+
+                X = GHASH(X, lengthBlock);
+                Array.Copy(X, counter, blockSize);
+            }
+            return counter;
         }
 
         private void IncrementCounter(byte[] counter, int blockSize)
@@ -96,9 +114,7 @@ namespace FastEncryption.OperationMode
         {
             byte[] cipherText = new byte[plainText.Length];
 
-            byte[] counter = new byte[blockSize];
-            Array.Copy(iv, counter, IVLength);
-            IncrementCounter(counter, blockSize);
+            byte[] counter = calculateY0(iv);
             IncrementCounter(counter, blockSize);
 
             for (int i = 0; i < plainText.Length; i += blockSize)
@@ -122,9 +138,7 @@ namespace FastEncryption.OperationMode
         {
             byte[] plainText = new byte[cipherText.Length];
 
-            byte[] counter = new byte[blockSize];
-            Array.Copy(iv, counter, IVLength);
-            IncrementCounter(counter, blockSize);
+            byte[] counter = calculateY0(iv);
             IncrementCounter(counter, blockSize);
 
             for (int i = 0; i < cipherText.Length; i += blockSize)
@@ -228,6 +242,19 @@ namespace FastEncryption.OperationMode
             }
 
             return GFMultiply(X, H);
+        }
+
+        private bool TagValidationCheck(byte[] Tag1, byte[] Tag2)
+        {
+            int minLength = Math.Min(Tag1.Length, Tag2.Length);
+
+            for (int i = 0; i < minLength; i++)
+            {
+                if (Tag1[i] != Tag2[i]) 
+                    return false;
+            }
+
+            return true;
         }
 
         public override string ModeName => "GCM";

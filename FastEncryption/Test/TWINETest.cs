@@ -15,6 +15,10 @@ namespace FastEncryption.Test
         {
             Console.WriteLine("\n******* TWINE TEST START *******");
             ECB();
+            CBC();
+            CFB();
+            OFB();
+            CTR();
             Console.WriteLine("\n******* TWINE TEST END *********");
         }
 
@@ -143,6 +147,30 @@ namespace FastEncryption.Test
                 }
                 return true;
             }
+        }
+
+        static void CBC()
+        {
+            Console.WriteLine();
+            Console.WriteLine("[TWINE - CBC] [Fail] There is no test vectors.");
+        }
+
+        static void CFB()
+        {
+            Console.WriteLine();
+            Console.WriteLine("[TWINE - CFB] [Fail] There is no test vectors.");
+        }
+
+        static void OFB()
+        {
+            Console.WriteLine();
+            Console.WriteLine("[TWINE - OFB] [Fail] There is no test vectors.");
+        }
+
+        static void CTR()
+        {
+            Console.WriteLine();
+            Console.WriteLine("[TWINE - CTR] [Fail] There is no test vectors.");
         }
     }
 }

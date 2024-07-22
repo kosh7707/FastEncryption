@@ -3,6 +3,7 @@ using FastEncryption.OperationMode;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -18,6 +19,8 @@ namespace FastEncryption.Test
             CBC();
             CFB();
             OFB();
+            CTR();
+            GCM();
             Console.WriteLine("\n******* AES TEST END *********");
         }
 
@@ -27,6 +30,9 @@ namespace FastEncryption.Test
             public byte[] IV { get; set; }
             public byte[] PlainText { get; set; }
             public byte[] CipherText { get; set; }
+            public byte[] AAD { get; set; }
+            public byte[] Tag { get; set; }
+            public bool IsFail { get; set; }
         }
 
         static void ECB()
@@ -253,6 +259,85 @@ namespace FastEncryption.Test
             }
         }
 
+        static void CTR()
+        {
+            Console.WriteLine();
+            Console.WriteLine("[AES - CTR] [Fail] There is no test vectors.");
+        }
+
+        static void GCM()
+        {
+            Console.WriteLine();
+            string folderPath = "../../../Test/test-vector/AES/GCM/";
+            string[] filePaths = Directory.GetFiles(folderPath, "*.rsp");
+
+            foreach (string filePath in filePaths)
+            {
+                bool flag = true;
+                List<AESTestVector> vectors = ReadTestVectorWithTag(filePath);
+
+                foreach (AESTestVector vector in vectors)
+                {
+                    AES aes = new(vector.Key);
+                    GCM gcm = new(aes);
+                    (byte[] cipherText, byte[] authTag) = gcm.Encrypt(vector.PlainText, vector.IV, vector.AAD);
+                    (bool validation, byte[] plainText) = gcm.Decrypt(cipherText, vector.IV, vector.AAD, vector.Tag);
+
+
+                    if (!ValidationCheck(vector, validation, plainText, cipherText))
+                    {
+                        Console.Write("Key: ");
+                        printHex(vector.Key);
+                        Console.Write("\n");
+
+                        Console.Write("IV: ");
+                        printHex(vector.IV);
+                        Console.Write("\n");
+
+                        Console.Write("vector.PlainText: ");
+                        printHex(vector.PlainText);
+                        Console.Write("\n");
+
+                        Console.Write("vector.AAD: ");
+                        printHex(vector.AAD);
+                        Console.Write("\n");
+
+                        Console.Write("vector.CipherText: ");
+                        printHex(vector.CipherText);
+                        Console.Write("\n");
+
+                        Console.Write("vector.Tag: ");
+                        printHex(vector.Tag);
+                        Console.Write("\n");
+
+                        Console.Write("CipherText: ");
+                        printHex(cipherText);
+                        Console.Write("\n");
+
+                        Console.Write("DecryptText: ");
+                        printHex(plainText);
+                        Console.Write("\n");
+
+                        Console.Write("authTag: ");
+                        printHex(authTag);
+                        Console.Write("\n");
+
+                        flag = false;
+                        break;
+                    }
+                }
+
+                if (flag)
+                {
+                    Console.WriteLine($"[AES - GCM] [Success]\t {Path.GetFileName(filePath)}");
+                }
+                else
+                {
+                    Console.WriteLine($"[AES - GCM] [Fail]\t {Path.GetFileName(filePath)}");
+                }
+            }
+        }
+
         static List<AESTestVector> ReadTestVector(string filePath)
         {
             Regex keyPattern = new Regex(@"KEY\s*=\s*([0-9a-fA-F]+)");
@@ -337,6 +422,92 @@ namespace FastEncryption.Test
             return vectors;
         }
 
+        static List<AESTestVector> ReadTestVectorWithTag(string filePath)
+        {
+            Regex keyPattern        = new Regex(@"Key\s*=\s*([0-9a-fA-F]+)");
+            Regex ivPattern         = new Regex(@"IV\s*=\s*([0-9a-fA-F]+)");
+            Regex plaintextPattern  = new Regex(@"PT\s*=\s*([0-9a-fA-F]*)");
+            Regex aadPattern        = new Regex(@"AAD\s*=\s*([0-9a-fA-F]*)");
+            Regex ciphertextPattern = new Regex(@"CT\s*=\s*([0-9a-fA-F]*)");
+            Regex tagPattern        = new Regex(@"Tag\s*=\s*([0-9a-fA-F]+)");
+            Regex countPattern      = new Regex(@"Count\s*=\s*\d+");
+            Regex failPattern       = new Regex(@"FAIL");
+
+            List<AESTestVector> vectors = new List<AESTestVector>();
+            byte[] key = null, iv = null, plainText = null, aad = null, cipherText = null, tag = null;
+            bool isFail = false;
+
+            string[] lines = File.ReadAllLines(filePath);
+            foreach (string line in lines)
+            {
+                if (countPattern.IsMatch(line))
+                {
+                    if (key != null && iv != null && tag != null)
+                    {
+                        vectors.Add(new AESTestVector
+                        {
+                            Key = key,
+                            IV = iv,
+                            PlainText = plainText ?? [],
+                            AAD = aad ?? [],
+                            CipherText = cipherText ?? [],
+                            Tag = tag,
+                            IsFail = isFail
+                        });
+                        key = iv = plainText = aad = cipherText = tag = null;
+                        isFail = false;
+                    }
+                }
+                else if (keyPattern.IsMatch(line))
+                {
+                    key = HexStringToByteArray(keyPattern.Match(line).Groups[1].Value);
+                }
+                else if (ivPattern.IsMatch(line))
+                {
+                    iv = HexStringToByteArray(ivPattern.Match(line).Groups[1].Value);
+                }
+                else if (plaintextPattern.IsMatch(line))
+                {
+                    string temp = plaintextPattern.Match(line).Groups[1].Value;
+                    plainText = string.IsNullOrEmpty(temp) ? [] : HexStringToByteArray(temp);
+                }
+                else if (aadPattern.IsMatch(line))
+                {
+                    string temp = aadPattern.Match(line).Groups[1].Value;
+                    aad = string.IsNullOrEmpty(temp) ? [] : HexStringToByteArray(temp);
+                }
+                else if (ciphertextPattern.IsMatch(line))
+                {
+                    string temp = ciphertextPattern.Match(line).Groups[1].Value;
+                    cipherText = string.IsNullOrEmpty(temp) ? [] : HexStringToByteArray(temp);
+                }
+                else if (tagPattern.IsMatch(line))
+                {
+                    tag = HexStringToByteArray(tagPattern.Match(line).Groups[1].Value);
+                }
+                else if (failPattern.IsMatch(line))
+                {
+                    isFail = true;
+                }
+            }
+
+            if (key != null && iv != null && tag != null)
+            {
+                vectors.Add(new AESTestVector
+                {
+                    Key = key,
+                    IV = iv,
+                    PlainText = plainText ?? [],
+                    AAD = aad ?? [],
+                    CipherText = cipherText ?? [],
+                    Tag = tag,
+                    IsFail = isFail
+                });
+            }
+
+            return vectors;
+        }
+
         static void printHex(byte[] data)
         {
             Console.Write(BitConverter.ToString(data).Replace("-", " "));
@@ -362,6 +533,27 @@ namespace FastEncryption.Test
                 if (cipherText[i] != vectorCipherText[i - s]) 
                     return false;
             }
+            return true;
+        }
+
+        static bool ValidationCheck(AESTestVector vector, bool validation, byte[] plainText, byte[] cipherText)
+        {
+            // 정상 태그로 판정하고 테스트 벡터의 결과가 비정상 태그인 경우
+            if (validation && vector.IsFail) 
+                return false;
+
+            // 비정상 태그로 판정하고 테스트 벡터의 결과가 정상 태그인 경우
+            if (!validation && !vector.IsFail) 
+                return false;
+
+            // 정상 태그로 판정한 상태에서 암호문과 테스트 벡터의 암호문이 다른 경우
+            if (validation && !cipherText.SequenceEqual(vector.CipherText)) 
+                return false;
+
+            // 정상 태그로 판정한 상태에서 복호화한 암호문과 테스트 벡터의 평문이 다른 경우
+            if (validation && !plainText.SequenceEqual(vector.PlainText)) 
+                return false;
+
             return true;
         }
     }

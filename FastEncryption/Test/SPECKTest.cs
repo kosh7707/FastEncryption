@@ -16,6 +16,8 @@ namespace FastEncryption.Test
             Console.WriteLine("\n******* SPECK TEST START *******");
             ECB();
             CBC();
+            CFB();
+            OFB();
             CTR();
             Console.WriteLine("\n******* SPECK TEST END *********");
         }
@@ -125,6 +127,18 @@ namespace FastEncryption.Test
                     Console.WriteLine($"[SPECK - CBC] [Fail]\t {Path.GetFileName(filePath)}");
                 }
             }
+        }
+
+        static void CFB()
+        {
+            Console.WriteLine();
+            Console.WriteLine("[SPECK - CFB] [Fail] There is no test vectors.");
+        }
+
+        static void OFB()
+        {
+            Console.WriteLine();
+            Console.WriteLine("[SPECK - OFB] [Fail] There is no test vectors.");
         }
 
         static void CTR()

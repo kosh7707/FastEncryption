@@ -2,6 +2,7 @@
 using FastEncryption.OperationMode;
 using FastEncryption.Test;
 using System;
+using System.Numerics;
 
 namespace FastEncryption
 {
@@ -15,35 +16,55 @@ namespace FastEncryption
             SPECKTest.Run();
             TWINETest.Run();
 
-            /*
-            byte[] key          = { 0xfe, 0xff, 0xe9, 0x92, 0x86, 0x65, 0x73, 0x1c, 0x6d, 0x6a, 0x8f, 0x94, 0x67, 0x30, 0x83, 0x08 };
-            byte[] PlainText    = { 0xd9, 0x31, 0x32, 0x25, 0xf8, 0x84, 0x06, 0xe5, 0xa5, 0x59, 0x09, 0xc5, 0xaf, 0xf5, 0x26, 0x9a,
-                                    0x86, 0xa7, 0xa9, 0x53, 0x15, 0x34, 0xf7, 0xda, 0x2e, 0x4c, 0x30, 0x3d, 0x8a, 0x31, 0x8a, 0x72,
-                                    0x1c, 0x3c, 0x0c, 0x95, 0x95, 0x68, 0x09, 0x53, 0x2f, 0xcf, 0x0e, 0x24, 0x49, 0xa6, 0xb5, 0x25,
-                                    0xb1, 0x6a, 0xed, 0xf5, 0xaa, 0x0d, 0xe6, 0x57, 0xba, 0x63, 0x7b, 0x39 };
-            byte[] aad          = { 0xfe, 0xed, 0xfa, 0xce, 0xde, 0xad, 0xbe, 0xef, 0xfe, 0xed, 0xfa, 0xce, 0xde, 0xad, 0xbe, 0xef, 0xab, 0xad, 0xda, 0xd2 };
-            byte[] iv           = { 0xca, 0xfe, 0xba, 0xbe, 0xfa, 0xce, 0xdb, 0xad, 0xde, 0xca, 0xf8, 0x88 };
+            // testGCM();
+
+        }
+        static void printHex(byte[] data)
+        {
+            Console.Write(BitConverter.ToString(data).Replace("-", " "));
+            Console.WriteLine("\n");
+        }
+
+        public static byte[] HexStringToByteStream(string hexString)
+        {
+            byte[] bytes = new byte[hexString.Length / 2];
+            for (int i = 0; i < bytes.Length; i++)
+            {
+                bytes[i] = byte.Parse(hexString.Substring(i * 2, 2), System.Globalization.NumberStyles.HexNumber);
+            }
+
+            return bytes;
+        }
+
+        static void testGCM()
+        {
+            byte[] key = HexStringToByteStream("a49a5e26a2f8cb63d05546c2a62f5343");
+            byte[] iv = HexStringToByteStream("907763b19b9b4ab6bd4f0281");
+            byte[] PlainText = HexStringToByteStream("");
+            byte[] aad = HexStringToByteStream("");
+            byte[] CipherText = HexStringToByteStream("");
+            byte[] Tag = HexStringToByteStream("a2be08210d8c470a8df6e8fbd79ec5cf");
+
 
             AES aes = new(key);
             GCM gcm = new(aes);
 
             (byte[] cipherText, byte[] authTag) = gcm.Encrypt(PlainText, iv, aad);
-            (bool validationCheck, byte[] plainText) = gcm.Decrypt(cipherText, iv, aad, authTag);
+            (bool validationCheck, byte[] plainText) = gcm.Decrypt(cipherText, iv, aad, Tag);
 
+            Console.WriteLine("Key: ");
             printHex(key);
-            printHex(aad);
+            Console.WriteLine("IV: ");
             printHex(iv);
-            printHex(authTag);
+            Console.WriteLine("PT: ");
+            printHex(PlainText);
+            Console.WriteLine("AAD: ");
+            printHex(aad);
+            Console.WriteLine("CT: ");
             printHex(cipherText);
+            Console.WriteLine("Tag: ");
+            printHex(authTag);
             Console.WriteLine(validationCheck);
-
-            */
-        }
-        static void printHex(byte[] data)
-        {
-            Console.WriteLine("\n");
-            Console.Write(BitConverter.ToString(data).Replace("-", " "));
-            Console.WriteLine("\n");
         }
     }
 }
