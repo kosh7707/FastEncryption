@@ -65,6 +65,45 @@ namespace Asymmetric.EncryptionAlgorithm
             return signature;
         }
 
+        public byte[] Sign(byte[] message, BigInteger privKey, BigInteger k)
+        {
+            byte[] hash = SHA256.HashData(message);
+            BigInteger z = new(hash, isUnsigned: true, isBigEndian: true);
+
+            if (z >= n)
+            {
+                z >>= (z.GetByteCount() * 8 - n.GetByteCount() * 8);
+            }
+
+            BigInteger r = 0, s = 0;
+
+            while (s == 0)
+            {
+                ECPoint R = MultiplyPoint(G, k);
+
+                r = R.X % n;
+
+                if (r == 0) continue;
+
+                s = (ModInverse(k, n) * (z + r * privKey)) % n;
+
+                if (s == 0) continue;
+            }
+
+            byte[] rBytes = r.ToByteArray(isUnsigned: true, isBigEndian: true);
+            byte[] sBytes = s.ToByteArray(isUnsigned: true, isBigEndian: true);
+
+            byte[] rPadded = new byte[32], sPadded = new byte[32];
+            Array.Copy(rBytes, 0, rPadded, 32 - rBytes.Length, rBytes.Length);
+            Array.Copy(sBytes, 0, sPadded, 32 - sBytes.Length, sBytes.Length);
+
+            byte[] signature = new byte[64];
+            Array.Copy(rPadded, 0, signature, 0, 32);
+            Array.Copy(sPadded, 0, signature, 32, 32);
+
+            return signature;
+        }
+
         public bool Verify(byte[] message, byte[] signature, ECPoint pubKey)
         {
             byte[] hash = SHA256.HashData(message);
@@ -98,9 +137,40 @@ namespace Asymmetric.EncryptionAlgorithm
             return (!R.IsInfinity) && (R.X % n == r);
         }
 
+        public bool Verify(byte[] message, BigInteger r, BigInteger s, ECPoint pubKey)
+        {
+            byte[] hash = SHA256.HashData(message);
+            BigInteger z = new(hash, isUnsigned: true, isBigEndian: true);
+
+            if (z >= n)
+            {
+                z >>= (z.GetByteCount() * 8 - n.GetByteCount() * 8);
+            }
+
+            if (r <= 0 || r >= n || s <= 0 || s >= n)
+                return false;
+
+            BigInteger w = ModInverse(s, n);
+            BigInteger u1 = (z * w) % n;
+            BigInteger u2 = (r * w) % n;
+
+            ECPoint point1 = MultiplyPoint(G, u1);
+            ECPoint point2 = MultiplyPoint(pubKey, u2);
+            ECPoint R = AddPoints(point1, point2);
+
+            return (!R.IsInfinity) && (R.X % n == r);
+        }
+
+        public int isValidPoint(ECPoint point)
+        {
+            if (point.X < 0 || point.X >= n || point.Y < 0 || point.Y >= n) return 1;
+            if (!IsOnCurve(point)) return 2;
+            return 0;
+        }
+
         public ECPoint GetPublicKey(BigInteger privKey)
         {
-            if (privKey <= 0 || privKey >= n)
+            if (privKey < 0 || privKey >= n)
                 throw new ArgumentException("Private key must be in the range [1, n-1]");
 
             return MultiplyPoint(G, privKey);

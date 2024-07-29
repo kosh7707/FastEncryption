@@ -19,6 +19,7 @@ namespace FastEncryption.Test
             CFB();
             OFB();
             CTR();
+            GCM();
             Console.WriteLine("\n******* SPECK TEST END *********");
         }
 
@@ -197,6 +198,11 @@ namespace FastEncryption.Test
             }
         }
 
+        static void GCM()
+        {
+            Console.WriteLine();
+            Console.WriteLine("[SPECK - GCM] [Fail] There is no test vectors.");
+        }
         internal class TestVector
         {
             public byte[] Key { get; set; }

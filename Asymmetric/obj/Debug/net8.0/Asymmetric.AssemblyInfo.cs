@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Asymmetric")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5fd73bf74cbccf1ffc16d28e9ec32d3a5e4ac388")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fc317aa55c30d83485f3e1360b75ce35c9fa12a5")]
 [assembly: System.Reflection.AssemblyProductAttribute("Asymmetric")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Asymmetric")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

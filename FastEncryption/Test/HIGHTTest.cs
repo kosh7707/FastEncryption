@@ -19,6 +19,7 @@ namespace FastEncryption.Test
             CFB();
             OFB();
             CTR();
+            GCM();
             Console.WriteLine("\n******* HIGHT TEST END *********");
         }
 
@@ -303,6 +304,12 @@ namespace FastEncryption.Test
                     Console.WriteLine($"[HIGHT - CTR] [Fail]\t {Path.GetFileName(filePath)}");
                 }
             }
+        }
+
+        static void GCM()
+        {
+            Console.WriteLine();
+            Console.WriteLine("[HIGHT - GCM] [Fail] There is no test vectors.");
         }
 
         static List<TestVector> ReadTestVector(string filePath)

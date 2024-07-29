@@ -19,6 +19,7 @@ namespace FastEncryption.Test
             CFB();
             OFB();
             CTR();
+            GCM();
             Console.WriteLine("\n******* TWINE TEST END *********");
         }
 
@@ -171,6 +172,12 @@ namespace FastEncryption.Test
         {
             Console.WriteLine();
             Console.WriteLine("[TWINE - CTR] [Fail] There is no test vectors.");
+        }
+
+        static void GCM()
+        {
+            Console.WriteLine();
+            Console.WriteLine("[TWINE - GCM] [Fail] There is no test vectors.");
         }
     }
 }
