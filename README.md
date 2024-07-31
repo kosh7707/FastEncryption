@@ -3,11 +3,11 @@ C#에서 여러 암호 알고리즘을 구현한 뒤 유니티 기반 실제 멀
 <br><br>
 
 ## Block Cipher
-### Key: 128 bits
+### Key: 128 bits, Block Size: 128 bits
 #### AES, ARIA, SPECK
 <br>
 
-### Key: 64 bits
+### Key: 128 bits, Block Size: 64 bits
 #### HIGHT, TWINE
 <br>
 
