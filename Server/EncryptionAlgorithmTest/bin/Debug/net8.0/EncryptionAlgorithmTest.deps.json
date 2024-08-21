@@ -1,0 +1,53 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "EncryptionAlgorithmTest/1.0.0": {
+        "dependencies": {
+          "Encryption_Asymmetric": "1.0.0",
+          "Encryption_Symmetric": "1.0.0"
+        },
+        "runtime": {
+          "EncryptionAlgorithmTest.dll": {}
+        }
+      },
+      "Encryption_Asymmetric/1.0.0": {
+        "runtime": {
+          "Encryption_Asymmetric.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Encryption_Symmetric/1.0.0": {
+        "runtime": {
+          "Encryption_Symmetric.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "EncryptionAlgorithmTest/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Encryption_Asymmetric/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Encryption_Symmetric/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

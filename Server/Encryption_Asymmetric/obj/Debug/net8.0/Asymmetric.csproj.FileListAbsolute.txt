@@ -1,0 +1,12 @@
+C:\Users\Administrator\Desktop\FastEncryption\Asymmetric\bin\Debug\net8.0\Asymmetric.deps.json
+C:\Users\Administrator\Desktop\FastEncryption\Asymmetric\bin\Debug\net8.0\Asymmetric.dll
+C:\Users\Administrator\Desktop\FastEncryption\Asymmetric\bin\Debug\net8.0\Asymmetric.pdb
+C:\Users\Administrator\Desktop\FastEncryption\Asymmetric\obj\Debug\net8.0\Asymmetric.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Administrator\Desktop\FastEncryption\Asymmetric\obj\Debug\net8.0\Asymmetric.AssemblyInfoInputs.cache
+C:\Users\Administrator\Desktop\FastEncryption\Asymmetric\obj\Debug\net8.0\Asymmetric.AssemblyInfo.cs
+C:\Users\Administrator\Desktop\FastEncryption\Asymmetric\obj\Debug\net8.0\Asymmetric.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Desktop\FastEncryption\Asymmetric\obj\Debug\net8.0\Asymmetric.sourcelink.json
+C:\Users\Administrator\Desktop\FastEncryption\Asymmetric\obj\Debug\net8.0\Asymmetric.dll
+C:\Users\Administrator\Desktop\FastEncryption\Asymmetric\obj\Debug\net8.0\refint\Asymmetric.dll
+C:\Users\Administrator\Desktop\FastEncryption\Asymmetric\obj\Debug\net8.0\Asymmetric.pdb
+C:\Users\Administrator\Desktop\FastEncryption\Asymmetric\obj\Debug\net8.0\ref\Asymmetric.dll
