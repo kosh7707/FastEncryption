@@ -3,8 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\Administrator\\Desktop\\FastEncryption\\Server\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{9B9F2369-DDD2-48B6-97A6-ED26496F02BE}|Server\\Server.csproj|c:\\users\\administrator\\desktop\\fastencryption\\server\\server\\session\\clientsession.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9B9F2369-DDD2-48B6-97A6-ED26496F02BE}|Server\\Server.csproj|solutionrelative:server\\session\\clientsession.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9B9F2369-DDD2-48B6-97A6-ED26496F02BE}|Server\\Server.csproj|c:\\users\\administrator\\desktop\\fastencryption\\server\\server\\session\\sessionmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9B9F2369-DDD2-48B6-97A6-ED26496F02BE}|Server\\Server.csproj|solutionrelative:server\\session\\sessionmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9B9F2369-DDD2-48B6-97A6-ED26496F02BE}|Server\\Server.csproj|c:\\users\\administrator\\desktop\\fastencryption\\server\\server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9B9F2369-DDD2-48B6-97A6-ED26496F02BE}|Server\\Server.csproj|solutionrelative:server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{49D5BC93-B743-4CB6-9390-3E876552E6CE}|ServerCore\\ServerCore.csproj|c:\\users\\administrator\\desktop\\fastencryption\\server\\servercore\\listener.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{49D5BC93-B743-4CB6-9390-3E876552E6CE}|ServerCore\\ServerCore.csproj|solutionrelative:servercore\\listener.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{49D5BC93-B743-4CB6-9390-3E876552E6CE}|ServerCore\\ServerCore.csproj|c:\\users\\administrator\\desktop\\fastencryption\\server\\servercore\\connector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{49D5BC93-B743-4CB6-9390-3E876552E6CE}|ServerCore\\ServerCore.csproj|solutionrelative:servercore\\connector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9B9F2369-DDD2-48B6-97A6-ED26496F02BE}|Server\\Server.csproj|c:\\users\\administrator\\desktop\\fastencryption\\server\\server\\jobtimer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9B9F2369-DDD2-48B6-97A6-ED26496F02BE}|Server\\Server.csproj|solutionrelative:server\\jobtimer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{49D5BC93-B743-4CB6-9390-3E876552E6CE}|ServerCore\\ServerCore.csproj|c:\\users\\administrator\\desktop\\fastencryption\\server\\servercore\\session.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{49D5BC93-B743-4CB6-9390-3E876552E6CE}|ServerCore\\ServerCore.csproj|solutionrelative:servercore\\session.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{49D5BC93-B743-4CB6-9390-3E876552E6CE}|ServerCore\\ServerCore.csproj|c:\\users\\administrator\\desktop\\fastencryption\\server\\servercore\\sendbuffer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -15,20 +39,8 @@
       "RelativeMoniker": "D:0:0:{49D5BC93-B743-4CB6-9390-3E876552E6CE}|ServerCore\\ServerCore.csproj|solutionrelative:servercore\\recvbuffer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{49D5BC93-B743-4CB6-9390-3E876552E6CE}|ServerCore\\ServerCore.csproj|c:\\users\\administrator\\desktop\\fastencryption\\server\\servercore\\listener.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{49D5BC93-B743-4CB6-9390-3E876552E6CE}|ServerCore\\ServerCore.csproj|solutionrelative:servercore\\listener.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{49D5BC93-B743-4CB6-9390-3E876552E6CE}|ServerCore\\ServerCore.csproj|c:\\users\\administrator\\desktop\\fastencryption\\server\\servercore\\jobqueue.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{49D5BC93-B743-4CB6-9390-3E876552E6CE}|ServerCore\\ServerCore.csproj|solutionrelative:servercore\\jobqueue.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{49D5BC93-B743-4CB6-9390-3E876552E6CE}|ServerCore\\ServerCore.csproj|c:\\users\\administrator\\desktop\\fastencryption\\server\\servercore\\session.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{49D5BC93-B743-4CB6-9390-3E876552E6CE}|ServerCore\\ServerCore.csproj|solutionrelative:servercore\\session.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9B9F2369-DDD2-48B6-97A6-ED26496F02BE}|Server\\Server.csproj|c:\\users\\administrator\\desktop\\fastencryption\\server\\server\\session\\clientsession.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9B9F2369-DDD2-48B6-97A6-ED26496F02BE}|Server\\Server.csproj|solutionrelative:server\\session\\clientsession.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9B9F2369-DDD2-48B6-97A6-ED26496F02BE}|Server\\Server.csproj|c:\\users\\administrator\\desktop\\fastencryption\\server\\server\\packet\\serverpacketmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -41,14 +53,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{9B9F2369-DDD2-48B6-97A6-ED26496F02BE}|Server\\Server.csproj|c:\\users\\administrator\\desktop\\fastencryption\\server\\server\\packet\\genpackets.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9B9F2369-DDD2-48B6-97A6-ED26496F02BE}|Server\\Server.csproj|solutionrelative:server\\packet\\genpackets.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9B9F2369-DDD2-48B6-97A6-ED26496F02BE}|Server\\Server.csproj|c:\\users\\administrator\\desktop\\fastencryption\\server\\server\\session\\sessionmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9B9F2369-DDD2-48B6-97A6-ED26496F02BE}|Server\\Server.csproj|solutionrelative:server\\session\\sessionmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9B9F2369-DDD2-48B6-97A6-ED26496F02BE}|Server\\Server.csproj|c:\\users\\administrator\\desktop\\fastencryption\\server\\server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9B9F2369-DDD2-48B6-97A6-ED26496F02BE}|Server\\Server.csproj|solutionrelative:server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -58,11 +62,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 5,
+              "Title": "JobTimer.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\FastEncryption\\Server\\Server\\JobTimer.cs",
+              "RelativeDocumentMoniker": "Server\\JobTimer.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Desktop\\FastEncryption\\Server\\Server\\JobTimer.cs",
+              "RelativeToolTip": "Server\\JobTimer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-22T13:32:50.218Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "Session.cs",
               "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\FastEncryption\\Server\\ServerCore\\Session.cs",
               "RelativeDocumentMoniker": "ServerCore\\Session.cs",
@@ -75,7 +92,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 7,
               "Title": "SendBuffer.cs",
               "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\FastEncryption\\Server\\ServerCore\\SendBuffer.cs",
               "RelativeDocumentMoniker": "ServerCore\\SendBuffer.cs",
@@ -83,12 +100,11 @@
               "RelativeToolTip": "ServerCore\\SendBuffer.cs",
               "ViewState": "AgIAAAsAAAAAAAAAAAAUwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-21T11:11:58.895Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-21T11:11:58.895Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 10,
               "Title": "ServerPacketManager.cs",
               "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\FastEncryption\\Server\\Server\\Packet\\ServerPacketManager.cs",
               "RelativeDocumentMoniker": "Server\\Packet\\ServerPacketManager.cs",
@@ -96,12 +112,11 @@
               "RelativeToolTip": "Server\\Packet\\ServerPacketManager.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-21T11:11:55.274Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-21T11:11:55.274Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 11,
               "Title": "PacketHandler.cs",
               "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\FastEncryption\\Server\\Server\\Packet\\PacketHandler.cs",
               "RelativeDocumentMoniker": "Server\\Packet\\PacketHandler.cs",
@@ -109,12 +124,11 @@
               "RelativeToolTip": "Server\\Packet\\PacketHandler.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-21T11:11:54.686Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-21T11:11:54.686Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 12,
               "Title": "GenPackets.cs",
               "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\FastEncryption\\Server\\Server\\Packet\\GenPackets.cs",
               "RelativeDocumentMoniker": "Server\\Packet\\GenPackets.cs",
@@ -122,25 +136,24 @@
               "RelativeToolTip": "Server\\Packet\\GenPackets.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-21T11:11:54.007Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-21T11:11:54.007Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 0,
               "Title": "ClientSession.cs",
               "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\FastEncryption\\Server\\Server\\Session\\ClientSession.cs",
               "RelativeDocumentMoniker": "Server\\Session\\ClientSession.cs",
               "ToolTip": "C:\\Users\\Administrator\\Desktop\\FastEncryption\\Server\\Server\\Session\\ClientSession.cs",
               "RelativeToolTip": "Server\\Session\\ClientSession.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAA+wBgAAAAeAAAAAAAAAA==",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAACMAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-21T11:11:49.742Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 1,
               "Title": "SessionManager.cs",
               "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\FastEncryption\\Server\\Server\\Session\\SessionManager.cs",
               "RelativeDocumentMoniker": "Server\\Session\\SessionManager.cs",
@@ -153,7 +166,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 2,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\FastEncryption\\Server\\Server\\Program.cs",
               "RelativeDocumentMoniker": "Server\\Program.cs",
@@ -166,20 +179,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "Connector.cs",
               "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\FastEncryption\\Server\\ServerCore\\Connector.cs",
               "RelativeDocumentMoniker": "ServerCore\\Connector.cs",
               "ToolTip": "C:\\Users\\Administrator\\Desktop\\FastEncryption\\Server\\ServerCore\\Connector.cs",
               "RelativeToolTip": "ServerCore\\Connector.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAUwBQAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAA4AAAAAAAAAAAA0wBQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-21T11:11:38.33Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 9,
               "Title": "JobQueue.cs",
               "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\FastEncryption\\Server\\ServerCore\\JobQueue.cs",
               "RelativeDocumentMoniker": "ServerCore\\JobQueue.cs",
@@ -187,8 +200,7 @@
               "RelativeToolTip": "ServerCore\\JobQueue.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-21T11:38:07.024Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-21T11:38:07.024Z"
             },
             {
               "$type": "Document",
@@ -205,7 +217,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 8,
               "Title": "RecvBuffer.cs",
               "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\FastEncryption\\Server\\ServerCore\\RecvBuffer.cs",
               "RelativeDocumentMoniker": "ServerCore\\RecvBuffer.cs",
@@ -213,8 +225,7 @@
               "RelativeToolTip": "ServerCore\\RecvBuffer.cs",
               "ViewState": "AgIAACUAAAAAAAAAAIAzwC4AAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-21T11:32:54.028Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-21T11:32:54.028Z"
             }
           ]
         }
