@@ -13,8 +13,8 @@ namespace NetworkCore.Packet
 {
     public abstract class PacketHandler
     {
-        Dictionary<ushort, Action<PacketSession, ArraySegment<byte>, ushort>> _onRecv = new();
-        Dictionary<ushort, Action<PacketSession, IMessage>> _handler = new();
+        protected Dictionary<ushort, Action<PacketSession, ArraySegment<byte>, ushort>> _onRecv = new();
+        protected Dictionary<ushort, Action<PacketSession, IMessage>> _handler = new();
 
         public Action<PacketSession, IMessage, ushort> CustomHandler { get; set; }
 
@@ -51,7 +51,7 @@ namespace NetworkCore.Packet
                 action.Invoke(session, buffer, id);
         }
 
-        void MakePacket<T>(PacketSession session, ArraySegment<byte> buffer, ushort id) where T : IMessage, new()
+        protected void MakePacket<T>(PacketSession session, ArraySegment<byte> buffer, ushort id) where T : IMessage, new()
         {
             T pkt = new T();
             pkt.MergeFrom(buffer.Array, buffer.Offset + 4, buffer.Count - 4);

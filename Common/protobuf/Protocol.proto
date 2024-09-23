@@ -1,0 +1,181 @@
+syntax = "proto3";
+
+import "Enum.proto";
+import "Struct.proto";
+
+package Protocol;
+option csharp_namespace = "Google.Protobuf.Protocol";
+
+message C_Register
+{
+	string id = 1;
+	string pw = 2;
+}
+
+message S_Register
+{
+	bool success = 1;
+	int32 errorCode = 2;
+}
+
+message C_Login
+{
+	string id = 1;
+	string pw = 2;
+}
+
+message S_Login
+{
+	bool success = 1;
+	RoomInfo roomInfo = 2;
+	int32 errorCode = 3;
+}
+
+message C_EnterRoom
+{
+	int32 roomId = 1;
+}
+
+message S_EnterRoom
+{
+	bool success = 1;
+}
+
+message C_EnterMap
+{
+	int32 mapId = 1;
+}
+
+message S_EnterMap
+{
+	bool success = 1;
+	Player myPlayer = 2;
+	repeated Player players = 3;
+}
+
+message S_EnterMapBroadcast
+{
+	Player player = 1;
+}
+
+message C_LeaveRoom
+{
+
+}
+
+message S_LeaveRoom
+{
+	bool success = 1;
+}
+
+message C_LeaveMap
+{
+	
+}
+
+message S_LeaveMap
+{
+	bool success = 1;
+	int32 playerId = 2;
+}
+
+message C_Chat
+{
+	string chat = 1;
+}
+
+message S_Chat
+{
+	bool success = 1;
+	int32 playerId = 2;
+	string chat = 3;
+}
+
+message C_MoveStart
+{
+	PlayerState playerState = 1;
+}
+
+message S_MoveStart
+{
+	bool success = 1;
+	int32 playerId = 2;
+	PlayerState playerState = 3;
+}
+
+message C_Moving
+{
+	PlayerState playerState = 1;
+}
+
+message S_Moving
+{
+	bool success = 1;
+	int32 playerId = 2;
+	PlayerState playerState = 3;
+}
+
+message C_MoveEnd
+{
+	PlayerState playerState = 1;
+}
+
+message S_MoveEnd
+{
+	bool success = 1;
+	int32 playerId = 2;
+	PlayerState playerState = 3;
+}
+
+message C_Jump
+{
+	PlayerState playerState = 1;
+}
+
+message S_Jump
+{
+	bool success = 1;
+	int32 playerId = 2;
+	PlayerState playerState = 3;
+}
+
+message C_Fall
+{
+	PlayerState playerState = 1;
+}
+
+message S_Fall
+{
+	bool success = 1;
+	int32 playerId = 2;
+	PlayerState playerState = 3;
+}
+
+message C_Land
+{
+	PlayerState playerState = 1;
+}
+
+message S_Land
+{
+	bool success = 1;
+	int32 playerId = 2;
+	PlayerState playerState = 3;
+}
+
+message C_Skill
+{
+	int32 skillId = 1;
+}
+
+message S_Skill
+{
+	bool success = 1;
+	int32 playerId = 2;
+	PlayerState playerState = 3;
+}
+
+message S_Hit
+{
+	repeated Player players = 1;
+}
