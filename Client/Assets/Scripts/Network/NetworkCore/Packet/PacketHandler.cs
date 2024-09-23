@@ -13,8 +13,8 @@ namespace NetworkCore.Packet
 {
     public abstract class PacketHandler
     {
-        Dictionary<ushort, Action<PacketSession, ArraySegment<byte>, ushort>> _onRecv = new();
-        Dictionary<ushort, Action<PacketSession, IMessage>> _handler = new();
+        protected Dictionary<ushort, Action<PacketSession, ArraySegment<byte>, ushort>> _onRecv = new();
+        protected Dictionary<ushort, Action<PacketSession, IMessage>> _handler = new();
 
         public Action<PacketSession, IMessage, ushort> CustomHandler { get; set; }
 
@@ -33,10 +33,6 @@ namespace NetworkCore.Packet
             _handler.Add((ushort)MsgId.CHelloDone, SessionKeyExchangeHandler.C_HelloDoneHandler);
             _onRecv.Add((ushort)MsgId.SHelloDone, MakePacket<S_Hello_Done>);
             _handler.Add((ushort)MsgId.SHelloDone, SessionKeyExchangeHandler.S_HelloDoneHandler);
-            _onRecv.Add((ushort)MsgId.CTest, MakePacket<C_Test>);
-            _handler.Add((ushort)MsgId.CTest, SessionKeyExchangeHandler.C_TestHandler);
-            _onRecv.Add((ushort)MsgId.STest, MakePacket<S_Test>);
-            _handler.Add((ushort)MsgId.STest, SessionKeyExchangeHandler.S_TestHandler);
         }
 
         public void OnRecvPacket(PacketSession session, ArraySegment<byte> buffer)

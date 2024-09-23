@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NetworkCore.Log
+namespace NetworkCore
 {
     public enum LogLevel
-    { 
+    {
         Debug,
         Info,
         Warning,
@@ -33,9 +33,9 @@ namespace NetworkCore.Log
         {
             return level switch
             {
-                LogLevel.Info => ConsoleColor.Cyan, 
+                LogLevel.Info => ConsoleColor.Cyan,
                 LogLevel.Warning => ConsoleColor.Yellow,
-                LogLevel.Error => ConsoleColor.Red, 
+                LogLevel.Error => ConsoleColor.Red,
                 LogLevel.Debug => ConsoleColor.Gray,
                 _ => ConsoleColor.White
             };

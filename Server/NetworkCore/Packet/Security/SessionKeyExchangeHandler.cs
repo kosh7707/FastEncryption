@@ -3,7 +3,6 @@ using Google.Protobuf.Security;
 using NetworkCore.Encryption.BlockCipher.Algorithm;
 using NetworkCore.Encryption.BlockCipher.OperationMode;
 using NetworkCore.Encryption.PublicKey;
-using NetworkCore.Log;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -140,32 +139,6 @@ namespace NetworkCore.Packet.Security
 
             // Set Secure Communication Flag
             session.IsSecure = true;
-            
-            // Test
-            C_Test testPacket = new C_Test();
-            testPacket.Nonce = 35;
-            session.Send(testPacket);
-        }
-
-        public static void C_TestHandler(PacketSession session, IMessage packet)
-        {
-            C_Test testPacket = packet as C_Test;
-
-            Logger.DebugLog("C_TestHandler!");
-            Logger.DebugLog($"Client Nonce: {testPacket.Nonce}");
-
-            S_Test resPacket = new S_Test();
-            resPacket.Nonce = 1304;
-            session.Send(resPacket);
-        }
-
-        public static void S_TestHandler(PacketSession session, IMessage packet)
-        {
-            S_Test testPacket = packet as S_Test;
-
-            Logger.DebugLog("S_TestHandler!");
-            Logger.DebugLog($"Server Nonce: {testPacket.Nonce}");
-
         }
 
         static IOperationMode GetOperationModeFromCipherSuite(CipherSuite cipherSuite, byte[] sessionKey)

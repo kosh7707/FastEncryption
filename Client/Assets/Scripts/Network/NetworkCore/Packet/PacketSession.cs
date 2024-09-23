@@ -10,7 +10,6 @@ using NetworkCore.Encryption.PublicKey;
 using NetworkCore.Encryption.BlockCipher.Algorithm;
 using NetworkCore.Encryption.BlockCipher.OperationMode;
 using NetworkCore.Buffer;
-using NetworkCore.Log;
 
 namespace NetworkCore.Packet
 {

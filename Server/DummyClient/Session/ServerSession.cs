@@ -1,7 +1,6 @@
 ﻿using Google.Protobuf;
 using Google.Protobuf.Security;
 using NetworkCore.Encryption.PublicKey;
-using NetworkCore.Log;
 using NetworkCore.Packet;
 using System;
 using System.Collections.Generic;
@@ -10,6 +9,7 @@ using System.Net;
 using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
+using NetworkCore;
 
 namespace DummyClient.Session
 {

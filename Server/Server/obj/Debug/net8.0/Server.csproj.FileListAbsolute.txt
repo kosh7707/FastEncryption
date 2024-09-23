@@ -55,3 +55,4 @@ C:\Users\Administrator\Desktop\FastEncryption\Server\Server\obj\Debug\net8.0\ref
 C:\Users\Administrator\Desktop\FastEncryption\Server\Server\obj\Debug\net8.0\Server.pdb
 C:\Users\Administrator\Desktop\FastEncryption\Server\Server\obj\Debug\net8.0\Server.genruntimeconfig.cache
 C:\Users\Administrator\Desktop\FastEncryption\Server\Server\obj\Debug\net8.0\ref\Server.dll
+C:\Users\Administrator\Desktop\FastEncryption\Server\Server\obj\Debug\net8.0\Server.sourcelink.json

@@ -11,7 +11,6 @@ using NetworkCore.Encryption.BlockCipher.Algorithm;
 using NetworkCore.Encryption.BlockCipher.OperationMode;
 using NetworkCore.Buffer;
 using static System.Runtime.InteropServices.JavaScript.JSType;
-using NetworkCore.Log;
 
 namespace NetworkCore.Packet
 {

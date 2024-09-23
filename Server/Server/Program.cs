@@ -1,5 +1,4 @@
 ﻿using NetworkCore;
-using NetworkCore.Log;
 using Server.Game.Room;
 using Server.Session;
 using System.Net;
@@ -17,7 +16,7 @@ class Program
         timer.AutoReset = true;
         timer.Enabled = true;
 
-        _timers.Add(timer);
+        _timers.Add(timer); 
     }
 
     static void Main(string[] args)

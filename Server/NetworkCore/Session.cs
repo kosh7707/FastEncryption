@@ -6,7 +6,6 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using NetworkCore.Buffer;
-using NetworkCore.Log;
 
 namespace NetworkCore
 {

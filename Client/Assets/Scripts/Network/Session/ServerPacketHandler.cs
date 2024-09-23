@@ -1,4 +1,5 @@
-﻿using NetworkCore.Packet;
+﻿using Google.Protobuf;
+using NetworkCore.Packet;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,14 @@ namespace Session
 
         protected override void AddOnRecv()
         {
+        }
+
+        public Action<PacketSession, IMessage> GetPacketHandler(ushort id)
+        {
+            Action<PacketSession, IMessage> action = null;
+            if (_handler.TryGetValue(id, out action))
+                return action;
+            return null;
         }
     }
 }

@@ -3,16 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\Administrator\\Desktop\\FastEncryption\\Server\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{311CF18C-3796-4983-96B1-881CC3941D98}|NetworkCore\\NetworkCore.csproj|c:\\users\\administrator\\desktop\\fastencryption\\server\\networkcore\\encryption\\blockcipher\\operationmode\\gcm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{311CF18C-3796-4983-96B1-881CC3941D98}|NetworkCore\\NetworkCore.csproj|solutionrelative:networkcore\\encryption\\blockcipher\\operationmode\\gcm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{311CF18C-3796-4983-96B1-881CC3941D98}|NetworkCore\\NetworkCore.csproj|c:\\users\\administrator\\desktop\\fastencryption\\server\\networkcore\\session.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{311CF18C-3796-4983-96B1-881CC3941D98}|NetworkCore\\NetworkCore.csproj|solutionrelative:networkcore\\session.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{311CF18C-3796-4983-96B1-881CC3941D98}|NetworkCore\\NetworkCore.csproj|c:\\users\\administrator\\desktop\\fastencryption\\server\\networkcore\\encryption\\publickey\\ecdsa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{311CF18C-3796-4983-96B1-881CC3941D98}|NetworkCore\\NetworkCore.csproj|solutionrelative:networkcore\\encryption\\publickey\\ecdsa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{555D631E-741E-40F9-AE63-29B9172CB097}|Server\\Server.csproj|c:\\users\\administrator\\desktop\\fastencryption\\server\\server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{555D631E-741E-40F9-AE63-29B9172CB097}|Server\\Server.csproj|solutionrelative:server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -31,40 +23,15 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "GCM.cs",
-              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\FastEncryption\\Server\\NetworkCore\\Encryption\\BlockCipher\\OperationMode\\GCM.cs",
-              "RelativeDocumentMoniker": "NetworkCore\\Encryption\\BlockCipher\\OperationMode\\GCM.cs",
-              "ToolTip": "C:\\Users\\Administrator\\Desktop\\FastEncryption\\Server\\NetworkCore\\Encryption\\BlockCipher\\OperationMode\\GCM.cs",
-              "RelativeToolTip": "NetworkCore\\Encryption\\BlockCipher\\OperationMode\\GCM.cs",
-              "ViewState": "AgIAAJoAAAAAAAAAAAAjwKoAAAAUAAAAAAAAAA==",
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\FastEncryption\\Server\\Server\\Program.cs",
+              "RelativeDocumentMoniker": "Server\\Program.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Desktop\\FastEncryption\\Server\\Server\\Program.cs",
+              "RelativeToolTip": "Server\\Program.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAsAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-22T23:38:38.457Z",
+              "WhenOpened": "2024-09-23T08:22:54.932Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Session.cs",
-              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\FastEncryption\\Server\\NetworkCore\\Session.cs",
-              "RelativeDocumentMoniker": "NetworkCore\\Session.cs",
-              "ToolTip": "C:\\Users\\Administrator\\Desktop\\FastEncryption\\Server\\NetworkCore\\Session.cs",
-              "RelativeToolTip": "NetworkCore\\Session.cs",
-              "ViewState": "AgIAAK4AAAAAAAAAAAASwNcAAAAeAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-22T12:10:33.206Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ECDSA.cs",
-              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\FastEncryption\\Server\\NetworkCore\\Encryption\\PublicKey\\ECDSA.cs",
-              "RelativeDocumentMoniker": "NetworkCore\\Encryption\\PublicKey\\ECDSA.cs",
-              "ToolTip": "C:\\Users\\Administrator\\Desktop\\FastEncryption\\Server\\NetworkCore\\Encryption\\PublicKey\\ECDSA.cs",
-              "RelativeToolTip": "NetworkCore\\Encryption\\PublicKey\\ECDSA.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-22T11:51:08.908Z"
             }
           ]
         }

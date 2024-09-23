@@ -1,7 +1,7 @@
 ﻿using Google.Protobuf;
 using Google.Protobuf.Security;
 using NetworkCore.Encryption.PublicKey;
-using NetworkCore.Log;
+using NetworkCore;
 using NetworkCore.Packet;
 using System;
 using System.Collections.Generic;
@@ -15,7 +15,7 @@ namespace Session
 {
     public class ServerSession : PacketSession
     {
-        ServerPacketHandler serverPacketHandler = new();
+        public ServerPacketHandler serverPacketHandler = new();
 
         public override void OnConnected(EndPoint endPoint)
         {

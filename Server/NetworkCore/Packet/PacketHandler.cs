@@ -33,10 +33,6 @@ namespace NetworkCore.Packet
             _handler.Add((ushort)MsgId.CHelloDone, SessionKeyExchangeHandler.C_HelloDoneHandler);
             _onRecv.Add((ushort)MsgId.SHelloDone, MakePacket<S_Hello_Done>);
             _handler.Add((ushort)MsgId.SHelloDone, SessionKeyExchangeHandler.S_HelloDoneHandler);
-            _onRecv.Add((ushort)MsgId.CTest, MakePacket<C_Test>);
-            _handler.Add((ushort)MsgId.CTest, SessionKeyExchangeHandler.C_TestHandler);
-            _onRecv.Add((ushort)MsgId.STest, MakePacket<S_Test>);
-            _handler.Add((ushort)MsgId.STest, SessionKeyExchangeHandler.S_TestHandler);
         }
 
         public void OnRecvPacket(PacketSession session, ArraySegment<byte> buffer)
@@ -53,7 +49,6 @@ namespace NetworkCore.Packet
             Action<PacketSession, ArraySegment<byte>, ushort> action = null;
             if (_onRecv.TryGetValue(id, out action))
                 action.Invoke(session, buffer, id);
-
         }
 
         void MakePacket<T>(PacketSession session, ArraySegment<byte> buffer, ushort id) where T : IMessage, new()
