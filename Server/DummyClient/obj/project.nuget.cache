@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "ulBAmra45GM=",
+  "dgSpecHash": "9s2iU2Lx7f0=",
   "success": true,
   "projectFilePath": "C:\\Users\\Administrator\\Desktop\\FastEncryption\\Server\\DummyClient\\DummyClient.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Administrator\\.nuget\\packages\\google.protobuf\\3.27.4\\google.protobuf.3.27.4.nupkg.sha512"
+  ],
   "logs": []
 }

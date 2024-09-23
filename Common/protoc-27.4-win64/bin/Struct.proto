@@ -1,0 +1,7 @@
+syntax = "proto3";
+package Security;
+
+import "Enum.proto";
+
+option csharp_namespace = "Google.Protobuf.Security";
+

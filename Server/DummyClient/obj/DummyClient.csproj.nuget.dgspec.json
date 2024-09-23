@@ -28,8 +28,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Administrator\\Desktop\\FastEncryption\\Server\\ServerCore\\ServerCore.csproj": {
-                "projectPath": "C:\\Users\\Administrator\\Desktop\\FastEncryption\\Server\\ServerCore\\ServerCore.csproj"
+              "C:\\Users\\Administrator\\Desktop\\FastEncryption\\Server\\NetworkCore\\NetworkCore.csproj": {
+                "projectPath": "C:\\Users\\Administrator\\Desktop\\FastEncryption\\Server\\NetworkCore\\NetworkCore.csproj"
               }
             }
           }
@@ -48,6 +48,12 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "Google.Protobuf": {
+              "target": "Package",
+              "version": "[3.27.4, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -68,14 +74,14 @@
         }
       }
     },
-    "C:\\Users\\Administrator\\Desktop\\FastEncryption\\Server\\ServerCore\\ServerCore.csproj": {
+    "C:\\Users\\Administrator\\Desktop\\FastEncryption\\Server\\NetworkCore\\NetworkCore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Administrator\\Desktop\\FastEncryption\\Server\\ServerCore\\ServerCore.csproj",
-        "projectName": "ServerCore",
-        "projectPath": "C:\\Users\\Administrator\\Desktop\\FastEncryption\\Server\\ServerCore\\ServerCore.csproj",
+        "projectUniqueName": "C:\\Users\\Administrator\\Desktop\\FastEncryption\\Server\\NetworkCore\\NetworkCore.csproj",
+        "projectName": "NetworkCore",
+        "projectPath": "C:\\Users\\Administrator\\Desktop\\FastEncryption\\Server\\NetworkCore\\NetworkCore.csproj",
         "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Administrator\\Desktop\\FastEncryption\\Server\\ServerCore\\obj\\",
+        "outputPath": "C:\\Users\\Administrator\\Desktop\\FastEncryption\\Server\\NetworkCore\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -108,6 +114,12 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "Google.Protobuf": {
+              "target": "Package",
+              "version": "[3.27.4, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

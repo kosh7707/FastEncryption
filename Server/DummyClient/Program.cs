@@ -1,32 +1,28 @@
-﻿using ServerCore;
+﻿using DummyClient.Session;
+using NetworkCore;
 using System.Net;
 
 namespace DummyClient
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args) 
+        static ServerSession _session = new();
+
+        public static void Main(string[] args)
         {
-            string host = Dns.GetHostName();
-            IPHostEntry ipHost = Dns.GetHostEntry(host);
-            IPAddress ipAddr = ipHost.AddressList[0];
-            IPEndPoint endPoint = new(ipAddr, 7777);
+            string ipString = "127.0.0.1";
+            int port = 7777;
 
-            Connector connector = new();
+            IPAddress ipAddr = IPAddress.Parse(ipString);
+            IPEndPoint endPoint = new IPEndPoint(ipAddr, port);
 
-            connector.Connect(endPoint, () => { return SessionManager.Instance.Generate(); }, 10);
+            Connector connector = new Connector();
+
+            connector.Connect(endPoint, () => { return _session; }, 1);
 
             while (true)
             {
-                try
-                {
-                    SessionManager.Instance.SendForEach();
-                    Thread.Sleep(250);
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.ToString());
-                }
+
             }
         }
     }
