@@ -19,23 +19,32 @@ namespace Server.Session.Handler
 
             int roomId = enterRoomPkt.RoomId;
 
-            // Room 입장 시도
-            if (RoomManager.Instance.EnterRoom(roomId, clientSession))
-            {
-                clientSession.RoomId = roomId;
+            S_EnterRoom resPkt = new S_EnterRoom();
 
-                // Room 입장 성공
-                S_EnterRoom resPkt = new S_EnterRoom();
-                resPkt.Success = true;
-                clientSession.Send(resPkt);
-            }
-            else
+            // RoomId 체크
+            Room? room = RoomManager.Instance.GetRoom(roomId);
+            if (room == null)
             {
-                // Room 입장 실패
-                S_EnterRoom resPkt = new S_EnterRoom();
+                // Invalid RoomId
                 resPkt.Success = false;
                 clientSession.Send(resPkt);
+                return;
             }
+
+            // Room 입장 시도
+            if (!room.Enter(clientSession))
+            {
+                // Room 입장 실패
+                resPkt.Success = false;
+                clientSession.Send(resPkt);
+                return;
+            }
+
+            // Room 입장 성공
+            clientSession.RoomId = roomId;
+
+            resPkt.Success = true;
+            clientSession.Send(resPkt);
         }
 
         public static void C_LeaveRoomHandler(PacketSession session, IMessage packet)
@@ -45,23 +54,32 @@ namespace Server.Session.Handler
 
             int roomId = clientSession.RoomId;
 
-            // Room 퇴장 시도
-            if (RoomManager.Instance.LeaveRoom(roomId, clientSession))
-            {
-                clientSession.RoomId = -1;
+            S_LeaveRoom resPkt = new S_LeaveRoom();
 
-                // Room 퇴장 성공
-                S_LeaveRoom resPkt = new S_LeaveRoom();
-                resPkt.Success = true;
-                clientSession.Send(resPkt);
-            }
-            else
+            // RoomId 체크
+            Room? room = RoomManager.Instance.GetRoom(roomId);
+            if (room == null)
             {
-                // Room 퇴장 실패
-                S_LeaveRoom resPkt = new S_LeaveRoom();
+                // Invalid RoomId
                 resPkt.Success = false;
                 clientSession.Send(resPkt);
+                return;
             }
+
+            // Room 퇴장 시도
+            if (!room.Leave(clientSession))
+            {
+                // Room 퇴장 실패
+                resPkt.Success = false;
+                clientSession.Send(resPkt);
+                return;
+            }
+
+            // Room 퇴장 성공
+            clientSession.RoomId = -1;
+
+            resPkt.Success = true;
+            clientSession.Send(resPkt);
         }
     }
 }

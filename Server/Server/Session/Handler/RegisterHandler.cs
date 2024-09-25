@@ -17,20 +17,6 @@ namespace Server.Session.Handler
             ClientSession clientSession = session as ClientSession;
             C_Register registerPkt = packet as C_Register;
 
-            /*
-                message C_Register
-                {
-	                string id = 1;
-	                string pw = 2;
-                }
-
-                message S_Register
-                {
-	                bool success = 1;
-	                int32 errorCode = 2;
-                }
-             */
-
             string id = registerPkt.Id;
             string pw = registerPkt.Pw;
 
@@ -48,7 +34,6 @@ namespace Server.Session.Handler
                 resPkt.ErrorCode = ret;
             }
             clientSession.Send(resPkt);
-
         }
 
     }

@@ -38,13 +38,10 @@ namespace Server.Game.Account
             return _accounts.ContainsKey(id);
         }
 
-        public Account GetAccount(string id) 
+        public Account? GetAccount(string id) 
         {
-            Account account;
-            if (_accounts.TryGetValue(id, out account))
-                return account;
-            else
-                return null;
+            _accounts.TryGetValue(id, out Account? account);
+            return account;
         }
     }
 }

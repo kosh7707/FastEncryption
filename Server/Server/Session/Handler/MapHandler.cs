@@ -20,37 +20,45 @@ namespace Server.Session.Handler
             int roomId = clientSession.RoomId;
             int mapId = enterMapPkt.MapId;
 
-            // RoomId 검증
-            Room room = RoomManager.Instance.GetRoom(roomId);
+            S_EnterMap resPkt = new S_EnterMap();
+
+            // RoomId 체크
+            Room? room = RoomManager.Instance.GetRoom(roomId);
             if (room == null)
             {
                 // Invalid RoomId
-                S_EnterMap resPkt = new S_EnterMap();
                 resPkt.Success = false;
                 clientSession.Send(resPkt);
                 return;
             }
             
-            // Map 입장 시도
-            if (room.EnterMap(mapId, clientSession))
+            // MapId 체크
+            Map? map = room.GetMap(mapId);
+            if (map == null)
             {
-                // Map 입장 성공
-                clientSession.MapId = mapId;
-                
-                S_EnterMap resPkt = new S_EnterMap();
-                resPkt.Success = true;
-                resPkt.MyPlayer = clientSession.Player;
-                foreach (Player player in room.GetMap(mapId).GetPlayers())
-                    resPkt.Players.Add(player);
-                clientSession.Send(resPkt);
-            }
-            else
-            {
-                // Map 입장 실패
-                S_EnterMap resPkt = new S_EnterMap();
+                // Invalid MapId
                 resPkt.Success = false;
                 clientSession.Send(resPkt);
+                return;
             }
+
+            // Map 입장 시도
+            if (!map.Enter(clientSession))
+            {
+                // Map 입장 실패
+                resPkt.Success = false;
+                clientSession.Send(resPkt);
+                return;
+            }
+            
+            // Map 입장 성공
+            clientSession.MapId = mapId;
+
+            resPkt.Success = true;
+            resPkt.MyPlayer = clientSession.Player;
+            foreach (Player player in map.GetPlayers())
+                resPkt.Players.Add(player);
+            clientSession.Send(resPkt);
         }
 
         public static void C_LeaveMapHandler(PacketSession session, IMessage packet)
@@ -61,45 +69,42 @@ namespace Server.Session.Handler
             int roomId = clientSession.RoomId;
             int mapId = clientSession.MapId;
 
+            S_LeaveMap resPkt = new S_LeaveMap();
+
             // RoomId 검증 
-            Room room = RoomManager.Instance.GetRoom(roomId);
+            Room? room = RoomManager.Instance.GetRoom(roomId);
             if (room == null)
             {
                 // Invalid RoomId
-                S_LeaveMap resPkt = new S_LeaveMap();
                 resPkt.Success = false;
                 clientSession.Send(resPkt);
                 return;
             }
 
             // MapId 검증
-            Map map = room.GetMap(mapId);
+            Map? map = room.GetMap(mapId);
             if (map == null)
             {
                 // Invalid MapId
-                S_LeaveMap resPkt = new S_LeaveMap();
                 resPkt.Success = false;
                 clientSession.Send(resPkt);
                 return;
             }
 
             // Map 퇴장 시도
-            if (map.Leave(clientSession))
-            {
-                // Map 퇴장 성공
-                clientSession.MapId = -1;
-
-                S_LeaveMap resPkt = new S_LeaveMap();
-                resPkt.Success = true;
-                clientSession.Send(resPkt);
-            }
-            else
+            if (!map.Leave(clientSession))
             {
                 // Map 퇴장 실패
-                S_LeaveMap resPkt = new S_LeaveMap();
                 resPkt.Success = false;
                 clientSession.Send(resPkt);
+                return;
             }
+
+            // Map 퇴장 성공
+            clientSession.MapId = -1;
+
+            resPkt.Success = true;
+            clientSession.Send(resPkt);
         }
     }
 }

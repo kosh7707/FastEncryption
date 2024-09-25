@@ -21,21 +21,9 @@ namespace Server.Game.Room
         Dictionary<int, ClientSession> _sessions = new();
         Dictionary<int, Player> _players = new();
 
-        public static Map LoadMap(int mapId)
+        public Map(int mapId)
         {
-            Map map = new();
-            map.MapId = mapId; 
-            return map;
-        }
-
-        public Map()
-        {
-            Init();
-        }
-
-        void Init()
-        {
-
+            MapId = mapId;
         }
 
         public void Update()
@@ -79,6 +67,12 @@ namespace Server.Game.Room
         {
             List<Player> players = new List<Player>(_players.Values);
             return players;
+        }
+
+        public Player? GetPlayer(int playerId)
+        {
+            _players.TryGetValue(playerId, out Player? player);
+            return player;
         }
     }
 }

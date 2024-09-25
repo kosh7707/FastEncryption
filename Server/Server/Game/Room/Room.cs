@@ -22,27 +22,17 @@ namespace Server.Game.Room
 
         // <MapId, Map>
         Dictionary<int, Map> _maps = new();
-        
-        public static Room LoadRoom(int roomId)
-        {
-            Room room = new Room();
-            room.RoomId = roomId;
-            room.Name = $"Room {roomId}";
-            return room;
-        }
 
-        public Room()
+        public Room(int roomId)
         {
-            Init();
-        }
+            RoomId = roomId;
+            Name = $"Room {roomId}";
 
-        void Init()
-        {
-            _maps.Add(1, Map.LoadMap(1));
-            _maps.Add(2, Map.LoadMap(2));
-            _maps.Add(3, Map.LoadMap(3));
-            _maps.Add(4, Map.LoadMap(4));
-            _maps.Add(5, Map.LoadMap(5));
+            _maps.Add(1, new Map(1));
+            _maps.Add(2, new Map(2));
+            _maps.Add(3, new Map(3));
+            _maps.Add(4, new Map(4));
+            _maps.Add(5, new Map(5));
         }
 
         public void Update()
@@ -53,58 +43,40 @@ namespace Server.Game.Room
             Flush();
         }
 
-        public bool EnterMap(int mapId, ClientSession session)
+        public bool Enter(ClientSession session)
         {
             bool ret = true;
 
             lock (_lock)
             {
-                if (_maps.TryGetValue(mapId, out Map map))
-                {
-                    ret &= _sessions.TryAdd(session.SessionId, session);
-                    ret &= _maps[mapId].Enter(session);
-                }
-                else
-                {
-                    ret = false;
-                    Logger.ErrorLog($"Can't EnterMap SessionId: {session.SessionId}");
-                }
+                ret &= _sessions.TryAdd(session.SessionId, session);
             }
 
             return ret;
         }
 
-        public bool LeaveMap(int mapId, ClientSession session)
+        public bool Leave(ClientSession session)
         {
             bool ret = true;
 
             lock ( _lock)
             {
-                if (_maps.TryGetValue(mapId, out Map map))
-                {
-                    ret &= _sessions.Remove(session.SessionId);
-                    ret &= _maps[mapId].Leave(session);
-                }
-                else
-                {
-                    ret = false;
-                    Logger.ErrorLog($"Can't EnterMap SessionId: {session.SessionId}");
-                }
+                ret &= _sessions.Remove(session.SessionId);
             }
 
             return ret;
+        }
+
+        public Map? GetMap(int mapId)
+        {
+            _maps.TryGetValue(mapId, out Map? map);
+            return map;
         }
 
         public void Broadcast(IMessage packet)
         {
             foreach (ClientSession session in _sessions.Values)
                 session.Send(packet);
-        }
-
-        public Map GetMap(int mapId)
-        {
-            _maps.TryGetValue(mapId, out Map map);
-            return map;
         }
     }
 }

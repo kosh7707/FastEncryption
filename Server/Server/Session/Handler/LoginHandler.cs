@@ -18,26 +18,11 @@ namespace Server.Session.Handler
             ClientSession clientSession = session as ClientSession;
             C_Login loginPkt = packet as C_Login;
 
-            /*
-            message C_Login
-            {
-	            string id = 1;
-	            string pw = 2;
-            }
-
-            message S_Login
-            {
-	            bool success = 1;
-	            RoomInfo roomInfo = 2;
-	            int32 errorCode = 3;
-            }
-             */
-
             string id = loginPkt.Id;
             string pw = loginPkt.Pw;
 
-            Account account = AccountDB.Instance.GetAccount(id);
             S_Login resPkt = new S_Login();
+            Account? account = AccountDB.Instance.GetAccount(id);
             if (account == null)
             {
                 // 1: 없는 아이디
@@ -56,9 +41,10 @@ namespace Server.Session.Handler
                 return; 
             }
 
+            // 0: 정상 로그인
             resPkt.Success = true;
             resPkt.Player = account.Player;
-            foreach (RoomInfo roomInfo in RoomManager.Instance.GetRoomInfo())
+            foreach (RoomInfo roomInfo in RoomManager.Instance.GetRoomsInfo())
                 resPkt.RoomInfo.Add(roomInfo);
             clientSession.Send(resPkt);
 
