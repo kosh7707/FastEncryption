@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NetworkCore;
+using Google.Protobuf.Protocol;
 
 namespace Server.Game.Room
 {
@@ -18,6 +19,7 @@ namespace Server.Game.Room
 
         // <SessionId, ClientSession>
         Dictionary<int, ClientSession> _sessions = new();
+        Dictionary<int, Player> _players = new();
 
         public static Map LoadMap(int mapId)
         {
@@ -49,8 +51,9 @@ namespace Server.Game.Room
             {
                 if (!_sessions.ContainsKey(session.SessionId))
                 {
-                    ret &= true;
+                    ret = true;
                     _sessions.Add(session.SessionId, session);
+                    _players.Add(session.Player.PlayerId, session.Player);
                 }
                 else
                 {
@@ -70,8 +73,9 @@ namespace Server.Game.Room
             {
                 if (_sessions.ContainsKey(session.SessionId))
                 {
-                    ret &= true;
+                    ret = true;
                     _sessions.Remove(session.SessionId);
+                    _sessions.Remove(session.Player.PlayerId);
                 }
                 else
                 {
@@ -87,6 +91,14 @@ namespace Server.Game.Room
         {
             foreach (ClientSession session in _sessions.Values)
                 session.Send(packet);
+        }
+
+        public List<Player> GetPlayers()
+        {
+            List<Player> players = new List<Player>();
+            foreach (Player player in _players.Values) 
+                players.Add(player);
+            return players;
         }
     }
 }

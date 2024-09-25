@@ -25,20 +25,20 @@ namespace Google.Protobuf.Protocol {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CgxTdHJ1Y3QucHJvdG8SCFByb3RvY29sGgpFbnVtLnByb3RvIi0KCFJvb21J",
-            "bmZvEg4KBnJvb21JZBgBIAEoBRIRCglyb29tVGl0bGUYAiABKAkiSQoKUGxh",
+            "bmZvEg4KBnJvb21JZBgBIAEoBRIRCglyb29tVGl0bGUYAiABKAkiWAoKUGxh",
             "eWVySW5mbxISCgpwbGF5ZXJOYW1lGAEgASgJEgoKAmhwGAIgASgFEgsKA2V4",
-            "cBgDIAEoBRIOCgZhdHRhY2sYBCABKAUibQoLUGxheWVyU3RhdGUSDAoEcG9z",
-            "WBgBIAEoBRIMCgRwb3NZGAIgASgFEiIKB21vdmVEaXIYAyABKA4yES5Qcm90",
-            "b2NvbC5Nb3ZlRGlyEh4KBXN0YXRlGAQgASgOMg8uUHJvdG9jb2wuU3RhdGUi",
-            "cAoGUGxheWVyEhAKCHBsYXllcklkGAEgASgFEigKCnBsYXllckluZm8YAiAB",
-            "KAsyFC5Qcm90b2NvbC5QbGF5ZXJJbmZvEioKC3BsYXllclN0YXRlGAMgASgL",
-            "MhUuUHJvdG9jb2wuUGxheWVyU3RhdGVCG6oCGEdvb2dsZS5Qcm90b2J1Zi5Q",
-            "cm90b2NvbGIGcHJvdG8z"));
+            "cBgDIAEoBRIOCgZhdHRhY2sYBCABKAUSDQoFbWFwSWQYBSABKAUibQoLUGxh",
+            "eWVyU3RhdGUSDAoEcG9zWBgBIAEoBRIMCgRwb3NZGAIgASgFEiIKB21vdmVE",
+            "aXIYAyABKA4yES5Qcm90b2NvbC5Nb3ZlRGlyEh4KBXN0YXRlGAQgASgOMg8u",
+            "UHJvdG9jb2wuU3RhdGUicAoGUGxheWVyEhAKCHBsYXllcklkGAEgASgFEigK",
+            "CnBsYXllckluZm8YAiABKAsyFC5Qcm90b2NvbC5QbGF5ZXJJbmZvEioKC3Bs",
+            "YXllclN0YXRlGAMgASgLMhUuUHJvdG9jb2wuUGxheWVyU3RhdGVCG6oCGEdv",
+            "b2dsZS5Qcm90b2J1Zi5Qcm90b2NvbGIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.Protocol.EnumReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.RoomInfo), global::Google.Protobuf.Protocol.RoomInfo.Parser, new[]{ "RoomId", "RoomTitle" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.PlayerInfo), global::Google.Protobuf.Protocol.PlayerInfo.Parser, new[]{ "PlayerName", "Hp", "Exp", "Attack" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.PlayerInfo), global::Google.Protobuf.Protocol.PlayerInfo.Parser, new[]{ "PlayerName", "Hp", "Exp", "Attack", "MapId" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.PlayerState), global::Google.Protobuf.Protocol.PlayerState.Parser, new[]{ "PosX", "PosY", "MoveDir", "State" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.Player), global::Google.Protobuf.Protocol.Player.Parser, new[]{ "PlayerId", "PlayerInfo", "PlayerState" }, null, null, null, null)
           }));
@@ -321,6 +321,7 @@ namespace Google.Protobuf.Protocol {
       hp_ = other.hp_;
       exp_ = other.exp_;
       attack_ = other.attack_;
+      mapId_ = other.mapId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -378,6 +379,18 @@ namespace Google.Protobuf.Protocol {
       }
     }
 
+    /// <summary>Field number for the "mapId" field.</summary>
+    public const int MapIdFieldNumber = 5;
+    private int mapId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int MapId {
+      get { return mapId_; }
+      set {
+        mapId_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -397,6 +410,7 @@ namespace Google.Protobuf.Protocol {
       if (Hp != other.Hp) return false;
       if (Exp != other.Exp) return false;
       if (Attack != other.Attack) return false;
+      if (MapId != other.MapId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -408,6 +422,7 @@ namespace Google.Protobuf.Protocol {
       if (Hp != 0) hash ^= Hp.GetHashCode();
       if (Exp != 0) hash ^= Exp.GetHashCode();
       if (Attack != 0) hash ^= Attack.GetHashCode();
+      if (MapId != 0) hash ^= MapId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -442,6 +457,10 @@ namespace Google.Protobuf.Protocol {
         output.WriteRawTag(32);
         output.WriteInt32(Attack);
       }
+      if (MapId != 0) {
+        output.WriteRawTag(40);
+        output.WriteInt32(MapId);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -468,6 +487,10 @@ namespace Google.Protobuf.Protocol {
         output.WriteRawTag(32);
         output.WriteInt32(Attack);
       }
+      if (MapId != 0) {
+        output.WriteRawTag(40);
+        output.WriteInt32(MapId);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -489,6 +512,9 @@ namespace Google.Protobuf.Protocol {
       }
       if (Attack != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(Attack);
+      }
+      if (MapId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(MapId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -513,6 +539,9 @@ namespace Google.Protobuf.Protocol {
       }
       if (other.Attack != 0) {
         Attack = other.Attack;
+      }
+      if (other.MapId != 0) {
+        MapId = other.MapId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -549,6 +578,10 @@ namespace Google.Protobuf.Protocol {
             Attack = input.ReadInt32();
             break;
           }
+          case 40: {
+            MapId = input.ReadInt32();
+            break;
+          }
         }
       }
     #endif
@@ -582,6 +615,10 @@ namespace Google.Protobuf.Protocol {
           }
           case 32: {
             Attack = input.ReadInt32();
+            break;
+          }
+          case 40: {
+            MapId = input.ReadInt32();
             break;
           }
         }

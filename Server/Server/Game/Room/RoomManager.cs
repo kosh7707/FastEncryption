@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NetworkCore;
+using Google.Protobuf.Protocol;
 
 namespace Server.Game.Room
 {
@@ -44,7 +45,7 @@ namespace Server.Game.Room
                 room.Update();
         }
 
-        bool EnterRoom(int roomId, int mapId, ClientSession session)
+        public bool EnterRoom(int roomId, ClientSession session)
         {
             bool ret = true;
 
@@ -52,8 +53,8 @@ namespace Server.Game.Room
             {
                 if (!_sessions.ContainsKey(session.SessionId))
                 {
+                    ret = true;
                     _sessions.Add(session.SessionId, session);
-                    ret &= _rooms[roomId].EnterMap(mapId, session);
                 }
                 else
                 {
@@ -70,7 +71,7 @@ namespace Server.Game.Room
             return ret;
         }
 
-        public bool LeaveRoom(int roomId, int mapId, ClientSession session)
+        public bool LeaveRoom(int roomId, ClientSession session)
         {
             bool ret = true;
 
@@ -78,8 +79,8 @@ namespace Server.Game.Room
             {
                 if (!_sessions.ContainsKey(session.SessionId))
                 {
+                    ret = true;
                     _sessions.Remove(session.SessionId);
-                    ret &= _rooms[roomId].LeaveMap(mapId, session);
                 }
                 else
                 {
@@ -100,6 +101,25 @@ namespace Server.Game.Room
         {
             foreach (ClientSession session in _sessions.Values)
                 session.Send(packet);
+        }
+
+        public List<RoomInfo> GetRoomInfo()
+        {
+            List<RoomInfo> roomInfos = new List<RoomInfo>();
+            foreach (Room room in  _rooms.Values)
+            {
+                RoomInfo roomInfo = new RoomInfo();
+                roomInfo.RoomId = room.RoomId;
+                roomInfo.RoomTitle = room.Name;
+                roomInfos.Add(roomInfo);
+            }
+            return roomInfos;
+        }
+
+        public Room GetRoom(int roomId)
+        {
+            _rooms.TryGetValue(roomId, out Room room);
+            return room;
         }
     }
 }

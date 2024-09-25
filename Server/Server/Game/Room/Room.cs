@@ -15,6 +15,7 @@ namespace Server.Game.Room
         object _lock = new object();
 
         public int RoomId { get; set; }
+        public string Name { get; set; }
 
         // <SessionId, ClientSession>
         Dictionary<int, ClientSession> _sessions = new();
@@ -26,6 +27,7 @@ namespace Server.Game.Room
         {
             Room room = new Room();
             room.RoomId = roomId;
+            room.Name = $"Room {roomId}";
             return room;
         }
 
@@ -113,6 +115,12 @@ namespace Server.Game.Room
         {
             foreach (ClientSession session in _sessions.Values)
                 session.Send(packet);
+        }
+
+        public Map GetMap(int mapId)
+        {
+            _maps.TryGetValue(mapId, out Map map);
+            return map;
         }
     }
 }

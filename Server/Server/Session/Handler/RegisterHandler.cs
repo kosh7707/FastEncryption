@@ -1,6 +1,7 @@
 ﻿using Google.Protobuf;
 using Google.Protobuf.Protocol;
 using NetworkCore.Packet;
+using Server.Game.Account;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,38 @@ namespace Server.Session.Handler
             ClientSession clientSession = session as ClientSession;
             C_Register registerPkt = packet as C_Register;
 
-            
+            /*
+                message C_Register
+                {
+	                string id = 1;
+	                string pw = 2;
+                }
+
+                message S_Register
+                {
+	                bool success = 1;
+	                int32 errorCode = 2;
+                }
+             */
+
+            string id = registerPkt.Id;
+            string pw = registerPkt.Pw;
+
+            S_Register resPkt = new S_Register();
+            int ret = AccountDB.Instance.AddAccount(id, pw);
+            if (ret == 0)
+            {
+                // 0: 성공
+                resPkt.Success = true;
+            }
+            else
+            {
+                // 1: 이미 존재하는 아이디
+                resPkt.Success = false;
+                resPkt.ErrorCode = ret;
+            }
+            clientSession.Send(resPkt);
+
         }
 
     }

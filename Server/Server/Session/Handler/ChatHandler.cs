@@ -16,7 +16,7 @@ namespace Server.Session.Handler
             ClientSession clientSession = session as ClientSession;
             C_Chat chatPkt = packet as C_Chat;
 
-
+            // session이 속한 room/map에 broadcast
         }
     }
 }

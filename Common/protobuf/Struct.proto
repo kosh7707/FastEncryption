@@ -17,6 +17,7 @@ message PlayerInfo
 	int32 hp = 2;
 	int32 exp = 3;
 	int32 attack = 4;
+	int32 mapId = 5;
 }
 
 message PlayerState
