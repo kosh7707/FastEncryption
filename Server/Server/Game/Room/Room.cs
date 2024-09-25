@@ -61,16 +61,8 @@ namespace Server.Game.Room
             {
                 if (_maps.TryGetValue(mapId, out Map map))
                 {
-                    if (!_sessions.ContainsKey(session.SessionId))
-                    {
-                        _sessions.Add(session.SessionId, session);
-                        ret &= _maps[mapId].Enter(session);
-                    }
-                    else
-                    {
-                        ret = false;
-                        Logger.ErrorLog($"Can't EnterMap SessionId: {session.SessionId}");
-                    }
+                    ret &= _sessions.TryAdd(session.SessionId, session);
+                    ret &= _maps[mapId].Enter(session);
                 }
                 else
                 {
@@ -90,16 +82,8 @@ namespace Server.Game.Room
             {
                 if (_maps.TryGetValue(mapId, out Map map))
                 {
-                    if (!_sessions.ContainsKey(session.SessionId))
-                    {
-                        _sessions.Remove(session.SessionId);
-                        ret &= _maps[mapId].Leave(session);
-                    }
-                    else
-                    {
-                        ret = false;
-                        Logger.ErrorLog($"Can't EnterMap SessionId: {session.SessionId}");
-                    }
+                    ret &= _sessions.Remove(session.SessionId);
+                    ret &= _maps[mapId].Leave(session);
                 }
                 else
                 {

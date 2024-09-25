@@ -49,17 +49,8 @@ namespace Server.Game.Room
 
             lock (_lock)
             {
-                if (!_sessions.ContainsKey(session.SessionId))
-                {
-                    ret = true;
-                    _sessions.Add(session.SessionId, session);
-                    _players.Add(session.Player.PlayerId, session.Player);
-                }
-                else
-                {
-                    ret = false;
-                    Logger.ErrorLog($"Can't Enter SessionId: {session.SessionId}");
-                }
+                ret &= _sessions.TryAdd(session.SessionId, session);
+                ret &= _players.TryAdd(session.Player.PlayerId, session.Player);
             }
             
             return ret;
@@ -71,17 +62,8 @@ namespace Server.Game.Room
 
             lock (_lock)
             {
-                if (_sessions.ContainsKey(session.SessionId))
-                {
-                    ret = true;
-                    _sessions.Remove(session.SessionId);
-                    _sessions.Remove(session.Player.PlayerId);
-                }
-                else
-                {
-                    ret = false;
-                    Logger.ErrorLog($"Can't Leave SessionId: {session.SessionId}");
-                }
+                ret &= _sessions.Remove(session.SessionId);
+                ret &= _players.Remove(session.Player.PlayerId);
             }
 
             return ret;
@@ -95,9 +77,7 @@ namespace Server.Game.Room
 
         public List<Player> GetPlayers()
         {
-            List<Player> players = new List<Player>();
-            foreach (Player player in _players.Values) 
-                players.Add(player);
+            List<Player> players = new List<Player>(_players.Values);
             return players;
         }
     }
