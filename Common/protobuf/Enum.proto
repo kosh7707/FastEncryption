@@ -88,3 +88,9 @@ enum State
 	SKILL = 5;
 }
 
+enum ChatType
+{
+	ALL = 0;
+	ROOM = 1;
+	MAP = 2;
+}

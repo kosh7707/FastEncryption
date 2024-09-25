@@ -82,14 +82,16 @@ message S_LeaveMap
 
 message C_Chat
 {
-	string chat = 1;
+	ChatType chatType = 1;
+	string chat = 2;
 }
 
 message S_Chat
 {
 	bool success = 1;
-	int32 playerId = 2;
-	string chat = 3;
+	ChatType chatType = 2;
+	int32 playerId = 3;
+	string chat = 4;
 }
 
 message C_MoveStart

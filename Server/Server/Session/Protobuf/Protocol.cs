@@ -38,33 +38,35 @@ namespace Google.Protobuf.Protocol {
             "bnRlck1hcEJyb2FkY2FzdBIgCgZwbGF5ZXIYASABKAsyEC5Qcm90b2NvbC5Q",
             "bGF5ZXIiDQoLQ19MZWF2ZVJvb20iHgoLU19MZWF2ZVJvb20SDwoHc3VjY2Vz",
             "cxgBIAEoCCIMCgpDX0xlYXZlTWFwIi8KClNfTGVhdmVNYXASDwoHc3VjY2Vz",
-            "cxgBIAEoCBIQCghwbGF5ZXJJZBgCIAEoBSIWCgZDX0NoYXQSDAoEY2hhdBgB",
-            "IAEoCSI5CgZTX0NoYXQSDwoHc3VjY2VzcxgBIAEoCBIQCghwbGF5ZXJJZBgC",
-            "IAEoBRIMCgRjaGF0GAMgASgJIjkKC0NfTW92ZVN0YXJ0EioKC3BsYXllclN0",
-            "YXRlGAEgASgLMhUuUHJvdG9jb2wuUGxheWVyU3RhdGUiXAoLU19Nb3ZlU3Rh",
-            "cnQSDwoHc3VjY2VzcxgBIAEoCBIQCghwbGF5ZXJJZBgCIAEoBRIqCgtwbGF5",
-            "ZXJTdGF0ZRgDIAEoCzIVLlByb3RvY29sLlBsYXllclN0YXRlIjYKCENfTW92",
-            "aW5nEioKC3BsYXllclN0YXRlGAEgASgLMhUuUHJvdG9jb2wuUGxheWVyU3Rh",
-            "dGUiWQoIU19Nb3ZpbmcSDwoHc3VjY2VzcxgBIAEoCBIQCghwbGF5ZXJJZBgC",
+            "cxgBIAEoCBIQCghwbGF5ZXJJZBgCIAEoBSI8CgZDX0NoYXQSJAoIY2hhdFR5",
+            "cGUYASABKA4yEi5Qcm90b2NvbC5DaGF0VHlwZRIMCgRjaGF0GAIgASgJIl8K",
+            "BlNfQ2hhdBIPCgdzdWNjZXNzGAEgASgIEiQKCGNoYXRUeXBlGAIgASgOMhIu",
+            "UHJvdG9jb2wuQ2hhdFR5cGUSEAoIcGxheWVySWQYAyABKAUSDAoEY2hhdBgE",
+            "IAEoCSI5CgtDX01vdmVTdGFydBIqCgtwbGF5ZXJTdGF0ZRgBIAEoCzIVLlBy",
+            "b3RvY29sLlBsYXllclN0YXRlIlwKC1NfTW92ZVN0YXJ0Eg8KB3N1Y2Nlc3MY",
+            "ASABKAgSEAoIcGxheWVySWQYAiABKAUSKgoLcGxheWVyU3RhdGUYAyABKAsy",
+            "FS5Qcm90b2NvbC5QbGF5ZXJTdGF0ZSI2CghDX01vdmluZxIqCgtwbGF5ZXJT",
+            "dGF0ZRgBIAEoCzIVLlByb3RvY29sLlBsYXllclN0YXRlIlkKCFNfTW92aW5n",
+            "Eg8KB3N1Y2Nlc3MYASABKAgSEAoIcGxheWVySWQYAiABKAUSKgoLcGxheWVy",
+            "U3RhdGUYAyABKAsyFS5Qcm90b2NvbC5QbGF5ZXJTdGF0ZSI3CglDX01vdmVF",
+            "bmQSKgoLcGxheWVyU3RhdGUYASABKAsyFS5Qcm90b2NvbC5QbGF5ZXJTdGF0",
+            "ZSJaCglTX01vdmVFbmQSDwoHc3VjY2VzcxgBIAEoCBIQCghwbGF5ZXJJZBgC",
             "IAEoBRIqCgtwbGF5ZXJTdGF0ZRgDIAEoCzIVLlByb3RvY29sLlBsYXllclN0",
-            "YXRlIjcKCUNfTW92ZUVuZBIqCgtwbGF5ZXJTdGF0ZRgBIAEoCzIVLlByb3Rv",
-            "Y29sLlBsYXllclN0YXRlIloKCVNfTW92ZUVuZBIPCgdzdWNjZXNzGAEgASgI",
-            "EhAKCHBsYXllcklkGAIgASgFEioKC3BsYXllclN0YXRlGAMgASgLMhUuUHJv",
-            "dG9jb2wuUGxheWVyU3RhdGUiNAoGQ19KdW1wEioKC3BsYXllclN0YXRlGAEg",
-            "ASgLMhUuUHJvdG9jb2wuUGxheWVyU3RhdGUiVwoGU19KdW1wEg8KB3N1Y2Nl",
-            "c3MYASABKAgSEAoIcGxheWVySWQYAiABKAUSKgoLcGxheWVyU3RhdGUYAyAB",
-            "KAsyFS5Qcm90b2NvbC5QbGF5ZXJTdGF0ZSI0CgZDX0ZhbGwSKgoLcGxheWVy",
-            "U3RhdGUYASABKAsyFS5Qcm90b2NvbC5QbGF5ZXJTdGF0ZSJXCgZTX0ZhbGwS",
-            "DwoHc3VjY2VzcxgBIAEoCBIQCghwbGF5ZXJJZBgCIAEoBRIqCgtwbGF5ZXJT",
-            "dGF0ZRgDIAEoCzIVLlByb3RvY29sLlBsYXllclN0YXRlIjQKBkNfTGFuZBIq",
-            "CgtwbGF5ZXJTdGF0ZRgBIAEoCzIVLlByb3RvY29sLlBsYXllclN0YXRlIlcK",
-            "BlNfTGFuZBIPCgdzdWNjZXNzGAEgASgIEhAKCHBsYXllcklkGAIgASgFEioK",
-            "C3BsYXllclN0YXRlGAMgASgLMhUuUHJvdG9jb2wuUGxheWVyU3RhdGUiGgoH",
-            "Q19Ta2lsbBIPCgdza2lsbElkGAEgASgFIlgKB1NfU2tpbGwSDwoHc3VjY2Vz",
-            "cxgBIAEoCBIQCghwbGF5ZXJJZBgCIAEoBRIqCgtwbGF5ZXJTdGF0ZRgDIAEo",
-            "CzIVLlByb3RvY29sLlBsYXllclN0YXRlIioKBVNfSGl0EiEKB3BsYXllcnMY",
-            "ASADKAsyEC5Qcm90b2NvbC5QbGF5ZXJCG6oCGEdvb2dsZS5Qcm90b2J1Zi5Q",
-            "cm90b2NvbGIGcHJvdG8z"));
+            "YXRlIjQKBkNfSnVtcBIqCgtwbGF5ZXJTdGF0ZRgBIAEoCzIVLlByb3RvY29s",
+            "LlBsYXllclN0YXRlIlcKBlNfSnVtcBIPCgdzdWNjZXNzGAEgASgIEhAKCHBs",
+            "YXllcklkGAIgASgFEioKC3BsYXllclN0YXRlGAMgASgLMhUuUHJvdG9jb2wu",
+            "UGxheWVyU3RhdGUiNAoGQ19GYWxsEioKC3BsYXllclN0YXRlGAEgASgLMhUu",
+            "UHJvdG9jb2wuUGxheWVyU3RhdGUiVwoGU19GYWxsEg8KB3N1Y2Nlc3MYASAB",
+            "KAgSEAoIcGxheWVySWQYAiABKAUSKgoLcGxheWVyU3RhdGUYAyABKAsyFS5Q",
+            "cm90b2NvbC5QbGF5ZXJTdGF0ZSI0CgZDX0xhbmQSKgoLcGxheWVyU3RhdGUY",
+            "ASABKAsyFS5Qcm90b2NvbC5QbGF5ZXJTdGF0ZSJXCgZTX0xhbmQSDwoHc3Vj",
+            "Y2VzcxgBIAEoCBIQCghwbGF5ZXJJZBgCIAEoBRIqCgtwbGF5ZXJTdGF0ZRgD",
+            "IAEoCzIVLlByb3RvY29sLlBsYXllclN0YXRlIhoKB0NfU2tpbGwSDwoHc2tp",
+            "bGxJZBgBIAEoBSJYCgdTX1NraWxsEg8KB3N1Y2Nlc3MYASABKAgSEAoIcGxh",
+            "eWVySWQYAiABKAUSKgoLcGxheWVyU3RhdGUYAyABKAsyFS5Qcm90b2NvbC5Q",
+            "bGF5ZXJTdGF0ZSIqCgVTX0hpdBIhCgdwbGF5ZXJzGAEgAygLMhAuUHJvdG9j",
+            "b2wuUGxheWVyQhuqAhhHb29nbGUuUHJvdG9idWYuUHJvdG9jb2xiBnByb3Rv",
+            "Mw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.Protocol.EnumReflection.Descriptor, global::Google.Protobuf.Protocol.StructReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -81,8 +83,8 @@ namespace Google.Protobuf.Protocol {
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.S_LeaveRoom), global::Google.Protobuf.Protocol.S_LeaveRoom.Parser, new[]{ "Success" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.C_LeaveMap), global::Google.Protobuf.Protocol.C_LeaveMap.Parser, null, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.S_LeaveMap), global::Google.Protobuf.Protocol.S_LeaveMap.Parser, new[]{ "Success", "PlayerId" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.C_Chat), global::Google.Protobuf.Protocol.C_Chat.Parser, new[]{ "Chat" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.S_Chat), global::Google.Protobuf.Protocol.S_Chat.Parser, new[]{ "Success", "PlayerId", "Chat" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.C_Chat), global::Google.Protobuf.Protocol.C_Chat.Parser, new[]{ "ChatType", "Chat" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.S_Chat), global::Google.Protobuf.Protocol.S_Chat.Parser, new[]{ "Success", "ChatType", "PlayerId", "Chat" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.C_MoveStart), global::Google.Protobuf.Protocol.C_MoveStart.Parser, new[]{ "PlayerState" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.S_MoveStart), global::Google.Protobuf.Protocol.S_MoveStart.Parser, new[]{ "Success", "PlayerId", "PlayerState" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.C_Moving), global::Google.Protobuf.Protocol.C_Moving.Parser, new[]{ "PlayerState" }, null, null, null, null),
@@ -2977,6 +2979,7 @@ namespace Google.Protobuf.Protocol {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public C_Chat(C_Chat other) : this() {
+      chatType_ = other.chatType_;
       chat_ = other.chat_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -2987,8 +2990,20 @@ namespace Google.Protobuf.Protocol {
       return new C_Chat(this);
     }
 
+    /// <summary>Field number for the "chatType" field.</summary>
+    public const int ChatTypeFieldNumber = 1;
+    private global::Google.Protobuf.Protocol.ChatType chatType_ = global::Google.Protobuf.Protocol.ChatType.All;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Google.Protobuf.Protocol.ChatType ChatType {
+      get { return chatType_; }
+      set {
+        chatType_ = value;
+      }
+    }
+
     /// <summary>Field number for the "chat" field.</summary>
-    public const int ChatFieldNumber = 1;
+    public const int ChatFieldNumber = 2;
     private string chat_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -3014,6 +3029,7 @@ namespace Google.Protobuf.Protocol {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (ChatType != other.ChatType) return false;
       if (Chat != other.Chat) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -3022,6 +3038,7 @@ namespace Google.Protobuf.Protocol {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (ChatType != global::Google.Protobuf.Protocol.ChatType.All) hash ^= ChatType.GetHashCode();
       if (Chat.Length != 0) hash ^= Chat.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -3041,8 +3058,12 @@ namespace Google.Protobuf.Protocol {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      if (ChatType != global::Google.Protobuf.Protocol.ChatType.All) {
+        output.WriteRawTag(8);
+        output.WriteEnum((int) ChatType);
+      }
       if (Chat.Length != 0) {
-        output.WriteRawTag(10);
+        output.WriteRawTag(18);
         output.WriteString(Chat);
       }
       if (_unknownFields != null) {
@@ -3055,8 +3076,12 @@ namespace Google.Protobuf.Protocol {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (ChatType != global::Google.Protobuf.Protocol.ChatType.All) {
+        output.WriteRawTag(8);
+        output.WriteEnum((int) ChatType);
+      }
       if (Chat.Length != 0) {
-        output.WriteRawTag(10);
+        output.WriteRawTag(18);
         output.WriteString(Chat);
       }
       if (_unknownFields != null) {
@@ -3069,6 +3094,9 @@ namespace Google.Protobuf.Protocol {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (ChatType != global::Google.Protobuf.Protocol.ChatType.All) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) ChatType);
+      }
       if (Chat.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Chat);
       }
@@ -3083,6 +3111,9 @@ namespace Google.Protobuf.Protocol {
     public void MergeFrom(C_Chat other) {
       if (other == null) {
         return;
+      }
+      if (other.ChatType != global::Google.Protobuf.Protocol.ChatType.All) {
+        ChatType = other.ChatType;
       }
       if (other.Chat.Length != 0) {
         Chat = other.Chat;
@@ -3106,7 +3137,11 @@ namespace Google.Protobuf.Protocol {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
+          case 8: {
+            ChatType = (global::Google.Protobuf.Protocol.ChatType) input.ReadEnum();
+            break;
+          }
+          case 18: {
             Chat = input.ReadString();
             break;
           }
@@ -3129,7 +3164,11 @@ namespace Google.Protobuf.Protocol {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
+          case 8: {
+            ChatType = (global::Google.Protobuf.Protocol.ChatType) input.ReadEnum();
+            break;
+          }
+          case 18: {
             Chat = input.ReadString();
             break;
           }
@@ -3176,6 +3215,7 @@ namespace Google.Protobuf.Protocol {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public S_Chat(S_Chat other) : this() {
       success_ = other.success_;
+      chatType_ = other.chatType_;
       playerId_ = other.playerId_;
       chat_ = other.chat_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -3199,8 +3239,20 @@ namespace Google.Protobuf.Protocol {
       }
     }
 
+    /// <summary>Field number for the "chatType" field.</summary>
+    public const int ChatTypeFieldNumber = 2;
+    private global::Google.Protobuf.Protocol.ChatType chatType_ = global::Google.Protobuf.Protocol.ChatType.All;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Google.Protobuf.Protocol.ChatType ChatType {
+      get { return chatType_; }
+      set {
+        chatType_ = value;
+      }
+    }
+
     /// <summary>Field number for the "playerId" field.</summary>
-    public const int PlayerIdFieldNumber = 2;
+    public const int PlayerIdFieldNumber = 3;
     private int playerId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -3212,7 +3264,7 @@ namespace Google.Protobuf.Protocol {
     }
 
     /// <summary>Field number for the "chat" field.</summary>
-    public const int ChatFieldNumber = 3;
+    public const int ChatFieldNumber = 4;
     private string chat_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -3239,6 +3291,7 @@ namespace Google.Protobuf.Protocol {
         return true;
       }
       if (Success != other.Success) return false;
+      if (ChatType != other.ChatType) return false;
       if (PlayerId != other.PlayerId) return false;
       if (Chat != other.Chat) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -3249,6 +3302,7 @@ namespace Google.Protobuf.Protocol {
     public override int GetHashCode() {
       int hash = 1;
       if (Success != false) hash ^= Success.GetHashCode();
+      if (ChatType != global::Google.Protobuf.Protocol.ChatType.All) hash ^= ChatType.GetHashCode();
       if (PlayerId != 0) hash ^= PlayerId.GetHashCode();
       if (Chat.Length != 0) hash ^= Chat.GetHashCode();
       if (_unknownFields != null) {
@@ -3273,12 +3327,16 @@ namespace Google.Protobuf.Protocol {
         output.WriteRawTag(8);
         output.WriteBool(Success);
       }
-      if (PlayerId != 0) {
+      if (ChatType != global::Google.Protobuf.Protocol.ChatType.All) {
         output.WriteRawTag(16);
+        output.WriteEnum((int) ChatType);
+      }
+      if (PlayerId != 0) {
+        output.WriteRawTag(24);
         output.WriteInt32(PlayerId);
       }
       if (Chat.Length != 0) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(34);
         output.WriteString(Chat);
       }
       if (_unknownFields != null) {
@@ -3295,12 +3353,16 @@ namespace Google.Protobuf.Protocol {
         output.WriteRawTag(8);
         output.WriteBool(Success);
       }
-      if (PlayerId != 0) {
+      if (ChatType != global::Google.Protobuf.Protocol.ChatType.All) {
         output.WriteRawTag(16);
+        output.WriteEnum((int) ChatType);
+      }
+      if (PlayerId != 0) {
+        output.WriteRawTag(24);
         output.WriteInt32(PlayerId);
       }
       if (Chat.Length != 0) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(34);
         output.WriteString(Chat);
       }
       if (_unknownFields != null) {
@@ -3315,6 +3377,9 @@ namespace Google.Protobuf.Protocol {
       int size = 0;
       if (Success != false) {
         size += 1 + 1;
+      }
+      if (ChatType != global::Google.Protobuf.Protocol.ChatType.All) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) ChatType);
       }
       if (PlayerId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(PlayerId);
@@ -3336,6 +3401,9 @@ namespace Google.Protobuf.Protocol {
       }
       if (other.Success != false) {
         Success = other.Success;
+      }
+      if (other.ChatType != global::Google.Protobuf.Protocol.ChatType.All) {
+        ChatType = other.ChatType;
       }
       if (other.PlayerId != 0) {
         PlayerId = other.PlayerId;
@@ -3367,10 +3435,14 @@ namespace Google.Protobuf.Protocol {
             break;
           }
           case 16: {
+            ChatType = (global::Google.Protobuf.Protocol.ChatType) input.ReadEnum();
+            break;
+          }
+          case 24: {
             PlayerId = input.ReadInt32();
             break;
           }
-          case 26: {
+          case 34: {
             Chat = input.ReadString();
             break;
           }
@@ -3398,10 +3470,14 @@ namespace Google.Protobuf.Protocol {
             break;
           }
           case 16: {
+            ChatType = (global::Google.Protobuf.Protocol.ChatType) input.ReadEnum();
+            break;
+          }
+          case 24: {
             PlayerId = input.ReadInt32();
             break;
           }
-          case 26: {
+          case 34: {
             Chat = input.ReadString();
             break;
           }

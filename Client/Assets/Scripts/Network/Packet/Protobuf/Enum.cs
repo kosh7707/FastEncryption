@@ -46,11 +46,12 @@ namespace Google.Protobuf.Protocol {
             "V0lORV9DQkMQFRINCglUV0lORV9DRkIQFhINCglUV0lORV9PRkIQFxINCglU",
             "V0lORV9DVFIQGCowCgdNb3ZlRGlyEggKBExFRlQQABIJCgVSSUdIVBABEgYK",
             "AlVQEAISCAoERE9XThADKkYKBVN0YXRlEggKBElETEUQABIKCgZNT1ZJTkcQ",
-            "ARIICgRKVU1QEAISCAoERkFMTBADEggKBExBTkQQBBIJCgVTS0lMTBAFQhuq",
-            "AhhHb29nbGUuUHJvdG9idWYuUHJvdG9jb2xiBnByb3RvMw=="));
+            "ARIICgRKVU1QEAISCAoERkFMTBADEggKBExBTkQQBBIJCgVTS0lMTBAFKiYK",
+            "CENoYXRUeXBlEgcKA0FMTBAAEggKBFJPT00QARIHCgNNQVAQAkIbqgIYR29v",
+            "Z2xlLlByb3RvYnVmLlByb3RvY29sYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Google.Protobuf.Protocol.MsgId), typeof(global::Google.Protobuf.Protocol.CipherSuite), typeof(global::Google.Protobuf.Protocol.MoveDir), typeof(global::Google.Protobuf.Protocol.State), }, null, null));
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Google.Protobuf.Protocol.MsgId), typeof(global::Google.Protobuf.Protocol.CipherSuite), typeof(global::Google.Protobuf.Protocol.MoveDir), typeof(global::Google.Protobuf.Protocol.State), typeof(global::Google.Protobuf.Protocol.ChatType), }, null, null));
     }
     #endregion
 
@@ -135,6 +136,12 @@ namespace Google.Protobuf.Protocol {
     [pbr::OriginalName("FALL")] Fall = 3,
     [pbr::OriginalName("LAND")] Land = 4,
     [pbr::OriginalName("SKILL")] Skill = 5,
+  }
+
+  public enum ChatType {
+    [pbr::OriginalName("ALL")] All = 0,
+    [pbr::OriginalName("ROOM")] Room = 1,
+    [pbr::OriginalName("MAP")] Map = 2,
   }
 
   #endregion
