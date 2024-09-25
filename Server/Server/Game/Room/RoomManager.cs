@@ -51,16 +51,7 @@ namespace Server.Game.Room
 
             if (_rooms.TryGetValue(roomId, out Room room))
             {
-                if (!_sessions.ContainsKey(session.SessionId))
-                {
-                    ret = true;
-                    _sessions.Add(session.SessionId, session);
-                }
-                else
-                {
-                    ret = false;
-                    Logger.ErrorLog($"Can't EnterRoom SessionId: {session.SessionId}");
-                }
+                ret &= _sessions.TryAdd(session.SessionId, session);
             }
             else
             {
@@ -77,16 +68,7 @@ namespace Server.Game.Room
 
             if (_rooms.TryGetValue(roomId, out Room room))
             {
-                if (!_sessions.ContainsKey(session.SessionId))
-                {
-                    ret = true;
-                    _sessions.Remove(session.SessionId);
-                }
-                else
-                {
-                    ret = false;
-                    Logger.ErrorLog($"Can't EnterRoom SessionId: {session.SessionId}");
-                }
+                ret &= _sessions.Remove(session.SessionId);
             }
             else
             {

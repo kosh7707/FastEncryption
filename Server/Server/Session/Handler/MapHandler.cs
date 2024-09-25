@@ -20,9 +20,11 @@ namespace Server.Session.Handler
             int roomId = clientSession.RoomId;
             int mapId = enterMapPkt.MapId;
 
+            // RoomId 검증
             Room room = RoomManager.Instance.GetRoom(roomId);
             if (room == null)
             {
+                // Invalid RoomId
                 S_EnterMap resPkt = new S_EnterMap();
                 resPkt.Success = false;
                 clientSession.Send(resPkt);
@@ -59,8 +61,30 @@ namespace Server.Session.Handler
             int roomId = clientSession.RoomId;
             int mapId = clientSession.MapId;
 
+            // RoomId 검증 
+            Room room = RoomManager.Instance.GetRoom(roomId);
+            if (room == null)
+            {
+                // Invalid RoomId
+                S_LeaveMap resPkt = new S_LeaveMap();
+                resPkt.Success = false;
+                clientSession.Send(resPkt);
+                return;
+            }
+
+            // MapId 검증
+            Map map = room.GetMap(mapId);
+            if (map == null)
+            {
+                // Invalid MapId
+                S_LeaveMap resPkt = new S_LeaveMap();
+                resPkt.Success = false;
+                clientSession.Send(resPkt);
+                return;
+            }
+
             // Map 퇴장 시도
-            if (RoomManager.Instance.GetRoom(roomId).GetMap(mapId).Leave(clientSession))
+            if (map.Leave(clientSession))
             {
                 // Map 퇴장 성공
                 clientSession.MapId = -1;
