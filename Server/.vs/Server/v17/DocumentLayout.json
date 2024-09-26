@@ -1,53 +1,12 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\Administrator\\Desktop\\FastEncryption\\Server\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{555D631E-741E-40F9-AE63-29B9172CB097}|Server\\Server.csproj|c:\\users\\administrator\\desktop\\fastencryption\\server\\server\\session\\handler\\chathandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{555D631E-741E-40F9-AE63-29B9172CB097}|Server\\Server.csproj|solutionrelative:server\\session\\handler\\chathandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{555D631E-741E-40F9-AE63-29B9172CB097}|Server\\Server.csproj|c:\\users\\administrator\\desktop\\fastencryption\\server\\server\\game\\room\\roommanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{555D631E-741E-40F9-AE63-29B9172CB097}|Server\\Server.csproj|solutionrelative:server\\game\\room\\roommanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
-        {
-          "DockedWidth": 443,
-          "SelectedChildIndex": 2,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "RoomManager.cs",
-              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\FastEncryption\\Server\\Server\\Game\\Room\\RoomManager.cs",
-              "RelativeDocumentMoniker": "Server\\Game\\Room\\RoomManager.cs",
-              "ToolTip": "C:\\Users\\Administrator\\Desktop\\FastEncryption\\Server\\Server\\Game\\Room\\RoomManager.cs",
-              "RelativeToolTip": "Server\\Game\\Room\\RoomManager.cs",
-              "ViewState": "AgIAADIAAAAAAAAAAAASwB4AAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-25T17:41:35.705Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ChatHandler.cs",
-              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\FastEncryption\\Server\\Server\\Session\\Handler\\ChatHandler.cs",
-              "RelativeDocumentMoniker": "Server\\Session\\Handler\\ChatHandler.cs",
-              "ToolTip": "C:\\Users\\Administrator\\Desktop\\FastEncryption\\Server\\Server\\Session\\Handler\\ChatHandler.cs",
-              "RelativeToolTip": "Server\\Session\\Handler\\ChatHandler.cs",
-              "ViewState": "AgIAABQAAAAAAAAAAAASwCYAAAAwAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-25T17:41:13.144Z",
-              "EditorCaption": ""
-            }
-          ]
-        },
         {
           "DockedWidth": 250,
           "SelectedChildIndex": -1,

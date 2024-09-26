@@ -11,6 +11,7 @@ using NetworkCore.Encryption.BlockCipher.Algorithm;
 using NetworkCore.Encryption.BlockCipher.OperationMode;
 using NetworkCore.Buffer;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Diagnostics;
 
 namespace NetworkCore.Packet
 {
@@ -133,6 +134,10 @@ namespace NetworkCore.Packet
 
                     processLen += dataSize;
                     buffer = new ArraySegment<byte>(buffer.Array, buffer.Offset + dataSize, buffer.Count - dataSize);
+                        
+                    // Debug
+                    Logger.DebugLog($"[Recv] EncryptedPacket: {BitConverter.ToString(encryptedPacket).Replace("-", " ")}");
+                    Logger.DebugLog($"[Recv] DecryptedPacket: {BitConverter.ToString(encryptedPacket).Replace("-", " ")}");
                 }
             }
             return processLen;

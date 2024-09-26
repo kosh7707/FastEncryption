@@ -124,6 +124,8 @@ namespace NetworkCore.Packet.Security
             // Set Secure Communication Flag
             session.IsSecure = true;
 
+            // Debug
+            Logger.DebugLog($"C_HelloDone, SessionKey: {BitConverter.ToString(session.SessionKey).Replace("-", " ")}");
         }
 
         public static void S_HelloDoneHandler(PacketSession session, IMessage packet)
@@ -139,6 +141,9 @@ namespace NetworkCore.Packet.Security
 
             // Set Secure Communication Flag
             session.IsSecure = true;
+
+            // Debug
+            Logger.DebugLog($"S_HelloDone, SessionKey: {BitConverter.ToString(session.SessionKey).Replace("-", " ")}");
         }
 
         static IOperationMode GetOperationModeFromCipherSuite(CipherSuite cipherSuite, byte[] sessionKey)

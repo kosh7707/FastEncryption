@@ -137,6 +137,9 @@ namespace NetworkCore.Packet.Security
 
             // Set Secure Communication Flag
             session.IsSecure = true;
+
+            // Debug
+            Logger.DebugLog($"S_HelloDone, SessionKey: {BitConverter.ToString(session.SessionKey).Replace("-", " ")}");
         }
 
         static IOperationMode GetOperationModeFromCipherSuite(CipherSuite cipherSuite, byte[] sessionKey)
