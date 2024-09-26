@@ -36,7 +36,7 @@ namespace Server.Session.Handler
                     {
                         Room? room = RoomManager.Instance.GetRoom(clientSession.RoomId);
                         if (room != null)
-                            room.Broadcast(resPkt);
+                            room.Push(room.Broadcast, resPkt);
                         break;
                     }
                 case ChatType.Map:
@@ -46,7 +46,7 @@ namespace Server.Session.Handler
                         {
                             Map? map = room.GetMap(clientSession.MapId);
                             if (map != null) 
-                                map.Broadcast(resPkt);
+                                map.Push(map.Broadcast, resPkt);
                         }    
                         break;
                     }

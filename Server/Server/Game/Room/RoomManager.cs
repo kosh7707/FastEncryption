@@ -35,7 +35,7 @@ namespace Server.Game.Room
         public void Broadcast(IMessage packet)
         {
             foreach (Room room in _rooms.Values)
-                room.Broadcast(packet);
+                room.Push(room.Broadcast, packet);
         }
 
         public RoomInfo? GetRoomInfo(int roomId)
