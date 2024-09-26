@@ -1,6 +1,13 @@
-﻿namespace Server
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using NetworkCore;
+
+namespace Server.Session
 {
-    internal class SessionManager
+    public class SessionManager
     {
         static SessionManager _session = new SessionManager();
         public static SessionManager Instance { get { return _session; } }
@@ -15,11 +22,11 @@
             {
                 int sessionId = ++_sessionId;
 
-                ClientSession session = new();
+                ClientSession session = new ClientSession();
                 session.SessionId = sessionId;
                 _sessions.Add(sessionId, session);
 
-                Console.WriteLine($"Connected : {sessionId}");
+                Logger.InfoLog($"Client Connected. SessionId: {sessionId}");
 
                 return session;
             }
