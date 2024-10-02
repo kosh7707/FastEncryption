@@ -263,7 +263,58 @@ namespace Test.BlockCipherTest
         static void CTR()
         {
             Console.WriteLine();
-            Console.WriteLine("[AES - CTR] [Fail] There is no test vectors.");
+            string folderPath = "../../../test-vector/AES/CTR/";
+            string[] filePaths = Directory.GetFiles(folderPath, "*.txt");
+
+            foreach (string filePath in filePaths)
+            {
+                bool flag = true;
+                List<AESTestVector> vectors = ReadTestVectorWithIV(filePath);
+
+                foreach (AESTestVector vector in vectors)
+                {
+                    AES aes = new(vector.Key);
+                    CTR ctr = new(aes);
+                    byte[] cipherText = ctr.Encrypt(vector.PlainText, vector.IV);
+
+                    if (!SequenceEqual(cipherText, vector.CipherText, 16, vector.CipherText.Length + 16)
+                        || !SequenceEqual(ctr.Decrypt(cipherText), vector.PlainText, 0, vector.PlainText.Length))
+                    {
+
+                        Console.Write("Key: ");
+                        printHex(vector.Key);
+                        Console.Write("\n");
+
+                        Console.Write("PlainText: ");
+                        printHex(vector.PlainText);
+                        Console.Write("\n");
+
+                        Console.Write("CipherText: ");
+                        printHex(cipherText);
+                        Console.Write("\n");
+
+                        Console.Write("Vector.CipherText: ");
+                        printHex(vector.CipherText);
+                        Console.Write("\n");
+
+                        Console.Write("DecryptText: ");
+                        printHex(ctr.Decrypt(cipherText));
+                        Console.Write("\n");
+
+                        flag = false;
+                        break;
+                    }
+                }
+
+                if (flag)
+                {
+                    Console.WriteLine($"[AES - CTR] [Success]\t {Path.GetFileName(filePath)}");
+                }
+                else
+                {
+                    Console.WriteLine($"[AES - CTR] [Fail]\t {Path.GetFileName(filePath)}");
+                }
+            }
         }
 
         static void GCM()

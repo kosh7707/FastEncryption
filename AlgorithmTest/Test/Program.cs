@@ -2,6 +2,8 @@
 using System.Numerics;
 using System.Security.Cryptography;
 using Test.BlockCipherTest;
+using Test.Encryption.BlockCipher.Algorithm;
+using Test.Encryption.BlockCipher.OperationMode;
 using Test.PublicKeyTest;
 
 namespace Test
@@ -28,5 +30,6 @@ namespace Test
             BlockCipherTest();
             PublicKeyTest();
         }
+        
     }
 }
