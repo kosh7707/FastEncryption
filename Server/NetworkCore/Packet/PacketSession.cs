@@ -137,8 +137,11 @@ namespace NetworkCore.Packet
                     byte[] encryptedPacket = new byte[dataSize - 4];
                     Array.Copy(buffer.Array, buffer.Offset + 4, encryptedPacket, 0, dataSize - 4);
 
-                    // Packet Decrypt
+                    // Packet Decrypt Stopwatch
+                    Stopwatch stopwatch = Stopwatch.StartNew();
                     byte[] decryptedPacket = OperationMode.Decrypt(encryptedPacket);
+                    stopwatch.Stop();
+                    Console.WriteLine($"{OperationMode.AlgorithmName}-{OperationMode.ModeName} Decrypt ElapsedTicks: {stopwatch.ElapsedTicks}");
 
                     // Create ArraySegment (Need Optimization)
                     byte[] tempBuffer = new byte[decryptedPacket.Length + 4];
@@ -177,7 +180,11 @@ namespace NetworkCore.Packet
             }
             else
             {
+                // Packet Encrypt
+                Stopwatch stopwatch = Stopwatch.StartNew();
                 byte[] encryptionPacket = OperationMode.Encrypt(packet.ToByteArray());
+                stopwatch.Stop();
+                Console.WriteLine($"{OperationMode.AlgorithmName}-{OperationMode.ModeName} Encrypt ElapsedTicks: {stopwatch.ElapsedTicks}");
 
                 // Set size
                 size = (ushort)encryptionPacket.Length;
