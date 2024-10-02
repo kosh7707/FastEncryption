@@ -39,6 +39,8 @@ enum MsgId
 	C_SKILL = 31;
 	S_SKILL = 32;
 	S_HIT = 33;
+	C_TEST = 34;
+	S_TEST = 35;
 }
 
 enum CipherSuite

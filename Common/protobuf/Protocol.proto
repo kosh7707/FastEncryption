@@ -182,3 +182,13 @@ message S_Hit
 {
 	repeated Player players = 1;
 }
+
+message C_Test
+{
+	string lorem = 1;
+}
+
+message S_Test
+{
+	string lorem = 1;
+}

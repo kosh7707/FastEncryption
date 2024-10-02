@@ -147,15 +147,11 @@ namespace NetworkCore.Packet
 
                     processLen += dataSize;
                     buffer = new ArraySegment<byte>(buffer.Array, buffer.Offset + dataSize, buffer.Count - dataSize);
-                        
-                    // Debug
-                    Logger.DebugLog($"[Recv] EncryptedPacket: {BitConverter.ToString(encryptedPacket).Replace("-", " ")}");
-                    Logger.DebugLog($"[Recv] DecryptedPacket: {BitConverter.ToString(encryptedPacket).Replace("-", " ")}");
                 }
             }
             return processLen;
         }
-
+        
         public abstract void OnRecvPacket(ArraySegment<byte> buffer);
 
         public virtual void Send(IMessage packet)

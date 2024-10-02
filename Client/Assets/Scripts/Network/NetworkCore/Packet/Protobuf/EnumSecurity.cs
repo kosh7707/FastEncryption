@@ -24,7 +24,7 @@ namespace Google.Protobuf.Security {
     static EnumSecurityReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChNFbnVtX1NlY3VyaXR5LnByb3RvEghTZWN1cml0eSr9AwoFTXNnSWQSCwoH",
+            "ChNFbnVtX1NlY3VyaXR5LnByb3RvEghTZWN1cml0eSqVBAoFTXNnSWQSCwoH",
             "Q19IRUxMTxAAEgsKB1NfSEVMTE8QARIQCgxDX0hFTExPX0RPTkUQAhIQCgxT",
             "X0hFTExPX0RPTkUQAxIOCgpDX1JFR0lTVEVSEAQSDgoKU19SRUdJU1RFUhAF",
             "EgsKB0NfTE9HSU4QBhILCgdTX0xPR0lOEAcSDwoLQ19FTlRFUlJPT00QCBIP",
@@ -36,18 +36,19 @@ namespace Google.Protobuf.Security {
             "DQoJQ19NT1ZFRU5EEBcSDQoJU19NT1ZFRU5EEBgSCgoGQ19KVU1QEBkSCgoG",
             "U19KVU1QEBoSCgoGQ19GQUxMEBsSCgoGU19GQUxMEBwSCgoGQ19MQU5EEB0S",
             "CgoGU19MQU5EEB4SCwoHQ19TS0lMTBAfEgsKB1NfU0tJTEwQIBIJCgVTX0hJ",
-            "VBAhKvUCCgtDaXBoZXJTdWl0ZRILCgdBRVNfRUNCEAASCwoHQUVTX0NCQxAB",
-            "EgsKB0FFU19DRkIQAhILCgdBRVNfT0ZCEAMSCwoHQUVTX0NUUhAEEgwKCEFS",
-            "SUFfRUNCEAUSDAoIQVJJQV9DQkMQBhIMCghBUklBX0NGQhAHEgwKCEFSSUFf",
-            "T0ZCEAgSDAoIQVJJQV9DVFIQCRINCglISUdIVF9FQ0IQChINCglISUdIVF9D",
-            "QkMQCxINCglISUdIVF9DRkIQDBINCglISUdIVF9PRkIQDRINCglISUdIVF9D",
-            "VFIQDhINCglTUEVDS19FQ0IQDxINCglTUEVDS19DQkMQEBINCglTUEVDS19D",
-            "RkIQERINCglTUEVDS19PRkIQEhINCglTUEVDS19DVFIQExINCglUV0lORV9F",
-            "Q0IQFBINCglUV0lORV9DQkMQFRINCglUV0lORV9DRkIQFhINCglUV0lORV9P",
-            "RkIQFxINCglUV0lORV9DVFIQGCowCgdNb3ZlRGlyEggKBExFRlQQABIJCgVS",
-            "SUdIVBABEgYKAlVQEAISCAoERE9XThADKkYKBVN0YXRlEggKBElETEUQABIK",
-            "CgZNT1ZJTkcQARIICgRKVU1QEAISCAoERkFMTBADEggKBExBTkQQBBIJCgVT",
-            "S0lMTBAFQhuqAhhHb29nbGUuUHJvdG9idWYuU2VjdXJpdHliBnByb3RvMw=="));
+            "VBAhEgoKBkNfVEVTVBAiEgoKBlNfVEVTVBAjKvUCCgtDaXBoZXJTdWl0ZRIL",
+            "CgdBRVNfRUNCEAASCwoHQUVTX0NCQxABEgsKB0FFU19DRkIQAhILCgdBRVNf",
+            "T0ZCEAMSCwoHQUVTX0NUUhAEEgwKCEFSSUFfRUNCEAUSDAoIQVJJQV9DQkMQ",
+            "BhIMCghBUklBX0NGQhAHEgwKCEFSSUFfT0ZCEAgSDAoIQVJJQV9DVFIQCRIN",
+            "CglISUdIVF9FQ0IQChINCglISUdIVF9DQkMQCxINCglISUdIVF9DRkIQDBIN",
+            "CglISUdIVF9PRkIQDRINCglISUdIVF9DVFIQDhINCglTUEVDS19FQ0IQDxIN",
+            "CglTUEVDS19DQkMQEBINCglTUEVDS19DRkIQERINCglTUEVDS19PRkIQEhIN",
+            "CglTUEVDS19DVFIQExINCglUV0lORV9FQ0IQFBINCglUV0lORV9DQkMQFRIN",
+            "CglUV0lORV9DRkIQFhINCglUV0lORV9PRkIQFxINCglUV0lORV9DVFIQGCow",
+            "CgdNb3ZlRGlyEggKBExFRlQQABIJCgVSSUdIVBABEgYKAlVQEAISCAoERE9X",
+            "ThADKkYKBVN0YXRlEggKBElETEUQABIKCgZNT1ZJTkcQARIICgRKVU1QEAIS",
+            "CAoERkFMTBADEggKBExBTkQQBBIJCgVTS0lMTBAFQhuqAhhHb29nbGUuUHJv",
+            "dG9idWYuU2VjdXJpdHliBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Google.Protobuf.Security.MsgId), typeof(global::Google.Protobuf.Security.CipherSuite), typeof(global::Google.Protobuf.Security.MoveDir), typeof(global::Google.Protobuf.Security.State), }, null, null));
@@ -91,6 +92,8 @@ namespace Google.Protobuf.Security {
     [pbr::OriginalName("C_SKILL")] CSkill = 31,
     [pbr::OriginalName("S_SKILL")] SSkill = 32,
     [pbr::OriginalName("S_HIT")] SHit = 33,
+    [pbr::OriginalName("C_TEST")] CTest = 34,
+    [pbr::OriginalName("S_TEST")] STest = 35,
   }
 
   public enum CipherSuite {

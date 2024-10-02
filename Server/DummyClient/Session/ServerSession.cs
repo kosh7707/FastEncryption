@@ -10,23 +10,47 @@ using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using NetworkCore;
+using Google.Protobuf.Protocol;
 
 namespace DummyClient.Session
 {
     public class ServerSession : PacketSession
     {
+        static int SessionIdGenerator = 0;
+        int _sessionId;
+        public int SessionId { get { return _sessionId; } }
+
+        private Random _random = new Random();
+        private const string _chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+        private System.Timers.Timer _timer = new System.Timers.Timer();
+
+        public ServerSession()
+        {
+            _sessionId = Interlocked.Increment(ref SessionIdGenerator);
+
+            _timer.Interval = GetRandomInterval();
+            _timer.Elapsed += ((s, e) => 
+            {
+                _timer.Interval = GetRandomInterval();
+                SendTestPacket(); 
+            });
+            _timer.AutoReset = true;
+            _timer.Enabled = true;
+        }
+
         ServerPacketHandler serverPacketHandler = new();
 
         public override void OnConnected(EndPoint endPoint)
         {
-            Logger.InfoLog("[Server]: Successfully Connected.");
+            Logger.InfoLog($"[Server]: Successfully Connected. Client_{SessionId}");
 
             StartSessionKeyExchange();
         }
 
         public override void OnDisconnected(EndPoint endPoint)
         {
-            Logger.InfoLog("[Server]: Successfully Disconnected.");
+            Logger.InfoLog($"[Server]: Successfully Disconnected. Client_{_sessionId}");
         }
 
         public override void OnRecvPacket(ArraySegment<byte> buffer)
@@ -36,6 +60,33 @@ namespace DummyClient.Session
 
         public override void OnSend(int numOfBytes)
         {
+
         }
+
+        public override void Send(IMessage packet)
+        {
+            if (!IsSecure) return;
+            base.Send(packet);
+        }
+
+        public string GenerateRandomString(int length)
+        {
+            return new string(Enumerable.Repeat(_chars, length)
+                .Select(s => s[_random.Next(s.Length)]).ToArray());
+        }
+
+        public void SendTestPacket()
+        {
+            C_Test testPkt = new C_Test();
+            testPkt.Lorem = GenerateRandomString(50);
+            Logger.InfoLog($"Client_{_sessionId}: {testPkt.Lorem}");
+            Send(testPkt);
+        }
+
+        private int GetRandomInterval()
+        {
+            return _random.Next(500, 1000);
+        }
+        
     }
 }

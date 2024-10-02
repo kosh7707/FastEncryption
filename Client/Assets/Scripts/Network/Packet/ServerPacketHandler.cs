@@ -53,6 +53,9 @@ namespace Session
 
             // Hit
             _onRecv.Add((ushort)MsgId.SHit, MakePacket<S_Hit>);
+
+            // Test
+            _onRecv.Add((ushort)MsgId.STest, MakePacket<S_Test>);
         }
 
         protected override void AddHandler()
@@ -90,6 +93,9 @@ namespace Session
 
             // Hit
             _handler.Add((ushort)MsgId.SHit, HitHandler.S_HitHandler);
+
+            // Test
+            _handler.Add((ushort)MsgId.STest, TestHandler.S_TestHandler);
         }
 
         public Action<PacketSession, IMessage> GetPacketHandler(ushort id)

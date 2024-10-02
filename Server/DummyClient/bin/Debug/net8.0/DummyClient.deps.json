@@ -28,7 +28,10 @@
           "Google.Protobuf": "3.27.4"
         },
         "runtime": {
-          "NetworkCore.dll": {}
+          "NetworkCore.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }

@@ -6,8 +6,6 @@ namespace DummyClient
 {
     public class Program
     {
-        static ServerSession _session = new();
-
         public static void Main(string[] args)
         {
             string ipString = "127.0.0.1";
@@ -18,11 +16,11 @@ namespace DummyClient
 
             Connector connector = new Connector();
 
-            connector.Connect(endPoint, () => { return _session; }, 1);
+            connector.Connect(endPoint, () => { return new ServerSession(); }, 200);
 
             while (true)
             {
-
+                Thread.Sleep(100);
             }
         }
     }

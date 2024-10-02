@@ -49,6 +49,8 @@ namespace Server.Session
             // Skill
             _onRecv.Add((ushort)MsgId.CSkill, MakePacket<C_Skill>);
 
+            // Test
+            _onRecv.Add((ushort)MsgId.CTest, MakePacket<C_Test>);
         }
 
         protected override void AddOnRecv()
@@ -82,6 +84,9 @@ namespace Server.Session
 
             // Skill
             _handler.Add((ushort)MsgId.CSkill, SkillHandler.C_SkillHandler);
+
+            // Test
+            _handler.Add((ushort)MsgId.CTest, TestHandler.C_TestHandler);
         }
     }
 }

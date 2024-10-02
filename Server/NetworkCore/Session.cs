@@ -112,7 +112,7 @@ namespace NetworkCore
             }
             catch (Exception e)
             {
-                Logger.ErrorLog($"OnRecvComplted Failed {e}");
+                Logger.ErrorLog($"OnRecvCompleted Failed {e}");
             }
         }
 
