@@ -67,19 +67,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Administrator\\.nuget\\packages\\": {}
+    "C:\\Users\\asdff\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Administrator\\Desktop\\FastEncryption\\Server\\Server\\Server.csproj",
+      "projectUniqueName": "C:\\Users\\asdff\\Desktop\\FastEncryption\\Server\\Server\\Server.csproj",
       "projectName": "Server",
-      "projectPath": "C:\\Users\\Administrator\\Desktop\\FastEncryption\\Server\\Server\\Server.csproj",
-      "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Administrator\\Desktop\\FastEncryption\\Server\\Server\\obj\\",
+      "projectPath": "C:\\Users\\asdff\\Desktop\\FastEncryption\\Server\\Server\\Server.csproj",
+      "packagesPath": "C:\\Users\\asdff\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\asdff\\Desktop\\FastEncryption\\Server\\Server\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\asdff\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -93,8 +93,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\Administrator\\Desktop\\FastEncryption\\Server\\NetworkCore\\NetworkCore.csproj": {
-              "projectPath": "C:\\Users\\Administrator\\Desktop\\FastEncryption\\Server\\NetworkCore\\NetworkCore.csproj"
+            "C:\\Users\\asdff\\Desktop\\FastEncryption\\Server\\NetworkCore\\NetworkCore.csproj": {
+              "projectPath": "C:\\Users\\asdff\\Desktop\\FastEncryption\\Server\\NetworkCore\\NetworkCore.csproj"
             }
           }
         }
@@ -135,7 +135,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

@@ -27,16 +27,16 @@ namespace Google.Protobuf.Security {
             "ChdQcm90b2NvbF9TZWN1cml0eS5wcm90bxIIU2VjdXJpdHkaE0VudW1fU2Vj",
             "dXJpdHkucHJvdG8iVwoHQ19IZWxsbxIqCgtjaXBoZXJTdWl0ZRgBIAEoDjIV",
             "LlNlY3VyaXR5LkNpcGhlclN1aXRlEg8KB3B1YktleVgYAiABKAwSDwoHcHVi",
-            "S2V5WRgDIAEoDCJgCgdTX0hlbGxvEg8KB3N1Y2Nlc3MYASABKAgSDwoHcHVi",
+            "S2V5WRgDIAEoDCJuCgdTX0hlbGxvEg8KB3N1Y2Nlc3MYASABKAgSDwoHcHVi",
             "S2V5WBgCIAEoDBIPCgdwdWJLZXlZGAMgASgMEg8KB21lc3NhZ2UYBCABKAwS",
-            "EQoJc2lnbmF0dXJlGAUgASgMIh8KDENfSGVsbG9fRG9uZRIPCgdzdWNjZXNz",
-            "GAEgASgIIh8KDFNfSGVsbG9fRG9uZRIPCgdzdWNjZXNzGAEgASgIQhuqAhhH",
-            "b29nbGUuUHJvdG9idWYuU2VjdXJpdHliBnByb3RvMw=="));
+            "EQoJc2lnbmF0dXJlGAUgASgMEgwKBHNhbHQYBiABKAwiHwoMQ19IZWxsb19E",
+            "b25lEg8KB3N1Y2Nlc3MYASABKAgiHwoMU19IZWxsb19Eb25lEg8KB3N1Y2Nl",
+            "c3MYASABKAhCG6oCGEdvb2dsZS5Qcm90b2J1Zi5TZWN1cml0eWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.Security.EnumSecurityReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Security.C_Hello), global::Google.Protobuf.Security.C_Hello.Parser, new[]{ "CipherSuite", "PubKeyX", "PubKeyY" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Security.S_Hello), global::Google.Protobuf.Security.S_Hello.Parser, new[]{ "Success", "PubKeyX", "PubKeyY", "Message", "Signature" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Security.S_Hello), global::Google.Protobuf.Security.S_Hello.Parser, new[]{ "Success", "PubKeyX", "PubKeyY", "Message", "Signature", "Salt" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Security.C_Hello_Done), global::Google.Protobuf.Security.C_Hello_Done.Parser, new[]{ "Success" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Security.S_Hello_Done), global::Google.Protobuf.Security.S_Hello_Done.Parser, new[]{ "Success" }, null, null, null, null)
           }));
@@ -357,6 +357,7 @@ namespace Google.Protobuf.Security {
       pubKeyY_ = other.pubKeyY_;
       message_ = other.message_;
       signature_ = other.signature_;
+      salt_ = other.salt_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -426,6 +427,18 @@ namespace Google.Protobuf.Security {
       }
     }
 
+    /// <summary>Field number for the "salt" field.</summary>
+    public const int SaltFieldNumber = 6;
+    private pb::ByteString salt_ = pb::ByteString.Empty;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pb::ByteString Salt {
+      get { return salt_; }
+      set {
+        salt_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -446,6 +459,7 @@ namespace Google.Protobuf.Security {
       if (PubKeyY != other.PubKeyY) return false;
       if (Message != other.Message) return false;
       if (Signature != other.Signature) return false;
+      if (Salt != other.Salt) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -458,6 +472,7 @@ namespace Google.Protobuf.Security {
       if (PubKeyY.Length != 0) hash ^= PubKeyY.GetHashCode();
       if (Message.Length != 0) hash ^= Message.GetHashCode();
       if (Signature.Length != 0) hash ^= Signature.GetHashCode();
+      if (Salt.Length != 0) hash ^= Salt.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -496,6 +511,10 @@ namespace Google.Protobuf.Security {
         output.WriteRawTag(42);
         output.WriteBytes(Signature);
       }
+      if (Salt.Length != 0) {
+        output.WriteRawTag(50);
+        output.WriteBytes(Salt);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -526,6 +545,10 @@ namespace Google.Protobuf.Security {
         output.WriteRawTag(42);
         output.WriteBytes(Signature);
       }
+      if (Salt.Length != 0) {
+        output.WriteRawTag(50);
+        output.WriteBytes(Salt);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -550,6 +573,9 @@ namespace Google.Protobuf.Security {
       }
       if (Signature.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeBytesSize(Signature);
+      }
+      if (Salt.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeBytesSize(Salt);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -577,6 +603,9 @@ namespace Google.Protobuf.Security {
       }
       if (other.Signature.Length != 0) {
         Signature = other.Signature;
+      }
+      if (other.Salt.Length != 0) {
+        Salt = other.Salt;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -617,6 +646,10 @@ namespace Google.Protobuf.Security {
             Signature = input.ReadBytes();
             break;
           }
+          case 50: {
+            Salt = input.ReadBytes();
+            break;
+          }
         }
       }
     #endif
@@ -654,6 +687,10 @@ namespace Google.Protobuf.Security {
           }
           case 42: {
             Signature = input.ReadBytes();
+            break;
+          }
+          case 50: {
+            Salt = input.ReadBytes();
             break;
           }
         }

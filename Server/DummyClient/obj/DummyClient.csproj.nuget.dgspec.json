@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Administrator\\Desktop\\FastEncryption\\Server\\DummyClient\\DummyClient.csproj": {}
+    "C:\\Users\\asdff\\Desktop\\FastEncryption\\Server\\DummyClient\\DummyClient.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Administrator\\Desktop\\FastEncryption\\Server\\DummyClient\\DummyClient.csproj": {
+    "C:\\Users\\asdff\\Desktop\\FastEncryption\\Server\\DummyClient\\DummyClient.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Administrator\\Desktop\\FastEncryption\\Server\\DummyClient\\DummyClient.csproj",
+        "projectUniqueName": "C:\\Users\\asdff\\Desktop\\FastEncryption\\Server\\DummyClient\\DummyClient.csproj",
         "projectName": "DummyClient",
-        "projectPath": "C:\\Users\\Administrator\\Desktop\\FastEncryption\\Server\\DummyClient\\DummyClient.csproj",
-        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Administrator\\Desktop\\FastEncryption\\Server\\DummyClient\\obj\\",
+        "projectPath": "C:\\Users\\asdff\\Desktop\\FastEncryption\\Server\\DummyClient\\DummyClient.csproj",
+        "packagesPath": "C:\\Users\\asdff\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\asdff\\Desktop\\FastEncryption\\Server\\DummyClient\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\asdff\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -28,8 +28,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Administrator\\Desktop\\FastEncryption\\Server\\NetworkCore\\NetworkCore.csproj": {
-                "projectPath": "C:\\Users\\Administrator\\Desktop\\FastEncryption\\Server\\NetworkCore\\NetworkCore.csproj"
+              "C:\\Users\\asdff\\Desktop\\FastEncryption\\Server\\NetworkCore\\NetworkCore.csproj": {
+                "projectPath": "C:\\Users\\asdff\\Desktop\\FastEncryption\\Server\\NetworkCore\\NetworkCore.csproj"
               }
             }
           }
@@ -70,21 +70,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Administrator\\Desktop\\FastEncryption\\Server\\NetworkCore\\NetworkCore.csproj": {
+    "C:\\Users\\asdff\\Desktop\\FastEncryption\\Server\\NetworkCore\\NetworkCore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Administrator\\Desktop\\FastEncryption\\Server\\NetworkCore\\NetworkCore.csproj",
+        "projectUniqueName": "C:\\Users\\asdff\\Desktop\\FastEncryption\\Server\\NetworkCore\\NetworkCore.csproj",
         "projectName": "NetworkCore",
-        "projectPath": "C:\\Users\\Administrator\\Desktop\\FastEncryption\\Server\\NetworkCore\\NetworkCore.csproj",
-        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Administrator\\Desktop\\FastEncryption\\Server\\NetworkCore\\obj\\",
+        "projectPath": "C:\\Users\\asdff\\Desktop\\FastEncryption\\Server\\NetworkCore\\NetworkCore.csproj",
+        "packagesPath": "C:\\Users\\asdff\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\asdff\\Desktop\\FastEncryption\\Server\\NetworkCore\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\asdff\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -136,7 +136,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

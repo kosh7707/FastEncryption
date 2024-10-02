@@ -29,8 +29,10 @@ namespace NetworkCore.Packet
         ECPoint _pubKey;
         CipherSuite _cipherSuite;
 
-        byte[] _sessionKey = new byte[16];
-
+        byte[] _sharedSecret    = new byte[32];
+        byte[] _salt            = new byte[16];
+        byte[] _sessionKey      = new byte[16];
+        
         IOperationMode _operationMode;
 
         public BigInteger PrivKey 
@@ -49,6 +51,18 @@ namespace NetworkCore.Packet
         {
             get => _cipherSuite;
             set => _cipherSuite = value;
+        }
+
+        public byte[] Salt
+        {
+            get => _salt;
+            set => _salt = value;
+        }
+
+        public byte[] SharedSecret
+        {
+            get => _sharedSecret;
+            set => _sharedSecret = value;
         }
 
         public byte[] SessionKey

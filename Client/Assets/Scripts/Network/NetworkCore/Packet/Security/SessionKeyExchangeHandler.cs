@@ -21,6 +21,9 @@ namespace NetworkCore.Packet.Security
 
             bool isSuccess = true;
 
+            // Cipher Suite Validation Check
+            isSuccess &= IsValidCipherSuite(helloPacket.CipherSuite);
+
             // Packet Parsing
             CipherSuite cipherSuite = helloPacket.CipherSuite;
             byte[] clientPubKeyXArray = helloPacket.PubKeyX.ToByteArray();
@@ -29,8 +32,8 @@ namespace NetworkCore.Packet.Security
             BigInteger clientPubKeyY = new BigInteger(clientPubKeyYArray, isUnsigned: true, isBigEndian: true);
             ECPoint clientPubKey = new ECPoint(clientPubKeyX, clientPubKeyY);
 
-            // Cipher Suite Validation Check
-            isSuccess &= true;
+            // Client Public Key Validation Check
+            isSuccess &= (session.ECDSA.IsValidPoint(clientPubKey) == 0);
 
             // Create PrivKey
             BigInteger privKey = session.ECDH.GeneratePrivKey();
@@ -40,7 +43,7 @@ namespace NetworkCore.Packet.Security
             byte[] pubKeyX = pubKey.X.ToByteArray(isUnsigned: true, isBigEndian: true);
             byte[] pubKeyY = pubKey.Y.ToByteArray(isUnsigned: true, isBigEndian: true);
 
-            // Calculate SessionKey
+            // Calculate SharedSecret
             BigInteger sharedSecret = session.ECDH.ComputeSharedSecret(privKey, clientPubKey);
             byte[] sharedSecretArray = sharedSecret.ToByteArray(isUnsigned: true, isBigEndian: true);
 
@@ -52,8 +55,14 @@ namespace NetworkCore.Packet.Security
             session.CipherSuite = cipherSuite;
             session.PrivKey = privKey;
             session.PubKey = pubKey;
-            Array.Copy(sharedSecretArray, 0, session.SessionKey, 0, 16);
-            
+            Array.Copy(sharedSecretArray, session.SharedSecret, sharedSecretArray.Length);
+
+            // Set salt (HKDF)
+            byte[] salt = new byte[16];
+            using (System.Security.Cryptography.RandomNumberGenerator rng = System.Security.Cryptography.RandomNumberGenerator.Create())
+                rng.GetBytes(salt);
+            Array.Copy(salt, session.Salt, salt.Length);
+
             // Send Packet
             S_Hello resHello = new S_Hello();
             resHello.Success = isSuccess;
@@ -61,6 +70,7 @@ namespace NetworkCore.Packet.Security
             resHello.PubKeyY = ByteString.CopyFrom(pubKeyY);
             resHello.Message = ByteString.CopyFrom(message);
             resHello.Signature = ByteString.CopyFrom(signature);
+            resHello.Salt = ByteString.CopyFrom(salt);
             session.Send(resHello);
         }
 
@@ -72,29 +82,30 @@ namespace NetworkCore.Packet.Security
 
             // Validation Check
             if (!helloPacket.Success) 
-                throw new Exception("SessionKeyExchangeError");
+                throw new Exception("S_HelloHandler SessionKeyExchangeError");
 
             // Packet Parsing
             byte[] serverPubKeyXArray = helloPacket.PubKeyX.ToByteArray();
             byte[] serverPubKeyYArray = helloPacket.PubKeyY.ToByteArray();
             byte[] serverMessage = helloPacket.Message.ToByteArray();
             byte[] serverSignature = helloPacket.Signature.ToByteArray();
+            byte[] salt = helloPacket.Salt.ToByteArray();   
             BigInteger serverPubKeyX = new BigInteger(serverPubKeyXArray, isUnsigned: true, isBigEndian: true);
             BigInteger serverPubKeyY = new BigInteger(serverPubKeyYArray, isUnsigned: true, isBigEndian: true);
             ECPoint serverPubKey = new ECPoint(serverPubKeyX, serverPubKeyY);
 
-            // Calculate SessionKey
+            // Sigature Verification
+            ECPoint serverSignaturePubKey = CertificateAuthority.Instance.ServerSignaturePubKey;
+            isSuccess &= session.ECDSA.Verify(serverMessage, serverSignature, serverSignaturePubKey);
+
+            // Calculate SharedSecret
             BigInteger sharedSecret = session.ECDH.ComputeSharedSecret(session.PrivKey, serverPubKey);
             byte[] sharedSecretArray = sharedSecret.ToByteArray(isUnsigned: true, isBigEndian: true);
 
-            // Set SharedSecret
-            Array.Copy(sharedSecretArray, 0, session.SessionKey, 0, 16);
+            // Set SharedSecret, Salt
+            Array.Copy(sharedSecretArray, session.SharedSecret, sharedSecretArray.Length);
+            Array.Copy(salt, session.Salt, salt.Length);
 
-            // Sigature Verification
-            ECPoint serverSignaturePubKey = CertificateAuthority.Instance.ServerSignaturePubKey;
-            if (!session.ECDSA.Verify(serverMessage, serverSignature, serverSignaturePubKey))
-                throw new Exception("Signature Verification Error");
-            
             // Validation Check
             isSuccess &= true;
 
@@ -120,8 +131,15 @@ namespace NetworkCore.Packet.Security
             resHelloDone.Success = true;
             session.Send(resHelloDone);
 
+            // SessionKey Derivation and Set
+            byte[] sessionKey = HKDF.KeyDerivation(session.SharedSecret, session.Salt, null, 16);
+            Array.Copy(sessionKey, session.SessionKey, sessionKey.Length);
+
             // Set Secure Communication Flag
             session.IsSecure = true;
+
+            // Debug
+            Logger.DebugLog($"C_HelloDone, SessionKey: {BitConverter.ToString(session.SessionKey).Replace("-", " ")}");
         }
 
         public static void S_HelloDoneHandler(PacketSession session, IMessage packet)
@@ -134,6 +152,10 @@ namespace NetworkCore.Packet.Security
 
             // Set BlockCipher
             session.OperationMode = GetOperationModeFromCipherSuite(session.CipherSuite, session.SessionKey);
+
+            // SessionKey Derivation and Set
+            byte[] sessionKey = HKDF.KeyDerivation(session.SharedSecret, session.Salt, null, 16);
+            Array.Copy(sessionKey, session.SessionKey, sessionKey.Length);
 
             // Set Secure Communication Flag
             session.IsSecure = true;
@@ -173,6 +195,11 @@ namespace NetworkCore.Packet.Security
             }
 
             return (T)Activator.CreateInstance(type, args);
+        }
+
+        static bool IsValidCipherSuite(CipherSuite cipherSuite)
+        {
+            return Enum.IsDefined(typeof(CipherSuite), cipherSuite);
         }
     }
 }

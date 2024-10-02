@@ -19,6 +19,7 @@ message S_Hello
 	bytes pubKeyY = 3;
 	bytes message = 4;
 	bytes signature = 5;
+	bytes salt = 6;
 }
 
 message C_Hello_Done
