@@ -7,18 +7,6 @@
       "RelativeMoniker": "D:0:0:{6122C1BD-FA0E-4A93-904A-9039A1A902BF}|DummyClient\\DummyClient.csproj|solutionrelative:dummyclient\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{555D631E-741E-40F9-AE63-29B9172CB097}|Server\\Server.csproj|c:\\users\\asdff\\desktop\\fastencryption\\server\\server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{555D631E-741E-40F9-AE63-29B9172CB097}|Server\\Server.csproj|solutionrelative:server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{311CF18C-3796-4983-96B1-881CC3941D98}|NetworkCore\\NetworkCore.csproj|c:\\users\\asdff\\desktop\\fastencryption\\server\\networkcore\\session.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{311CF18C-3796-4983-96B1-881CC3941D98}|NetworkCore\\NetworkCore.csproj|solutionrelative:networkcore\\session.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{555D631E-741E-40F9-AE63-29B9172CB097}|Server\\Server.csproj|c:\\users\\asdff\\desktop\\fastencryption\\server\\server\\session\\clientsession.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{555D631E-741E-40F9-AE63-29B9172CB097}|Server\\Server.csproj|solutionrelative:server\\session\\clientsession.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{6122C1BD-FA0E-4A93-904A-9039A1A902BF}|DummyClient\\DummyClient.csproj|c:\\users\\asdff\\desktop\\fastencryption\\server\\dummyclient\\session\\serversession.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6122C1BD-FA0E-4A93-904A-9039A1A902BF}|DummyClient\\DummyClient.csproj|solutionrelative:dummyclient\\session\\serversession.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -34,19 +22,32 @@
       "DocumentGroups": [
         {
           "DockedWidth": 265,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Session.cs",
-              "DocumentMoniker": "C:\\Users\\asdff\\Desktop\\FastEncryption\\Server\\NetworkCore\\Session.cs",
-              "RelativeDocumentMoniker": "NetworkCore\\Session.cs",
-              "ToolTip": "C:\\Users\\asdff\\Desktop\\FastEncryption\\Server\\NetworkCore\\Session.cs",
-              "RelativeToolTip": "NetworkCore\\Session.cs",
-              "ViewState": "AgIAAFgAAAAAAAAAAADwv3MAAAANAAAAAAAAAA==",
+              "Title": "PacketSession.cs",
+              "DocumentMoniker": "C:\\Users\\asdff\\Desktop\\FastEncryption\\Server\\NetworkCore\\Packet\\PacketSession.cs",
+              "RelativeDocumentMoniker": "NetworkCore\\Packet\\PacketSession.cs",
+              "ToolTip": "C:\\Users\\asdff\\Desktop\\FastEncryption\\Server\\NetworkCore\\Packet\\PacketSession.cs",
+              "RelativeToolTip": "NetworkCore\\Packet\\PacketSession.cs",
+              "ViewState": "AgIAAIQAAAAAAAAAAAAcwJsAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-02T07:40:33.98Z",
+              "WhenOpened": "2024-10-02T07:47:37.668Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ServerSession.cs",
+              "DocumentMoniker": "C:\\Users\\asdff\\Desktop\\FastEncryption\\Server\\DummyClient\\Session\\ServerSession.cs",
+              "RelativeDocumentMoniker": "DummyClient\\Session\\ServerSession.cs",
+              "ToolTip": "C:\\Users\\asdff\\Desktop\\FastEncryption\\Server\\DummyClient\\Session\\ServerSession.cs",
+              "RelativeToolTip": "DummyClient\\Session\\ServerSession.cs",
+              "ViewState": "AgIAACwAAAAAAAAAAAAIwFEAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-02T07:43:39.364Z",
               "EditorCaption": ""
             },
             {
@@ -59,65 +60,7 @@
               "RelativeToolTip": "DummyClient\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAABSAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-02T07:39:56.576Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\asdff\\Desktop\\FastEncryption\\Server\\Server\\Program.cs",
-              "RelativeDocumentMoniker": "Server\\Program.cs",
-              "ToolTip": "C:\\Users\\asdff\\Desktop\\FastEncryption\\Server\\Server\\Program.cs",
-              "RelativeToolTip": "Server\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-02T07:39:55.025Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ClientSession.cs",
-              "DocumentMoniker": "C:\\Users\\asdff\\Desktop\\FastEncryption\\Server\\Server\\Session\\ClientSession.cs",
-              "RelativeDocumentMoniker": "Server\\Session\\ClientSession.cs",
-              "ToolTip": "C:\\Users\\asdff\\Desktop\\FastEncryption\\Server\\Server\\Session\\ClientSession.cs",
-              "RelativeToolTip": "Server\\Session\\ClientSession.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAYwCcAAAAjAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-02T07:33:17.521Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ServerSession.cs",
-              "DocumentMoniker": "C:\\Users\\asdff\\Desktop\\FastEncryption\\Server\\DummyClient\\Session\\ServerSession.cs",
-              "RelativeDocumentMoniker": "DummyClient\\Session\\ServerSession.cs",
-              "ToolTip": "C:\\Users\\asdff\\Desktop\\FastEncryption\\Server\\DummyClient\\Session\\ServerSession.cs",
-              "RelativeToolTip": "DummyClient\\Session\\ServerSession.cs",
-              "ViewState": "AgIAACwAAAAAAAAAAAAQwEMAAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-02T07:32:52.95Z",
-              "EditorCaption": ""
-            }
-          ]
-        },
-        {
-          "DockedWidth": 265,
-          "SelectedChildIndex": 0,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "PacketSession.cs",
-              "DocumentMoniker": "C:\\Users\\asdff\\Desktop\\FastEncryption\\Server\\NetworkCore\\Packet\\PacketSession.cs",
-              "RelativeDocumentMoniker": "NetworkCore\\Packet\\PacketSession.cs",
-              "ToolTip": "C:\\Users\\asdff\\Desktop\\FastEncryption\\Server\\NetworkCore\\Packet\\PacketSession.cs",
-              "RelativeToolTip": "NetworkCore\\Packet\\PacketSession.cs",
-              "ViewState": "AgIAAJIAAAAAAAAAAADwv68AAAA0AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-02T07:34:19.797Z",
+              "WhenOpened": "2024-10-02T07:46:04.039Z",
               "EditorCaption": ""
             }
           ]

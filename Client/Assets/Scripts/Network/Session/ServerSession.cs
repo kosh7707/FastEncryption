@@ -37,5 +37,15 @@ namespace Session
         public override void OnSend(int numOfBytes)
         {
         }
+
+        public new void Send(IMessage packet)
+        {
+            if (!IsSecure)
+            {
+                Logger.ErrorLog("Can't send normal packet on not secure section");
+                return;
+            }
+            base.Send(packet);
+        }
     }
 }

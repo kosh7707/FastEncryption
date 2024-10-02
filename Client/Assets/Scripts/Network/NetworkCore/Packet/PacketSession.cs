@@ -154,7 +154,7 @@ namespace NetworkCore.Packet
         
         public abstract void OnRecvPacket(ArraySegment<byte> buffer);
 
-        public virtual void Send(IMessage packet)
+        public void Send(IMessage packet)
         {
             // Get MsgId
             string msgName = packet.Descriptor.Name.Replace("_", string.Empty);

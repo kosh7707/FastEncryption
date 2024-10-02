@@ -63,9 +63,13 @@ namespace DummyClient.Session
 
         }
 
-        public override void Send(IMessage packet)
+        public new void Send(IMessage packet)
         {
-            if (!IsSecure) return;
+            if (!IsSecure)
+            {
+                Logger.ErrorLog($"Client_{SessionId} Can't send normal packet on not secure section");
+                return;
+            }
             base.Send(packet);
         }
 
@@ -79,7 +83,7 @@ namespace DummyClient.Session
         {
             C_Test testPkt = new C_Test();
             testPkt.Lorem = GenerateRandomString(50);
-            Logger.InfoLog($"Client_{_sessionId}: {testPkt.Lorem}");
+            Logger.InfoLog($"Client_{SessionId}: {testPkt.Lorem}");
             Send(testPkt);
         }
 
