@@ -39,7 +39,7 @@ namespace Test.BlockCipherTest
         {
             Console.WriteLine();
             string folderPath = "../../../test-vector/AES/ECB/";
-            string[] filePaths = Directory.GetFiles(folderPath, "*.rsp");
+            string[] filePaths = Directory.GetFiles(folderPath, "*.txt");
 
             foreach (string filePath in filePaths)
             {
@@ -95,7 +95,7 @@ namespace Test.BlockCipherTest
         {
             Console.WriteLine();
             string folderPath = "../../../test-vector/AES/CBC/";
-            string[] filePaths = Directory.GetFiles(folderPath, "*.rsp");
+            string[] filePaths = Directory.GetFiles(folderPath, "*.txt");
 
             foreach (string filePath in filePaths)
             {
@@ -151,7 +151,7 @@ namespace Test.BlockCipherTest
         {
             Console.WriteLine();
             string folderPath = "../../../test-vector/AES/CFB/";
-            string[] filePaths = Directory.GetFiles(folderPath, "*.rsp");
+            string[] filePaths = Directory.GetFiles(folderPath, "*.txt");
 
             foreach (string filePath in filePaths)
             {
@@ -207,7 +207,7 @@ namespace Test.BlockCipherTest
         {
             Console.WriteLine();
             string folderPath = "../../../test-vector/AES/OFB/";
-            string[] filePaths = Directory.GetFiles(folderPath, "*.rsp");
+            string[] filePaths = Directory.GetFiles(folderPath, "*.txt");
 
             foreach (string filePath in filePaths)
             {
@@ -270,7 +270,7 @@ namespace Test.BlockCipherTest
         {
             Console.WriteLine();
             string folderPath = "../../../test-vector/AES/GCM/";
-            string[] filePaths = Directory.GetFiles(folderPath, "*.rsp");
+            string[] filePaths = Directory.GetFiles(folderPath, "*.txt");
 
             foreach (string filePath in filePaths)
             {
