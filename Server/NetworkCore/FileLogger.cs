@@ -1,68 +1,69 @@
-﻿using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Concurrent;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace NetworkCore
 {
     public struct CipherLogObject
     {
-        public string algorithmName;
-        public string operationModeName;
-        public long tick;
+        public string   AlgorithmName { get; set; }
+        public string   OperationModeName { get; set; }
+        public double   ElapsedMilliseconds { get; set; }
+        public bool     IsEncrypt { get; set; }
 
         public string GetLogFilePath(string baseDir)
         {
-            return Path.Combine(baseDir, algorithmName, $"{operationModeName}.txt");
+            return Path.Combine(baseDir, AlgorithmName, $"{OperationModeName}.txt");
         }
 
         public string GetLogContent()
         {
-            return tick.ToString() + Environment.NewLine;
+            return $"[{(IsEncrypt ? "Encrypt" : "Decrypt")}] {ElapsedMilliseconds:F3} {Environment.NewLine}";
         }
     }
 
-    public class FileLogger
+    public class FileLogger : IDisposable
     {
         private readonly BlockingCollection<CipherLogObject> logQueue = new BlockingCollection<CipherLogObject>();
-        private readonly Thread logThread;
         private readonly string baseDir;
-        private bool isRunning = true;
+        private readonly CancellationTokenSource cts = new CancellationTokenSource();
+        private Task? loggingTask;
+        private bool isDisposed = false;
 
-        static FileLogger _instance = new FileLogger();
-        public static FileLogger Instance { get { return _instance; } }
+        private static readonly Lazy<FileLogger> _instance = new Lazy<FileLogger>(() => new FileLogger());
+        public static FileLogger Instance { get { return _instance.Value; } }
+
+        private readonly ConcurrentDictionary<string, StreamWriter> writerCache = new ConcurrentDictionary<string, StreamWriter>();
 
         FileLogger()
         {
             baseDir = "./AlgorithmTimeLog/";
-            logThread = new Thread(ProcessLogQueue) { IsBackground = true };
-            logThread.Start();
+            loggingTask = Task.Factory.StartNew(ProcessLogQueue, TaskCreationOptions.LongRunning);
         }
 
         public void Log(CipherLogObject log)
         {
-            if (!isRunning) throw new InvalidOperationException("Logger is not running.");
+            if (isDisposed) throw new ObjectDisposedException(nameof(FileLogger));
             logQueue.Add(log);
         }
 
         private void ProcessLogQueue()
         {
-            while (isRunning)
+            try
             {
-                try
+                while (!logQueue.IsCompleted)
                 {
-                    CipherLogObject logObject = logQueue.Take();
-                    WriteLog(logObject);
-                }
-                catch (InvalidOperationException)
-                {
-                    break;
+                    if (logQueue.TryTake(out var logObject, -1, cts.Token))
+                    {
+                        WriteLog(logObject);
+                    }
                 }
             }
-                
-            while (logQueue.TryTake(out CipherLogObject remainingLog))
+            catch (OperationCanceledException)
+            {
+                Console.WriteLine("Log Canceled");
+            }
+
+            while (logQueue.TryTake(out var remainingLog))
             {
                 WriteLog(remainingLog);
             }
@@ -71,22 +72,55 @@ namespace NetworkCore
 
         private void WriteLog(CipherLogObject logObject)
         {
-            var fullPath = logObject.GetLogFilePath(baseDir);
-            var directoryPath = Path.GetDirectoryName(fullPath);
-
-            if (!Directory.Exists(directoryPath))
+            try
             {
-                Directory.CreateDirectory(directoryPath);
-            }
+                var fullPath = logObject.GetLogFilePath(baseDir);
+                var directoryPath = Path.GetDirectoryName(fullPath);
 
-            File.AppendAllText(fullPath, logObject.GetLogContent());
+                if (directoryPath != null && !Directory.Exists(directoryPath))
+                {
+                    Directory.CreateDirectory(directoryPath);
+                }
+
+                var writer = writerCache.GetOrAdd(fullPath, path => new StreamWriter(path, true, Encoding.UTF8) { AutoFlush = true });
+
+                lock (writer)
+                {
+                    writer.Write(logObject.GetLogContent());
+                }
+            }
+            catch (IOException ex)
+            {
+                Console.Error.WriteLine($"Failed to write log: {ex.Message}");
+            }
+        }
+
+        private void FlushAndCloseWriters()
+        {
+            foreach (var kvp in writerCache.Values)
+            {
+                kvp.Flush();
+                kvp.Close();
+            }
+            writerCache.Clear();
         }
 
         public void Stop()
         {
-            isRunning = false;
+            if (isDisposed) return;
+
+            cts.Cancel();
             logQueue.CompleteAdding();
-            logThread.Join();
+            loggingTask?.Wait();
+        }
+
+        public void Dispose()
+        {
+            Stop();
+            cts.Dispose();
+            logQueue.Dispose();
+            FlushAndCloseWriters();
+            isDisposed = true;
         }
 
     }

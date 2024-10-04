@@ -16,12 +16,12 @@ namespace DummyClient
 
             Connector connector = new Connector();
 
-            connector.Connect(endPoint, () => { return new ServerSession(); }, 1);
+            connector.Connect(endPoint, () => { return new ServerSession(); }, 200);
 
-            while (true)
-            {
+            for (int i = 0; i < 100000; i++)
                 Thread.Sleep(100);
-            }
+
+            FileLogger.Instance.Stop();
         }
     }
 }

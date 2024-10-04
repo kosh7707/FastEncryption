@@ -33,8 +33,8 @@ class Program
         Logger.InfoLog("Listening...");
 
         while (true)
-        {
             Thread.Sleep(100);
-        }
+
+        FileLogger.Instance.Stop();
     }
 }

@@ -12,18 +12,19 @@ using NetworkCore.Encryption.BlockCipher.OperationMode;
 using NetworkCore.Buffer;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using System.Diagnostics;
+using System.Net.Sockets;
 
 namespace NetworkCore.Packet
 {
     public abstract class PacketSession : Session
     {
-        bool isSecure = false;
+        protected bool _isSecure = false;
 
         public bool IsSecure 
         {
-            get => isSecure;
-            set => isSecure = value;
-        } 
+            get => _isSecure;
+            set => _isSecure = value;
+        }
 
         BigInteger _privKey;
         ECPoint _pubKey;
@@ -105,7 +106,7 @@ namespace NetworkCore.Packet
         {
             int processLen = 0;
 
-            if (!isSecure)
+            if (!_isSecure)
             {
                 while (true)
                 {
@@ -137,11 +138,17 @@ namespace NetworkCore.Packet
                     byte[] encryptedPacket = new byte[dataSize - 4];
                     Array.Copy(buffer.Array, buffer.Offset + 4, encryptedPacket, 0, dataSize - 4);
 
-                    // Packet Decrypt Stopwatch
+                    // Packet Decrypt 
                     Stopwatch stopwatch = Stopwatch.StartNew();
                     byte[] decryptedPacket = OperationMode.Decrypt(encryptedPacket);
                     stopwatch.Stop();
-                    Console.WriteLine($"{OperationMode.AlgorithmName}-{OperationMode.ModeName} Decrypt ElapsedTicks: {stopwatch.ElapsedTicks}");
+                    FileLogger.Instance.Log(new CipherLogObject
+                    {
+                        IsEncrypt = false,
+                        AlgorithmName = OperationMode.AlgorithmName,
+                        OperationModeName = OperationMode.ModeName,
+                        ElapsedMilliseconds = (double)stopwatch.ElapsedTicks / Stopwatch.Frequency * 1000,
+                    });
 
                     // Create ArraySegment (Need Optimization)
                     byte[] tempBuffer = new byte[decryptedPacket.Length + 4];
@@ -167,7 +174,7 @@ namespace NetworkCore.Packet
             byte[] sendBuffer;
             ushort size;
 
-            if (!isSecure)
+            if (!_isSecure)
             {
                 // Get Packet Size
                 size = (ushort)packet.CalculateSize();
@@ -184,8 +191,14 @@ namespace NetworkCore.Packet
                 Stopwatch stopwatch = Stopwatch.StartNew();
                 byte[] encryptionPacket = OperationMode.Encrypt(packet.ToByteArray());
                 stopwatch.Stop();
-                Console.WriteLine($"{OperationMode.AlgorithmName}-{OperationMode.ModeName} Encrypt ElapsedTicks: {stopwatch.ElapsedTicks}");
-
+                FileLogger.Instance.Log(new CipherLogObject
+                {
+                    IsEncrypt = true,
+                    AlgorithmName = OperationMode.AlgorithmName,
+                    OperationModeName = OperationMode.ModeName,
+                    ElapsedMilliseconds = (double)stopwatch.ElapsedTicks / Stopwatch.Frequency * 1000,
+                });
+                
                 // Set size
                 size = (ushort)encryptionPacket.Length;
 

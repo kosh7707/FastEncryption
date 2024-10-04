@@ -89,7 +89,7 @@ namespace DummyClient.Session
 
         private int GetRandomInterval()
         {
-            return _random.Next(500, 1000);
+            return _random.Next(250, 1000);
         }
         
     }
